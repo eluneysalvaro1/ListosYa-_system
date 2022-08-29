@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\City;
+use App\Models\Provincia;
 use Illuminate\Http\Request;
 
-class CityController extends Controller
+class ProvinciaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Provincia  $province
      * @return \Illuminate\Http\Response
      */
-    public function show(City $city)
+    public function show(Provincia $province)
     {
         //
     }
@@ -52,10 +52,10 @@ class CityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Provincia  $province
      * @return \Illuminate\Http\Response
      */
-    public function edit(City $city)
+    public function edit(Provincia $province)
     {
         //
     }
@@ -64,10 +64,10 @@ class CityController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Provincia  $province
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, City $city)
+    public function update(Request $request, Provincia $province)
     {
         //
     }
@@ -75,10 +75,10 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\City  $city
+     * @param  \App\Models\Provincia  $province
      * @return \Illuminate\Http\Response
      */
-    public function destroy(City $city)
+    public function destroy(Provincia $province)
     {
         //
     }

@@ -30,9 +30,11 @@ class User extends Authenticatable
         'password',
         'last_name',
         'birthday',
-        'city',
-        'role',
-        'points'
+        'ciudad_id',
+        'role_id',
+        'points',
+        'external_id',
+        'profile_photo_path'
     ];
 
     /**

@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call(RoleSeeder::class);
-
-
+        $this->call(ProvinciasSeeder::class);
+        $this->call(MunicipiosSeeder::class);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

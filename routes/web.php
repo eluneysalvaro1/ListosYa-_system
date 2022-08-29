@@ -1,6 +1,12 @@
 <?php
 
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Ciudad;
+use App\Models\Provincia;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +31,45 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('profile' , function() {
+
+        $provincias = Provincia::all();
+        $ciudades = Ciudad::all();
+
+        return view('profile.show', compact('provincias' , 'ciudades'));
+    });
+
+
+});
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+ 
+    $userExists = User::where('external_id' , $user->id)->first(); 
+
+    if ($userExists) {
+        Auth::login($userExists); 
+    }else{
+        $newUser = User::create([
+            'name' => $user->name,
+            'email' => $user->email,
+            'role_id' => 3,
+            'password'=> NULL,
+            'ciudad_id' => NULL, 
+            'email_verified_at' => date('d M Y H:i:s'),
+            'profile_photo_path' => $user->avatar,
+            'external_id' => $user->id,
+            'points' => 0,
+        ]);
+
+        Auth::login($newUser); 
+
+    }
+    return redirect('/dashboard'); 
+
 });
