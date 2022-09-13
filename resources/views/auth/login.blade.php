@@ -44,5 +44,21 @@
                 </x-jet-button>
             </div>
         </form>
+
+
+        <div class="d-flex">
+            <a href="/login-google">
+                <h6>Iniciar sesion con Google</h6>
+                <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">
+            </a>
+        </div>
+        <div class="d-flex">
+            <a href="">
+                <h6>Iniciar sesion con Facebook</h6>
+                <img width="25px" src=" {{asset("../images/facebook-icon.svg")}} " alt="iniciar sesion con facebook">
+            </a>
+        </div>
+
+
     </x-jet-authentication-card>
 </x-guest-layout>
