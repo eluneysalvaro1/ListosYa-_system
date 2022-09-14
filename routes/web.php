@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Ciudad;
 use App\Models\Provincia;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +40,11 @@ Route::middleware([
         return view('profile.show', compact('provincias' , 'ciudades'));
     });
 
+    Route::post('/users/{user}', [UserController::class, 'data'])->name('users.data');
+
+    Route::resources([
+        'users' => UserController::class,
+    ]);
 
 });
 

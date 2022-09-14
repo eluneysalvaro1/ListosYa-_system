@@ -28,10 +28,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'last_name',
+        'surname',
         'birthday',
         'ciudad_id',
+        'telephone_number',
         'role_id',
+        'dni',
         'points',
         'external_id',
         'profile_photo_path'
