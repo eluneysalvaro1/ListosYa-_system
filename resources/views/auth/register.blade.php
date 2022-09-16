@@ -6,6 +6,8 @@
 
         <x-jet-validation-errors class="mb-4" />
 
+        
+
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
@@ -14,16 +16,34 @@
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
+            <div>
+                <x-jet-label for="surname" value="{{ __('Apellido') }}" />
+                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
+            </div>
+
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <div class="mt-6">
+                <x-jet-label for="dni" value="{{ __('Numero de Documento') }}" />
+                <x-jet-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" required />
             </div>
 
+            <div class="mt-4">
+                <x-jet-label for="birthday" value="{{ __('Fecha de Nacimiento') }}" />
+                <x-jet-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
+            </div>
+            
+            <div class="mt-4">
+               <livewire:combo-provincia />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="passwordn" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="password" />
+            </div>
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
@@ -58,3 +78,5 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+@section ('script')
