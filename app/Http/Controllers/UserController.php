@@ -73,7 +73,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect(route('dashboard'));
+        return redirect(route('alert'));
     }
     
 

@@ -8,6 +8,10 @@ use App\Models\Provincia;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
+
+use App\Mail\AlertMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,7 +71,7 @@ Route::get('/google-callback', function () {
             'password'=> NULL,
             'ciudad_id' => NULL, 
             'email_verified_at' => date('d M Y H:i:s'),
-            'profile_photo_path' => $user->avatar,
+            'profile_external_path' => $user->avatar,
             'external_id' => $user->id,
             'points' => 0,
         ]);
@@ -78,3 +82,13 @@ Route::get('/google-callback', function () {
     return redirect('/dashboard'); 
 
 });
+
+
+Route::get('alert' , function(){
+
+    $correo = new AlertMailable;
+
+    Mail::to('eluneyjsalvaro@gmail.com')->send($correo);
+
+    return redirect('/dashboard'); 
+})->name('alert');
