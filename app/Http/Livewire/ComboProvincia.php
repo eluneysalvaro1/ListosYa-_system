@@ -11,20 +11,19 @@ class ComboProvincia extends Component
 {
     public $selectedProvincia = null, $selectedCiudad = null;
 
-    public $ciudades = [];
+    public $ciudades = null;
 
     public function render()
     {
         
         return view('livewire.combo-provincia',[
-            'provincias'=> Provincia::all()]
-            
-        );
+            'provincias' => Provincia::all()
+        ]);
     }
 
-    public function updatedselectedProvincia($nombre) {
+    public function updatedselectedProvincia($provincia_id){
         dd($this->ciudades);
-        $this->ciudades = Ciudad::where('provincia',$nombre)->get();
+        $this->ciudades = Ciudad::where('provincia',$provincia_id)->get();
         
     }
 }

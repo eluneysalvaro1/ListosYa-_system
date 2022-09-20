@@ -8,4 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {
     use HasFactory;
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'start_date',
+        'finish_date',
+        'start_time',
+        'finish_time',
+        'volunteer_limit',
+        'place_event',
+        'program_imagen',
+        'program_points',
+        'state',
+        'category_id'
+    ];
 }

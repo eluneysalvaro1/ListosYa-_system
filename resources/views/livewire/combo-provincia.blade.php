@@ -11,23 +11,17 @@
 
 </div>
 
+
+@if ($ciudades !== null)
 <div class="mt-4">
-
-<select wire:model="selectedCiudad" class="form-select" >
-    <option  value="">Seleccionar Ciudad</option>
-    @forelse ($ciudades as $ciudad)
-    <option value={{$ciudad->nombre}}>>{{$ciudad->nombre}}</option>
-@empty 
-<option value="">PRIMERO DEBE SELECCIONAR PROVINCIA</option>
-@endforelse
-</select>
-    
-
-     
-        
-            
-            
-        
- 
+    <select wire:model="selectedCiudad" class="form-select" >
+            <option value="">Seleccionar ciudad</option>
+        @forelse ($ciudades as $ciudad)
+            <option value={{$ciudad->nombre}}>>{{$ciudad->nombre}}</option>
+        @empty 
+            <option value="">PRIMERO DEBE SELECCIONAR PROVINCIA</option>
+        @endforelse
+    </select>
 </div>
 
+@endif

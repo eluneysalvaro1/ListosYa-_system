@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -50,6 +51,9 @@ Route::middleware([
         'users' => UserController::class,
     ]);
 
+
+    Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
+    Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
 });
 
 Route::get('/login-google', function () {
