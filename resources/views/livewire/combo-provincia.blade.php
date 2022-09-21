@@ -8,6 +8,7 @@
                 <option value={{ $provincia->id }}>{{ $provincia->nombre }}</option>
             @endforeach
         </select>
+
     </div>
  
 
@@ -22,3 +23,4 @@
         </select>
     </div>
 </div>
+

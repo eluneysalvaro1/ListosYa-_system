@@ -28,37 +28,41 @@
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Recordar') }}</span>
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-center mt-4">
                 @if (Route::has('password.request'))
                     <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('¿Olvidó su contraseña?') }}
                     </a>
                 @endif
 
                 <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
+                    {{ __('Iniciar sesión') }}
                 </x-jet-button>
             </div>
         </form>
 
+        <div class="flex flex-col items-center justify-center">
 
-        <div class="d-flex">
-            <a href="/login-google">
-                <h6>Iniciar sesion con Google</h6>
-                <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">
-            </a>
+            <x-jet-button class="mt-6 mr-5">
+                <a class="flex items-center justify-center" href="/login-google">
+                    <h6 class="pr-4 font-semibold " >Iniciar sesión con Google</h6>
+                    <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">
+                </a>
+            </x-jet-button>
+    
+            <x-jet-button class="mt-6 mx-auto">
+                <a class="flex items-center justify-center"  href="">
+                    <h6 class="pr-4 font-semibold">Iniciar sesión con Facebook</h6>
+                    <img width="25px" src=" {{asset("../images/facebook-icon.svg")}} " alt="iniciar sesion con facebook">
+                </a>
+            </x-jet-button>
         </div>
-        <div class="d-flex">
-            <a href="">
-                <h6>Iniciar sesion con Facebook</h6>
-                <img width="25px" src=" {{asset("../images/facebook-icon.svg")}} " alt="iniciar sesion con facebook">
-            </a>
-        </div>
-
+        
+    
 
     </x-jet-authentication-card>
 </x-guest-layout>

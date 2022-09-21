@@ -82,4 +82,20 @@ class ProgramController extends Controller
     {
         //
     }
+
+
+
+    public function calendar(){
+        $programs = Program::where('state' , 'open_to_postulated')->get();
+        return view('programs.calendar' , compact('programs'));
+    }
+
+
+    public function calendarData(){
+        $programs = Program::where('state' , 'open_to_postulated')->get();
+
+        return json_encode($programs);
+    }
+
+
 }

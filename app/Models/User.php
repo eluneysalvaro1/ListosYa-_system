@@ -28,14 +28,21 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'last_name',
+        'surname',
         'birthday',
         'ciudad_id',
+        'telephone_number',
         'role_id',
+        'dni',
         'points',
         'external_id',
-        'profile_photo_path'
+        'profile_photo_path',
+        'profile_external_path'
     ];
+
+    public function getProfileExternalUrlAttribute(){
+        return $this->profile_external_path;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -65,5 +72,6 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'profile_external_url'
     ];
 }

@@ -7,26 +7,56 @@
         Para poder utilizar la aplicacion correctamente deberá ingresar la informacion restante de su perfil. 
     </x-slot>
 
+    @if (Auth::user()->surname !== null && Auth::user()->dni !== null && 
+         Auth::user()->telephone_number !== null && Auth::user()->birthday !== null)
+     <x-slot name="content">
+        Toda la informacion ha sido cargada con éxito. Ya puede inscribirse a los diferetes programas.
+    </x-slot>
+        
+    @else
+
+    
     <x-slot name="content">
         <div class="max-w-xl text-sm text-gray-600">
-           <form action="">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-           </form>
+           <form action=" {{route('users.data' , Auth::user()->id)}} " method="POST">
+            @csrf
+            @if (Auth::user()->surname == null)  
+                <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-jet-label for="surname" value="Apellido" />
+                    <x-jet-input name="surname" class="mt-1 block w-full" type="text" maxlength="25" placeholder="" required />
+                </div>
+            @endif
+            
+            @if (Auth::user()->telephone_number == null)
+                <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-jet-label for="telephone_number" value="Número de teléfono" />
+                    <x-jet-input name="telephone_number" class="mt-1 block w-full" type="number" min="1000000000" max="99999999999" placeholder="" required/>
+                </div>
+            @endif
+            
+            @if (Auth::user()->birthday == null)
+                <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-jet-label for="birthday" value="Fecha de nacimiento" />
+                    <x-jet-input name="birthday" class="mt-1 block w-full" type="date" placeholder=""  required/>
+                </div>
+            @endif
+            
+            @if (Auth::user()->dni == null)
+                <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-jet-label for="dni" value="Dni" />
+                    <x-jet-input name="dni" class="mt-1 block w-full" type="number" min="10000000" max="99999999" placeholder="" required/>
+                </div>
+            @endif
         </div>
-
+        
         <div class="flex items-center mt-5">
-            <x-jet-button wire:click="confirmLogout" wire:loading.attr="disabled">
-                {{ __('Log Out Other Browser Sessions') }}
+            <x-jet-button type="submit">
+                Enviar información
             </x-jet-button>
-
-            <x-jet-action-message class="ml-3" on="loggedOut">
-                {{ __('Done.') }}
-            </x-jet-action-message>
+            
         </div>
+    </form>
 
-             
-    </x-slot>
+</x-slot>
+@endif 
 </x-jet-action-section>

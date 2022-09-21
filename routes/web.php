@@ -1,12 +1,17 @@
 <?php
 
+use App\Http\Controllers\ProgramController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Ciudad;
 use App\Models\Provincia;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UserController;
 
+
+use App\Mail\AlertMailable;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +45,15 @@ Route::middleware([
         return view('profile.show', compact('provincias' , 'ciudades'));
     });
 
+    Route::post('/users/{user}', [UserController::class, 'data'])->name('users.data');
 
+    Route::resources([
+        'users' => UserController::class,
+    ]);
+
+
+    Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
+    Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
 });
 
 Route::get('/login-google', function () {
@@ -62,7 +75,7 @@ Route::get('/google-callback', function () {
             'password'=> NULL,
             'ciudad_id' => NULL, 
             'email_verified_at' => date('d M Y H:i:s'),
-            'profile_photo_path' => $user->avatar,
+            'profile_external_path' => $user->avatar,
             'external_id' => $user->id,
             'points' => 0,
         ]);
@@ -73,3 +86,13 @@ Route::get('/google-callback', function () {
     return redirect('/dashboard'); 
 
 });
+
+
+Route::get('alert' , function(){
+
+    $correo = new AlertMailable;
+
+    Mail::to('eluneyjsalvaro@gmail.com')->send($correo);
+
+    return redirect('/dashboard'); 
+})->name('alert');

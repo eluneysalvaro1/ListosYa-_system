@@ -27,9 +27,23 @@
                 <x-jet-label for="photo" value="{{ __('Photo') }}" />
 
                 <!-- Current Profile Photo -->
-                <div class="mt-2" x-show="! photoPreview">
-                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
-                </div>
+                @if (Auth::user()->profile_photo_path)
+                    <div class="mt-2" x-show="! photoPreview">
+                        <img src="{{$this->user->profile_photo_url}}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    </div>
+                    
+                @elseif(Auth::user()->profile_external_path)
+                    <div class="mt-2" x-show="! photoPreview">
+                        <img src="{{$this->user->profile_external_path}}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    </div>
+                    
+                @elseif (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                    <div class="mt-2" x-show="! photoPreview">
+                        <img src="{{$this->user->profile_photo_url}}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    </div>
+                    
+                @endif
+                
 
                 <!-- New Profile Photo Preview -->
                 <div class="mt-2" x-show="photoPreview" style="display: none;">
