@@ -1,13 +1,10 @@
 <x-app-layout>
 
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
-    {{$programs}}
-    <div id="info" class="hidden">
-        {{$programs}}
-    </div>
+   
 
     <div class="container sm" style="padding: 150px;">
-        <div class="p-7" id='calendar'></div>
+        <div class="p-5" id='calendar'></div>
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
@@ -28,30 +25,31 @@
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
-                let value
+                let value = []
                 window.setTimeout(() => {
                     data.forEach(el => {
-                      value += title: `${el.name}`,
-                            start: el.start_date + "T" + el.start_time,
-                            end: el.finish_date + "T" + el.finish_time
+                      value.push(
+                        {title: `${el.name}`,
+                        start: el.start_date + ' ' + el.start_time,
+                        end: el.finish_date + ' ' + el.finish_time
+                        })
                     });
-                    console.log(value)
-                }, 50);
-
-                var calendarEl = document.getElementById('calendar');
-                var calendar = new FullCalendar.Calendar(calendarEl, {
-                    initialView: 'dayGridMonth',
+                    
+                    var calendarEl = document.getElementById('calendar');
+                    var calendar = new FullCalendar.Calendar(calendarEl, {
+                        initialView: 'dayGridMonth',
                     locale:"es",
                     headerToolbar:{
                         left: 'prev,next today',
                         center: 'title',
                         right: 'dayGridMonth, timeGridWeek'
                     } ,
+                    timeZone: "local",
                     events: value,
-                    height: 550,
-                
-            });
-                calendar.render();
+                        
+                    });
+                    calendar.render();
+                }, 50);
         });
     
     })
