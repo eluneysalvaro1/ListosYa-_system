@@ -33,5 +33,22 @@
     "Dashboard":  "Panel del Usuario",
     "Profile":  "Perfil",
     "Log Out":   "Salir",
-    "Manage Account":  "Administrar Cuenta"
+    "Manage Account":  "Administrar Cuenta",
+    "Code": "Codigo",
+    "Add additional security to your account using two factor authentication." : "Seguridad adicional para tu cuenta, usando factor de doble autenticacion",
+    "Finish enabling two factor authentication." : "Terminar de habilitar la autenticación de dos factores",
+    "You have enabled two factor authentication." : "Ya se encuentra habilitado el factor de doble autenticacion",
+    "You have not enabled two factor authentication." : "Todava no esta habilitado el factor de doble autenticacion",
+    "Enable" : "Habilitar",
+    "Two Factor Authentication" : "Two Factor Authentication",
+    "Update Password" : "Actualizar Contraseña",
+    "Ensure your account is using a long, random password to stay secure." : "Asegúrese de que su cuenta esté usando una contraseña larga y aleatoria para mantenerse seguro.",
+    "Current Password" : "Contraseña Actual",
+    "New Password" : "Contraseña Nueva",
+    "Save" :  "Guardar",
+    "Delete Account" : "Borrar Cuenta" ,
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain." : "Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán de forma permanente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.",
+    "For your security, please confirm your password to continue.": "Por su seguridad, confirme su contraseña para continuar",
+    "Confirm" : "Confirmar",
+    "Cancel" : "Cancel"
 }

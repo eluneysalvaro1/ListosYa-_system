@@ -47,8 +47,14 @@
                     <x-jet-input name="dni" class="mt-1 block w-full" type="number" min="10000000" max="99999999" placeholder="" required/>
                 </div>
             @endif
+            @if (Auth::user()->ciudad_id == null)
+            <div class="mt-4">
+                <livewire:combo-provincia />
+             </div>
+             @endif
+
         </div>
-        
+                
         <div class="flex items-center mt-5">
             <x-jet-button type="submit">
                 Enviar información
