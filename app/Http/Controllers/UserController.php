@@ -75,7 +75,18 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect(route('alert'));
+        if ($user->ciudad_id == null && $request->ciudad_id !== null) {
+            $user->update([
+                "ciudad_id" => $request->ciudad_id
+            ]);
+        }
+
+
+        $email = $user->email;
+
+       
+
+        return redirect(route('alert', compact('email')));
     }
     
 

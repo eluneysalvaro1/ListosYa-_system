@@ -1,4 +1,19 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+    
+    <style>
+        #finishRegister{
+            background: #FF4C3D70;
+            margin: 10px;
+            font-weight: 700;
+            padding: 10px 10px;
+            border-radius: 5px;
+        }
+        #finishRegister:hover{
+            background: #FF4C3D;
+        }
+    </style>
+    
+    
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -19,6 +34,13 @@
                         Calendario de programas
                     </x-nav-link>
                 </div>
+
+
+                @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
+                    Auth::user()->birthday !== null)
+                @else
+                    <a href="{{ route('profile.show') }}" id="finishRegister">Complete su registro</a>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

@@ -91,11 +91,11 @@ Route::get('/google-callback', function () {
 });
 
 
-Route::get('alert' , function(){
+Route::get('/alert/{email}' , function($email){
 
     $correo = new AlertMailable;
 
-    Mail::to('eluneyjsalvaro@gmail.com')->send($correo);
+    Mail::to($email)->send($correo);
 
     return redirect('/dashboard'); 
 })->name('alert');

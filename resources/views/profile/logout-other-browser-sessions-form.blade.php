@@ -8,10 +8,10 @@
     </x-slot>
 
     @if (Auth::user()->surname !== null && Auth::user()->dni !== null && 
-         Auth::user()->telephone_number !== null && Auth::user()->birthday !== null)
+         Auth::user()->telephone_number !== null && Auth::user()->birthday !== null && Auth::user()->ciudad_id !== null)
      <x-slot name="content">
         Toda la informacion ha sido cargada con éxito. Ya puede inscribirse a los diferetes programas.
-    </x-slot>
+        </x-slot>
         
     @else
 
