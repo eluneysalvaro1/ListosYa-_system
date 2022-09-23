@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlackListController;
 use App\Http\Controllers\ProgramController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -49,12 +50,14 @@ Route::middleware([
 
     Route::resources([
         'users' => UserController::class,
+        'blacklist' => BlackListController::class
     ]);
 
+    Route::post('../programs/index', [ProgramController::class, 'index'])->name('programs.index');
 
-    Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
-    Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
 });
+Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
+Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
 
 Route::get('/login-google', function () {
     return Socialite::driver('google')->redirect();
