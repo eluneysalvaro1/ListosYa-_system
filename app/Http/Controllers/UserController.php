@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -81,12 +82,16 @@ class UserController extends Controller
             ]);
         }
 
+        if ($user->password == null && $request->password !== null) {
+            $user->update([
+                "password" => Hash::make($request->password)
+            ]);
+        }
+
 
         $email = $user->email;
 
-       
-
-        return redirect(route('alert', compact('email')));
+        return redirect(route('successful', compact('email')));
     }
     
 

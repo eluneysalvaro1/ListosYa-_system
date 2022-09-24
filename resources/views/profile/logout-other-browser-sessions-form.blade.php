@@ -8,9 +8,9 @@
     </x-slot>
 
     @if (Auth::user()->surname !== null && Auth::user()->dni !== null && 
-         Auth::user()->telephone_number !== null && Auth::user()->birthday !== null && Auth::user()->ciudad_id !== null)
+         Auth::user()->telephone_number !== null && Auth::user()->birthday !== null && Auth::user()->ciudad_id !== null && Auth::user()->password !== null)
      <x-slot name="content">
-        Toda la informacion ha sido cargada con éxito. Ya puede inscribirse a los diferetes programas.
+        Toda la informacion ha sido cargada con éxito. Ya puede inscribirse a los diferentes programas.
         </x-slot>
         
     @else
@@ -47,6 +47,14 @@
                     <x-jet-input name="dni" class="mt-1 block w-full" type="number" min="10000000" max="99999999" placeholder="" required/>
                 </div>
             @endif
+
+            @if (Auth::user()->password == null)
+                <div class="col-span-6 sm:col-span-4 mt-3">
+                    <x-jet-label for="password" value="Contraseña" />
+                    <x-jet-input name="password" class="mt-1 block w-full" type="password" required/>
+                </div>
+            @endif
+
             @if (Auth::user()->ciudad_id == null)
             <div class="mt-4">
                 <livewire:combo-provincia />

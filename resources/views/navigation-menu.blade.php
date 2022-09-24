@@ -37,7 +37,7 @@
 
 
                 @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
-                    Auth::user()->birthday !== null)
+                    Auth::user()->birthday !== null && Auth::user()->password !== null)
                 @else
                     <a href="{{ route('profile.show') }}" id="finishRegister">Complete su registro</a>
                 @endif

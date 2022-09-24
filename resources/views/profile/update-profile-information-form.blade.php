@@ -1,10 +1,10 @@
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('Información de perfil.') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Actualiza información de tu perfil.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -24,14 +24,15 @@
                                     reader.readAsDataURL($refs.photo.files[0]);
                             " />
 
-                <x-jet-label for="photo" value="{{ __('Photo') }}" />
+                <x-jet-label for="photo" value="{{ __('Foto de perfil') }}" />
 
+             
                 <!-- Current Profile Photo -->
                 @if (Auth::user()->profile_photo_path)
                     <div class="mt-2" x-show="! photoPreview">
                         <img src="{{$this->user->profile_photo_url}}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                     </div>
-                    
+
                 @elseif(Auth::user()->profile_external_path)
                     <div class="mt-2" x-show="! photoPreview">
                         <img src="{{$this->user->profile_external_path}}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
@@ -53,12 +54,12 @@
                 </div>
 
                 <x-jet-secondary-button class="mt-2 mr-2" type="button" x-on:click.prevent="$refs.photo.click()">
-                    {{ __('Select A New Photo') }}
+                    {{ __('Selecciona una nueva foto.') }}
                 </x-jet-secondary-button>
 
                 @if ($this->user->profile_photo_path)
                     <x-jet-secondary-button type="button" class="mt-2" wire:click="deleteProfilePhoto">
-                        {{ __('Remove Photo') }}
+                        {{ __('Remover foto.') }}
                     </x-jet-secondary-button>
                 @endif
 
@@ -79,6 +80,7 @@
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
 
+            
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">
                     {{ __('Your email address is unverified.') }}

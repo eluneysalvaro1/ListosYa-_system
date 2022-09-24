@@ -14,7 +14,10 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+
+        $programs = Program::get();
+
+        return view('programs.index', compact('programs'));
     }
 
     /**

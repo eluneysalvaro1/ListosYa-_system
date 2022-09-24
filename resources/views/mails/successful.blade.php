@@ -58,14 +58,14 @@
 
 <div class="card">
     <div class="title">
-        <h1>Gracias por sumarte a ListosYa!</h1>
+        <h1>Haz actualizado tus datos correctamente.</h1>
     </div>
     
     <hr>
 
     <div class="content">
-        <p>Su cuenta ha sido creada con éxito. Para poder participar de los diferentes eventos propuestos por la organización te recomendamos completes todos los datos faltantes. Dicha
-            sección la encontraras en tu perfíl. Una vez hayas cargado todo, podras ser parte de nuestras increibles propuestas de voluntariado.
+        <p>
+            Los datos faltantes de su cuenta se han actualizado con éxito. Esto le permitirá paticipar de los programas propuestos de la organizacion. Asi que... Preparados... Listos... YA!
         </p>
     </div>
     

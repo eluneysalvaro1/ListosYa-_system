@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 
 
 use App\Mail\AlertMailable;
+use App\Mail\SuccessfulMailable;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -68,8 +69,16 @@ Route::get('/google-callback', function () {
  
     $userExists = User::where('external_id' , $user->id)->first(); 
 
+    $userNoExternal = User::where('email' , $user->email)->first(); 
+
     if ($userExists) {
         Auth::login($userExists); 
+    }elseif($userNoExternal !== null && $userNoExternal->external_id == null){
+        $userNoExternal->update([
+            'external_id' => $user->id
+        ]);
+        $userNoExternal->save();
+        Auth::login($userNoExternal); 
     }else{
         $newUser = User::create([
             'name' => $user->name,
@@ -83,9 +92,12 @@ Route::get('/google-callback', function () {
             'points' => 0,
         ]);
 
+        $email = $user->email;
         Auth::login($newUser); 
-
+        return redirect('/alert/'.$email); 
     }
+
+
     return redirect('/dashboard'); 
 
 });
@@ -99,3 +111,14 @@ Route::get('/alert/{email}' , function($email){
 
     return redirect('/dashboard'); 
 })->name('alert');
+
+
+
+Route::get('/successful/{email}', function($email){
+
+    $correo = new SuccessfulMailable;
+
+    Mail::to($email)->send($correo);
+    return redirect('/dashboard'); 
+})->name('successful');
+
