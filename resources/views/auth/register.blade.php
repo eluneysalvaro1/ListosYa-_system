@@ -15,27 +15,27 @@
 
             <div class="mt-4">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4"> 
                 <x-jet-label for="surname" value="{{ __('Apellido') }}" />
-                <x-jet-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
+                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <div class="mt-6">
                 <x-jet-label for="dni" value="{{ __('Numero de Documento') }}" />
-                <x-jet-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" required />
+                <x-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" required />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="birthday" value="{{ __('Fecha de Nacimiento') }}" />
-                <x-jet-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
+                <x-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
             </div>
             
             <div class="mt-4">
@@ -44,11 +44,11 @@
 
             <div class="mt-4">
                 <x-jet-label for="passwordn" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="password" />
+                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="password" />
             </div>
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
             
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
