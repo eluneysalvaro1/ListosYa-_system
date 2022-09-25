@@ -23,35 +23,35 @@
             @if (Auth::user()->surname == null)  
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-jet-label for="surname" value="Apellido" />
-                    <x-jet-input name="surname" class="mt-1 block w-full" type="text" maxlength="25" placeholder="" required />
+                    <x-input name="surname" class="mt-1 block w-full" type="text" maxlength="25" placeholder="" required />
                 </div>
             @endif
             
             @if (Auth::user()->telephone_number == null)
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-jet-label for="telephone_number" value="Número de teléfono" />
-                    <x-jet-input name="telephone_number" class="mt-1 block w-full" type="number" min="1000000000" max="99999999999" placeholder="" required/>
+                    <x-input name="telephone_number" class="mt-1 block w-full" type="number" min="1000000000" max="99999999999" placeholder="" required/>
                 </div>
             @endif
             
             @if (Auth::user()->birthday == null)
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-jet-label for="birthday" value="Fecha de nacimiento" />
-                    <x-jet-input name="birthday" class="mt-1 block w-full" type="date" placeholder=""  required/>
+                    <x-input name="birthday" class="mt-1 block w-full" type="date" placeholder=""  required/>
                 </div>
             @endif
             
             @if (Auth::user()->dni == null)
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-jet-label for="dni" value="Dni" />
-                    <x-jet-input name="dni" class="mt-1 block w-full" type="number" min="10000000" max="99999999" placeholder="" required/>
+                    <x-input name="dni" class="mt-1 block w-full" type="number" min="10000000" max="99999999" placeholder="" required/>
                 </div>
             @endif
 
             @if (Auth::user()->password == null)
                 <div class="col-span-6 sm:col-span-4 mt-3">
                     <x-jet-label for="password" value="Contraseña" />
-                    <x-jet-input name="password" class="mt-1 block w-full" type="password" required/>
+                    <x-input name="password" class="mt-1 block w-full" type="password" required/>
                 </div>
             @endif
 
