@@ -76,9 +76,9 @@ class UserController extends Controller
             ]);
         }
 
-        if ($user->ciudad_id == null && $request->ciudad_id !== null) {
+        if ($user->selectedCiudad == null && $request->selectedCiudad !== null) {
             $user->update([
-                "ciudad_id" => $request->ciudad_id
+                "ciudad_id" => $request->selectedCiudad
             ]);
         }
 

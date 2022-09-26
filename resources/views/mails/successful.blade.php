@@ -65,7 +65,7 @@
 
     <div class="content">
         <p>
-            Los datos faltantes de su cuenta se han actualizado con éxito. Esto le permitirá paticipar de los programas propuestos de la organizacion. Asi que... Preparados... Listos... YA!
+            Los datos faltantes de su cuenta se han actualizado con éxito. Esto le permitirá paticipar de los programas propuestos de la organización. Asi que... Preparados... Listos... YA!
         </p>
     </div>
     
