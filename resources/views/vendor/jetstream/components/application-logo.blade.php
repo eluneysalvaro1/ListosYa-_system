@@ -1,1 +1,1 @@
-<img src="{{asset('/images/logoinvertido.png')}}"alt=""style="width:128px;">
+<img src="{{asset('/images/logolistosya.png')}}"alt=""style="width:128px;">
