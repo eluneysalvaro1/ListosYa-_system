@@ -33,6 +33,11 @@
                 <x-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" required />
             </div>
 
+            <div class="mt-6">
+                <x-jet-label for="telephone_number" value="{{ __('Numero de Telfono') }}" />
+                <x-input id="telephone_number" class="block mt-1 w-full" type="number" name="telephone_number" :value="old('telephone_number')" required />
+            </div>
+
             <div class="mt-4">
                 <x-jet-label for="birthday" value="{{ __('Fecha de Nacimiento') }}" />
                 <x-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
