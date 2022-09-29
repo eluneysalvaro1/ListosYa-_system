@@ -126,7 +126,35 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $user = User::find($id); 
+
+        $another = User::where('email' , $request->email)->first();
+
+
+        if ($user == $another && $another !== null) {
+            $user->update([
+                'name' => $request->name, 
+                'surname' => $request->surname,
+                'email' => $request->email, 
+                'dni' => $request->dni,
+                'ciudad_id' => $request->ciudad_id,  
+                'rol_id' => $request->rol_id 
+            ]);
+        }elseif ($another == null) {
+            $user->update([
+                'name' => $request->name, 
+                'surname' => $request->surname,
+                'email' => $request->email, 
+                'dni' => $request->dni,
+                'ciudad_id' => $request->ciudad_id,  
+                'rol_id' => $request->rol_id 
+            ]);
+        }else{
+            dd('agregar alertas');
+        }
+
+        return redirect(route('users.index'));
     }
 
     /**
@@ -137,6 +165,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $user = User::find($id);
+
+        $user->delete();
+        return redirect(route('users.index'));
     }
 }

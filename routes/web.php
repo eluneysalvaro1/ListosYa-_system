@@ -55,7 +55,8 @@ Route::middleware([
     ]);
 
     Route::post('../programs/index', [ProgramController::class, 'index'])->name('programs.index');
-
+    Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');

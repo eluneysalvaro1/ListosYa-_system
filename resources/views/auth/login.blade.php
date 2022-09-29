@@ -47,7 +47,7 @@
 
         <div class="flex flex-col items-center justify-center">
 
-            <x-jet-button class="mt-6 mr-5">
+            <x-jet-button class="mt-6 mx-auto">
                 <a class="flex items-center justify-center" href="/login-google">
                     <h6 class="pr-4 font-semibold " >Iniciar sesión con Google</h6>
                     <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">

@@ -12,8 +12,9 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+        <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
         <!-- Styles -->
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
