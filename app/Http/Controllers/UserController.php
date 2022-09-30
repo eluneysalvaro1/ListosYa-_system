@@ -139,7 +139,7 @@ class UserController extends Controller
                 'email' => $request->email, 
                 'dni' => $request->dni,
                 'ciudad_id' => $request->ciudad_id,  
-                'rol_id' => $request->rol_id 
+                'role_id' => $request->role_id 
             ]);
         }elseif ($another == null) {
             $user->update([
@@ -148,7 +148,7 @@ class UserController extends Controller
                 'email' => $request->email, 
                 'dni' => $request->dni,
                 'ciudad_id' => $request->ciudad_id,  
-                'rol_id' => $request->rol_id 
+                'role_id' => $request->role_id 
             ]);
         }else{
             dd('agregar alertas');

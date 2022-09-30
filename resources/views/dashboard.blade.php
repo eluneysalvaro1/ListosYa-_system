@@ -1,6 +1,8 @@
 <x-app-layout>
    
-  <style>
+
+  @if (Auth::user()->role_id == 1)
+      <style>
     #img{
       width: 750px;
       height: 150px;
@@ -78,10 +80,10 @@
                 <a  href=" {{route('programs.index')}} ">Gestionar</a>
               </div>
             </div>
-</div>
+    </div>
 
 
-<div id="card" class="">
+  <div id="card" class="">
           <div class="contenedor">
               <img id="img" src=" {{asset('../images/black.jpg')}} " alt="">
             <div class="p-6 flex flex-col justify-start">
@@ -94,6 +96,49 @@
               <a href=" {{route('blacklist.index')}} ">Gestionar</a>
             </div>
           </div>
+  </div>
+  </div>
+
+  @else
+    
+<div class="mx-4 my-4 flex justify-center">
+  <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Puntaje</h3>
+    <div class="flex flex-col items-center pb-10">
+        <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{Auth::user()->points}}</h1>
+        <div class="flex mt-4 space-x-3 md:mt-6">
+            <a href="{{route('programs.index')}}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar mas puntos</a>
+        </div>
+    </div>
+  </div>
+  <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Puntaje</h3>
+    <div class="flex flex-col items-center pb-10">
+        <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{Auth::user()->points}}</h1>
+        <div class="flex mt-4 space-x-3 md:mt-6">
+            <a href="{{route('programs.index')}}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar mas puntos</a>
+        </div>
+    </div>
+  </div>
+  <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Puntaje</h3>
+    <div class="flex flex-col items-center pb-10">
+        <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{Auth::user()->points}}</h1>
+        <div class="flex mt-4 space-x-3 md:mt-6">
+            <a href="{{route('programs.index')}}" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar mas puntos</a>
+        </div>
+    </div>
+  </div>
 </div>
-</div>
+
+
+
+
+  @endif
+
+  
+
+
+
+
 </x-app-layout>

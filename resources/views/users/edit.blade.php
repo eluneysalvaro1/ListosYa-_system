@@ -35,10 +35,20 @@
                     </div>
                     <div class="mb-2">
                         <label for="rol" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rol</label>
-                        <select name="rol_id" id="">
-                            <option value="1">Admin</option>
-                            <option value="2">Staff</option>
-                            <option value="3">Usuario General</option>
+                        <select name="role_id" id="">
+                            @if ($user->role_id == 1)
+                                <option value="1" selected>Admin</option>
+                                <option value="2">Staff</option>
+                                <option value="3">Usuario General</option>
+                            @elseif($user->role_id == 2)
+                                <option value="1">Admin</option>
+                                <option value="2" selected>Staff</option>
+                                <option value="3">Usuario General</option>
+                            @else
+                                <option value="1">Admin</option>
+                                <option value="2">Staff</option>
+                                <option value="3" selected>Usuario General</option>
+                            @endif
                         </select>
                     </div>
                     <div class="mb-2">

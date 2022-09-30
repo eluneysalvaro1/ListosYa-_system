@@ -1,19 +1,5 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     
-    <style>
-        #finishRegister{
-            background: #FF4C3D70;
-            margin: 10px;
-            font-weight: 700;
-            padding: 10px 10px;
-            border-radius: 5px;
-        }
-        #finishRegister:hover{
-            background: #FF4C3D;
-        }
-    </style>
-    
-    
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -33,14 +19,18 @@
                     <x-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                         Calendario de programas
                     </x-nav-link>
+                    @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
+                        Auth::user()->birthday !== null && Auth::user()->password !== null || Auth::user()->role_id == 1)
+                    @else
+                    <x-nav-link >
+                        <div class="flex aling-center">
+                            <a style="margin-left:15px;" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg px-5 py-1.5 text-center my-3 " href="{{ route('profile.show') }}" >Complete su registro</a>
+                        </div>
+                    </x-nav-link>
+                    @endif
                 </div>
 
 
-                @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
-                    Auth::user()->birthday !== null && Auth::user()->password !== null)
-                @else
-                    <a href="{{ route('profile.show') }}" id="finishRegister">Complete su registro</a>
-                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -126,6 +116,11 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                 Calendario de programas
+            </x-responsive-nav-link>
+            <x-responsive-nav-link>
+               
+                    <a style="margin-left:15px;" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg px-5 py-1.5 text-center my-3 " href="{{ route('profile.show') }}" >Complete su registro</a>
+               
             </x-responsive-nav-link>
         </div>
 
