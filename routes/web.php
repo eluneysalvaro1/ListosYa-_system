@@ -54,7 +54,8 @@ Route::middleware([
         'blacklist' => BlackListController::class
     ]);
 
-    Route::post('../programs/index', [ProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/index', [ProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/update/{id}', [ProgramController::class, 'index'])->name('programs.update');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
 });

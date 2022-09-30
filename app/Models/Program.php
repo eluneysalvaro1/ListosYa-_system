@@ -26,4 +26,5 @@ class Program extends Model
         'state',
         'category_id'
     ];
+   
 }
