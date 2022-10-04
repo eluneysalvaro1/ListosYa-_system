@@ -44,34 +44,33 @@
                         <div>
                             <label for="start_time"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hora de
-                                Fin</label>
+                                Inicio</label>
                             <input type="time" name="start_time" id="start_time"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 value="{{ $program->start_time }}" required>
                         </div>
                     </div>
 
-                    <div class="mb-2 fkex">
-
-                        <div class="px-1">
+                    <div class="mb-2 flex">
+                        <div>
                             <label for="finish_date"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fec de
-                                Inicio</label>
+                                Fin</label>
                             <input type="date" name="finish_date" id="finish_date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 value="{{ $program->finish_date }}" required>
-
                         </div>
-
-                        <label for="finish_time	"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hora de
-                            Fin</label>
-                        <input type="time" name="finish_time" id="finish_time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            value="{{ $program->finish_time }}" required>
-
-
+                        <div>
+                            <label for="finish_time"
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Hora de
+                                Fin</label>
+                            <input type="time" name="finish_time" id="finish_time"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                value="{{ $program->finish_time }}" required>
+                        </div>
                     </div>
+
+                    
 
                     <div class="mb-2 flex">
                         <div class="px-1">

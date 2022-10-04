@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProgramController extends Controller
 {
@@ -15,7 +16,7 @@ class ProgramController extends Controller
     public function index()
     {
 
-        $programs = Program::get();
+        $programs = Program::orderBy('start_date','desc')->paginate(5);
 
         return view('programs.index', compact('programs'));
     }
@@ -27,7 +28,7 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        return view('programs.create');
     }
 
     /**
@@ -38,7 +39,30 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        if($request->hasFile("program_image")){
+            $program_image = $request->file("program_image");
+            $nombreimagen = Str::slug($request->name).".". $program_image->guessExtension();
+            $ruta = public_path("images/programs/");
+            $program_image->move($ruta,$nombreimagen);
+            $request->program_image = $nombreimagen;
+        }
+        dd($request);
+        $request->validate([
+            'name' => 'required',
+            'start_date' => 'required',
+            'finish_date' => 'required',
+            'start_time' => 'required',
+            'finish_time' => 'required',
+            'volunteer_limit' => 'required',
+            'place_event' => 'required',
+            'program_points' => 'required',
+            'state' => 'required',
+        ]);
+        
+        Program::create($request->post());
+
+        return redirect()->route('programs.index')->with('success','Programa creado correctamente.');
     }
 
     /**
@@ -49,7 +73,7 @@ class ProgramController extends Controller
      */
     public function show(Program $program)
     {
-        //
+        return view('programs.show',compact('programs'));
     }
 
     /**
@@ -83,7 +107,8 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program)
     {
-        //
+        $program->delete();
+        return redirect()->route('programs.index')->with('success', 'Programa Eliminado');
     }
 
 
