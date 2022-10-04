@@ -17,7 +17,7 @@ class ProgramController extends Controller
     public function index()
     {
 
-        $programs = Program::orderBy('start_date','desc')->paginate(5);
+        $programs = Program::orderBy('start_date','asc')->paginate(5);
         $categories=Category::all();
         return view('programs.index', compact('programs','categories'));
     }
