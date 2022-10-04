@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Category;
 
 class ProgramController extends Controller
 {
@@ -17,8 +18,8 @@ class ProgramController extends Controller
     {
 
         $programs = Program::orderBy('start_date','desc')->paginate(5);
-
-        return view('programs.index', compact('programs'));
+        $categories=Category::all();
+        return view('programs.index', compact('programs','categories'));
     }
 
     /**
@@ -27,8 +28,9 @@ class ProgramController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('programs.create');
+    {   
+        $categories=Category::all();
+        return view('programs.create',compact('categories'));
     }
 
     /**
@@ -45,23 +47,27 @@ class ProgramController extends Controller
             $nombreimagen = Str::slug($request->name).".". $program_image->guessExtension();
             $ruta = public_path("images/programs/");
             $program_image->move($ruta,$nombreimagen);
-            $request->program_image = $nombreimagen;
+            
         }
-        dd($request);
-        $request->validate([
-            'name' => 'required',
-            'start_date' => 'required',
-            'finish_date' => 'required',
-            'start_time' => 'required',
-            'finish_time' => 'required',
-            'volunteer_limit' => 'required',
-            'place_event' => 'required',
-            'program_points' => 'required',
-            'state' => 'required',
-        ]);
         
-        Program::create($request->post());
+     
+        
+        $program = Program::create([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'finish_date' => $request->finish_date,
+            'start_time' => $request->start_time,
+            'finish_time' => $request->finish_time,
+            'volunteer_limit' =>$request->volunteer_limit,
+            'place_event' => $request->place_event,
+            'program_points' => $request->program_points,
+            'state' => $request->state,
+            'program_image' => $nombreimagen,
+            'category_id' => $request->category_id
+        ]
+        );
 
+        $program->save();
         return redirect()->route('programs.index')->with('success','Programa creado correctamente.');
     }
 
