@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Ciudad;
 use App\Models\Provincia;
+use App\Models\Program;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
@@ -27,7 +28,8 @@ use Illuminate\Support\Facades\Mail;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $programs = Program::all();
+    return view('welcome',compact('programs'));
 });
 
 Route::middleware([

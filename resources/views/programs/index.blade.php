@@ -39,12 +39,12 @@
                             @endphp
                             <tr class="border-b border-gray-200 hover:bg-gray-200">
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center"><img
-                                        src="images/programs/{{ $program->program_image }}" width="100"
+                                        src="/images/programs/{{ $program->program_image }}" width="100"
                                         height="100"> </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->name }}</td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                     @foreach ($categories as $category)
-                                        @if ('$category->id' == '{{ $program->category_id }}')
+                                        @if ($category->id == '{{ $program->category_id }}')
                                             {{ $category->name }}
                                         @endif
                                     @endforeach
@@ -73,6 +73,7 @@
                     </table>
                 </div>
             </div>
+            
         </div>
-
+        {{ $programs->links() }}
 </x-app-layout>

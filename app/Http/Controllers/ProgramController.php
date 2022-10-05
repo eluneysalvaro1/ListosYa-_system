@@ -45,7 +45,7 @@ class ProgramController extends Controller
         if($request->hasFile("program_image")){
             $program_image = $request->file("program_image");
             $nombreimagen = Str::slug($request->name).".". $program_image->guessExtension();
-            $ruta = public_path("images/programs/");
+            $ruta = public_path("/images/programs/");
             $program_image->move($ruta,$nombreimagen);
             
         }
