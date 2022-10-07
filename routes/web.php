@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Ciudad;
 use App\Models\Provincia;
 use App\Models\Program;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
 
@@ -55,9 +56,10 @@ Route::middleware([
         'users' => UserController::class,
         'blacklist' => BlackListController::class
     ]);
-
+    Route::resource('categories', App\Http\Controllers\CategoryController::class);
     Route::get('/programs/index', [ProgramController::class, 'index'])->name('programs.index');
     Route::get('/programs/create', [ProgramController::class, 'index'])->name('programs.create');
+    Route::post('/programs/create', [ProgramController::class, 'index'])->name('programs.create');
     Route::resource('programs',ProgramController::class);
     Route::get('/programs/update/{id}', [ProgramController::class, 'index'])->name('programs.update');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
