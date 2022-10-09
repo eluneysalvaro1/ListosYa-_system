@@ -41,13 +41,14 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $ruta = public_path("/images/programs/");
         if($request->hasFile("program_image")){
             $program_image = $request->file("program_image");
             $nombreimagen = Str::slug($request->name).".". $program_image->guessExtension();
             $ruta = public_path("/images/programs/");
             $program_image->move($ruta,$nombreimagen);
-            
+        }else{
+            $nombreimagen = "none.jpg";
         }
         
      

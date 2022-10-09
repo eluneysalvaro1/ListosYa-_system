@@ -7,8 +7,8 @@
 
     <div class="mx-5">
         <div class="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-            <div class="lg:w-5/6">
-                <div class="flow-root">
+            <div class="w-auto mx-10 ">
+                <div class="flex justify-end pt-5 pr-10">
                     <button
                         class=" float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
                         type="button"> <a href=" {{ route('programs.create') }} ">Crear Programa</a></button>
@@ -18,7 +18,7 @@
                     <table class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-center">Imagenn</th>
+                                <th class="py-3 px-6 text-center">Imagen</th>
                                 <th class="py-3 px-6 text-center">Nombre del Programa</th>
                                 <th class="py-3 px-6 text-center">Categoria</th>
                                 <th class="py-3 px-6 text-center">Fecha de Inicio</th>
@@ -42,12 +42,15 @@
                                         src="/images/programs/{{ $program->program_image }}" width="100"
                                         height="100"> </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->name }}</td>
+                              
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">
+                                
                                     @foreach ($categories as $category)
-                                        @if ($category->id == '{{ $program->category_id }}')
+                                   @if ($category->id == '{{$progam->category_id}}')
                                             {{ $category->name }}
                                         @endif
                                     @endforeach
+                                    {{$program->category_id}}
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->start_date }}
                                 </td>
@@ -73,7 +76,10 @@
                     </table>
                 </div>
             </div>
-            
+
         </div>
-        {{ $programs->links() }}
+        <div class="flex items-center justify-center bg-gray-100 font-sans overflow-hidden pb-10">
+            {{ $programs->links() }}
+        </div>
+    </div>
 </x-app-layout>

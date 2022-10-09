@@ -16,9 +16,16 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
+                        Programas
+                    </x-nav-link>
+                    <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
+                        Categorias
+                    </x-nav-link>
                     <x-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                         Calendario de programas
                     </x-nav-link>
+                   
                     @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
                         Auth::user()->birthday !== null && Auth::user()->password !== null || Auth::user()->role_id == 1)
                     @else
