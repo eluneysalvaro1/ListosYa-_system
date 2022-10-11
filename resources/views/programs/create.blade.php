@@ -42,12 +42,14 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fecha
                                             de
                                             Inicio</label>
-                                        <input type="date" name="start_date" id="start_date"
+                                        <input type="date" name="start_date" id="date-1"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                             placeholder="" required>
-                                        @error('start_date')
-                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                        @enderror
+                                   
+                                            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 hidden" role="alert" id="error-1">
+                                                <span class="font-medium">Alerta!</span> Recorda que la  fecha de Fin debe ser igual o mayor a la de inicio.
+                                              </div>
+                                   
                                     </div>
                                 </div>
                                 <div class="mb-2 ">
@@ -72,12 +74,14 @@
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Fecha
                                             de
                                             fin</label>
-                                        <input type="date" name="finish_date" id="finish_date"
+                                        <input type="date" name="finish_date" id="date-2"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                             placeholder="" required>
-                                        @error('finish_date')
-                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                                        @enderror
+                                            <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800 hidden" role="alert" id="error-2">
+                                                <span class="font-medium">Alerta!</span> La fecha de Fin debe ser igual o mayor a la de inicio.
+                                              </div>
+ 
+                                      
                                     </div>
                                 </div>
                                 <div class="mb-2 ">
@@ -90,7 +94,7 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                             placeholder="" required>
                                         @error('finish_time')
-                                            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                            <div class="">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
@@ -122,19 +126,30 @@
                                     @enderror
                                 </div>
                             </div>
-
+                            
                             <div class="mb-2 ">
-                                <div class="px-1">
-                                    <label for="program_image"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subir
-                                        imagen</label>
-                                    <input type="file" name="program_image" id="program_image"
+                                <div>
+                                    <label for="volunteer_limit"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">puntos
+                                        para este programa:</label>
+                                    <input type="text" name="volunteer_limit" id="volunteer_limit"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                         placeholder="1" required>
-                                    @error('program_image')
+                                    @error('volunteer_limit')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                                     @enderror
                                 </div>
+                            </div>
+                            <div class="px-1">
+                                <label for="program_image"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Subir
+                                    imagen</label>
+                                <input type="file" name="program_image" id="program_image" accept=".png, .jpg, .jpeg"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                    placeholder="1" required>
+                                @error('program_image')
+                                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             </div>
 
@@ -162,7 +177,7 @@
                             </div>
                             <div class="flex flex-col justify-center items-center">
                             <button type="submit"
-                                class=" float-right block focus:outline-none text-white  bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 ">Crear</button>
+                                class=" float-right block focus:outlinhidden text-white  bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" id="button_submit">Crear</button>
                         </div>
                         </div>
                     </form>
@@ -170,5 +185,44 @@
             </div>
         </div>
     </div>
+
+
+
+
+<script>
+
+    let startDate = document.getElementById('date-1')
+    let finishDate = document.getElementById('date-2')
+
+    let error1 = document.getElementById('error-1')
+    let error2 = document.getElementById('error-2')
+
+    let buttonSubmit = document.getElementById('button_submit')
+
+    startDate.addEventListener('change', e => {
+
+        if (startDate.value > finishDate.value) {
+            error1.classList.remove('hidden')
+            buttonSubmit.setAttribute('disabled' , "")
+        }else{
+            error1.classList.add('hidden')
+            error2.classList.add('hidden')
+            buttonSubmit.removeAttribute('disabled')
+        }
+
+    })
+
+    finishDate.addEventListener('change' , e => {
+        if (startDate.value > finishDate.value) {
+            error2.classList.remove('hidden')
+            buttonSubmit.setAttribute('disabled' , "")
+        }else{
+            error2.classList.add('hidden')
+            error1.classList.add('hidden')
+            buttonSubmit.removeAttribute('disabled')
+        }
+    })
+
+</script>
 
 </x-app-layout>

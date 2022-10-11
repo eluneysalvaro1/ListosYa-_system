@@ -21,7 +21,7 @@ class Program extends Model
         'finish_time',
         'volunteer_limit',
         'place_event',
-        'program_imagen',
+        'program_image',
         'program_points',
         'state',
         'category_id'

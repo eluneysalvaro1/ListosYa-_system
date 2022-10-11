@@ -51,7 +51,7 @@ class ProgramController extends Controller
             $nombreimagen = "none.jpg";
         }
         
-     
+        
         
         $program = Program::create([
             'name' => $request->name,
@@ -67,7 +67,7 @@ class ProgramController extends Controller
             'category_id' => $request->category_id
         ]
         );
-
+        
         $program->save();
         return redirect()->route('programs.index')->with('success','Programa creado correctamente.');
     }
