@@ -47,11 +47,11 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                 
                                     @foreach ($categories as $category)
-                                   @if ($category->id == '{{$progam->category_id}}')
+                                   @if ($category->id == $program->category_id)
                                             {{ $category->name }}
                                         @endif
                                     @endforeach
-                                    {{$program->category_id}}
+                                   
                                 </td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->start_date }}
                                 </td>
@@ -59,7 +59,15 @@
                                     {{ $program->volunteer_limit }}</td>
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                     {{ $program->program_points }}</td>
-                                <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->state }}</td>
+                                <td class="py-3 px-6 text-left whitespace-nowrap text-center">
+                                    @if ($program->state == "open_to_postulated")
+                                        Abierto para Postularse
+                                    @elseif ($program->state == "close_to_postulated") 
+                                        Cerrado para Postularse
+                                    @else
+                                        Finalizado
+                                    @endif
+                                    
                                 <td class="py-3 flex px-6 text-left whitespace-nowrap justify-end">
                                     <button
                                         class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
