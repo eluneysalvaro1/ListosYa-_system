@@ -8,10 +8,10 @@
     <div class="mx-5">
         <div class="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="lg:w-5/6">
-                <div class="flow-root">
+                <div class="flow-root mt-5">
                     <button
-                        class=" float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
-                        type="button"> <a href=" {{ route('categories.create') }} ">Crear categorya</a></button>
+                        class="float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
+                        type="button"> <a href=" {{ route('categories.create') }} ">Crear categoria</a></button>
                 </div>
                 <div class="bg-white shadow-md rounded my-6">
 
@@ -42,12 +42,9 @@
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $category->description }}
                                 </td>
                                 <td class="py-3 flex px-6 text-left whitespace-nowrap justify-end">
-                                    <button
-                                        class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
-                                        type="button" data-modal-toggle="modal{{$category->id}}">Editar</button>
-                                    <button type="button"
-                                        class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                        data-modal-toggle="popup{{ $category->id }}">Borrar</button>
+                                    <button class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" type="button" data-modal-toggle="modal{{$category->id}}">Editar</button>
+                                    
+                                    {{-- <button type="button" class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-modal-toggle="popup{{ $category->id }}">Borrar</button>  --}}
                                 </td>
 
                             </tr>
