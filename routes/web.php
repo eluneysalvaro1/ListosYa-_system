@@ -57,11 +57,10 @@ Route::middleware([
         'blacklist' => BlackListController::class
     ]);
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
-    Route::get('/programs/index', [ProgramController::class, 'index'])->name('programs.index');
-    Route::get('/programs/create', [ProgramController::class, 'index'])->name('programs.create');
-    Route::post('/programs/create', [ProgramController::class, 'index'])->name('programs.create');
-    Route::resource('programs',ProgramController::class);
-    Route::get('/programs/update/{id}', [ProgramController::class, 'index'])->name('programs.update');
+    Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
+    Route::post('/programs/create', [ProgramController::class, 'store'])->name('programs.store');
+    Route::get('/programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
 });

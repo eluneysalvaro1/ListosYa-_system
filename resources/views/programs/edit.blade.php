@@ -19,8 +19,8 @@
             <div class="py-6 px-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Actualizar datos de
                     {{ $program->name }}</h3>
-                <form class="space-y-6" method="post" action="{{ route('programs.update', $program->id) }}">
-                    @method('PATCH')
+                <form class="space-y-6" method="get" action="{{ route('programs.update', $program->id) }}">
+                    @method('GET')
                     @csrf
                     <div class="mb-2 ">
                         <div class="px-1">
