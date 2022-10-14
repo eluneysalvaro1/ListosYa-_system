@@ -1,11 +1,10 @@
 <x-app-layout>
 
-    @php
-        $count = 0;
-    @endphp
+  
 
+    @livewire('user-table')
 
-<div class="mx-5"style="margin-top: 3.5rem;">
+{{-- <div class="mx-5"style="margin-top: 3.5rem;">
     <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="lg:w-5/6">
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -69,7 +68,7 @@
                 {{$users->links()}}
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     
