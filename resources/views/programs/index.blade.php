@@ -14,7 +14,7 @@
                         type="button"> <a href=" {{ route('programs.create') }} ">Crear Programa</a>
                     </button>
                 </div>
-                <div class="bg-white shadow-md rounded my-6">
+                <div class="bg-white shadow-md rounded my-6" style="overflow-x: scroll">
 
                     <table class="min-w-max w-full table-auto">
                         <thead>
@@ -26,7 +26,7 @@
                                 <th class="py-3 px-6 text-center">Limite de Voluntarios</th>
                                 <th class="py-3 px-6 text-center">Puntos</th>
                                 <th class="py-3 px-6 text-center">Estado</th>
-                                <th class="py-3 px-6 text-right">Acciones</th>
+                                <th class="py-3 px-6 text-center">Acciones</th>
                             </tr>
                         </thead>
                         @forelse ($programs as $program)
@@ -68,13 +68,11 @@
                                         Finalizado
                                     @endif
                                     
-                                <td style="vertical-align: middle;" class="py-3 flex px-6 text-left whitespace-nowrap justify-end">
-                                    <button
+                                <td style="vertical-align: middle;" class="px-6 text-left whitespace-nowrap ">
+                                    <button style="vertical-align: middle;"
                                         class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
                                         type="button" data-modal-toggle="modal{{$program->id}}">Editar</button>
-                                    {{-- <button type="button"
-                                        class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                        data-modal-toggle="popup{{ $program->id }}">Borrar</button> --}}
+                                  
                                 </td>
                             </tr>
                             </tbody>

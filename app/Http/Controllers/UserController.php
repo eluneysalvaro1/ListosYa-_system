@@ -141,6 +141,7 @@ class UserController extends Controller
                 'ciudad_id' => $request->ciudad_id,  
                 'role_id' => $request->role_id 
             ]);
+            flash('Usuario editado con éxito.' , 'success');
         }elseif ($another == null) {
             $user->update([
                 'name' => $request->name, 
@@ -150,8 +151,9 @@ class UserController extends Controller
                 'ciudad_id' => $request->ciudad_id,  
                 'role_id' => $request->role_id 
             ]);
+            flash('Usuario editado con éxito.' , 'success');
         }else{
-            dd('agregar alertas');
+            flash('No se ha podido editar el usuario' , 'error');
         }
 
         return redirect(route('users.index'));
@@ -168,6 +170,7 @@ class UserController extends Controller
        $user = User::find($id);
 
         $user->delete();
+        flash('Usuario eliminado con éxito', 'success');
         return redirect(route('users.index'));
     }
 }

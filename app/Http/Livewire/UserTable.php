@@ -8,13 +8,12 @@ use Livewire\Component;
 class UserTable extends Component
 {
 
-    public $search;
+    public $busqueda;
 
 
     public function render()
     {
-        $users = User::where('name', 'like' , '%' . $this->search . '%')
-                        ->orderBy('id','desc')->paginate(10);
+        $users = User::where('name', 'like' , '%' . $this->busqueda . '%')->orderBy('id','desc')->paginate(10);
         $count = 0;
         return view('livewire.user-table', compact('users', 'count'));
     }
