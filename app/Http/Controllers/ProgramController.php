@@ -69,7 +69,8 @@ class ProgramController extends Controller
         );
         
         $program->save();
-        return redirect()->route('programs.index')->with('success','Programa creado correctamente.');
+        flash('Programa creado con éxito' , 'success');
+        return redirect()->route('programs.index');
     }
 
     /**
@@ -101,9 +102,25 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Program $program)
+    public function update(Request $request, $id)
     {
-       
+       $program = Program::find($id);
+
+        $program->update([
+            'name' => $request->name,
+            'start_date' => $request->start_date,
+            'finish_date' => $request->finish_date,
+            'start_time' => $request->start_time,
+            'finish_time' => $request->finish_time,
+            'volunteer_limit' =>$request->volunteer_limit,
+            'place_event' => $request->place_event,
+            'program_points' => $request->program_points,
+            'state' => $request->state,
+        ]);
+
+        $program->save();
+        flash('Programa editado con éxito' , 'success');
+        return redirect()->route('programs.index');
     }
 
     /**

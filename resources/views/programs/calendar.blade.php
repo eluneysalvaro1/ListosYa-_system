@@ -3,7 +3,7 @@
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
    
 
-    <div class="container sm" style="padding: 150px;">
+    <div class="container" style="padding: 150px; overflow-x: scroll;">
         <div class="p-5" id='calendar'></div>
     </div>
 
