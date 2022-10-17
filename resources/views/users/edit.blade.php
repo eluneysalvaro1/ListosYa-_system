@@ -33,6 +33,12 @@
                         <label for="dni" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dni</label>
                         <input type="number"  name="dni" id="dni" min="10000000" max="99999999" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value="{{$user->dni}}" required>
                     </div>
+
+                    <div class="mb-2">
+                        <label for="telephone_number" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Número de teléfono</label>
+                        <input type="number"  name="telephone_number" id="telephone_number" min="10000000" max="99999999999" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" value="{{$user->telephone_number}}" >
+                    </div>
+
                     <div class="mb-2">
                         <label for="rol" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rol</label>
                         <select name="role_id" id="">
