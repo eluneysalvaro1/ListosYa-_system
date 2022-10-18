@@ -83,8 +83,8 @@
 
          <!-- Telephone -->
          <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="telephone_number" value="{{ __('telephone number') }}" />
-            <x-jet-input id="telephone_number" type="text" class="mt-1 block w-full" wire:model.defer="state.telephone_number" autocomplete="telephone_number" />
+            <x-jet-label for="telephone_number" value="{{ __('Número de teléfono') }}" />
+            <x-jet-input id="telephone_number" min="100000000" max="999999999" type="text" class="mt-1 block w-full" wire:model.defer="state.telephone_number" autocomplete="telephone_number" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
