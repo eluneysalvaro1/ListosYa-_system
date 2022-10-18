@@ -15,31 +15,32 @@
 
             <div class="mt-4">
                 <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-input id="name" maxlength="20" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4"> 
                 <x-jet-label for="surname" value="{{ __('Apellido') }}" />
-                <x-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
+                <x-input id="surname" maxlength="20" class="block mt-1 w-full" type="text" name="surname" :value="old('surname')" required autofocus autocomplete="surname" />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" pattern="^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$" :value="old('email')" required />
+                <small class="text-sm text-gray-500">El email debe tener un formato similar a: este@ejemplo.com</small>
             </div>
 
             <div class="mt-6">
-                <x-jet-label for="dni" value="{{ __('Numero de Documento') }}" />
-                <x-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" required />
+                <x-jet-label for="dni" value="{{ __('Número de documento') }}" />
+                <x-input id="dni" class="block mt-1 w-full" type="number" name="dni" :value="old('dni')" min="10000000" max="99999999" required />
             </div>
 
             <div class="mt-6">
-                <x-jet-label for="telephone_number" value="{{ __('Numero de Teléfono') }}" />
-                <x-input id="telephone_number" class="block mt-1 w-full" type="number" name="telephone_number" :value="old('telephone_number')" required />
+                <x-jet-label for="telephone_number" value="{{ __('Número de teléfono') }}" />
+                <x-input id="telephone_number" class="block mt-1 w-full" type="number" name="telephone_number" min="100000000" max="99999999999" :value="old('telephone_number')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="birthday" value="{{ __('Fecha de Nacimiento') }}" />
+                <x-jet-label for="birthday" value="{{ __('Fecha de nacimiento') }}" />
                 <x-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
             </div>
             
@@ -83,6 +84,7 @@
                 </x-jet-button>
             </div>
         </form>
+
     </x-jet-authentication-card>
 </x-guest-layout>
 

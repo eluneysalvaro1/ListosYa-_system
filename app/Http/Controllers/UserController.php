@@ -131,9 +131,15 @@ class UserController extends Controller
         $user = User::find($id); 
 
         $another = User::where('email' , $request->email)->first();
+        $another2 = User::where('dni' , $request->dni)->first();
 
-
-        if ($user == $another && $another !== null) {
+     
+        if ($user !== $another && $another !== null) {
+            flash('No se ha podido editar el usuario' , 'error');
+        }elseif ($user !== $another2 && $another2 !== null) {
+            flash('No se ha podido editar el usuario' , 'error');
+        }
+        elseif ($user == $another && $another !== null) {
             $user->update([
                 'name' => $request->name, 
                 'surname' => $request->surname,
@@ -143,7 +149,27 @@ class UserController extends Controller
                 'role_id' => $request->role_id 
             ]);
             flash('Usuario editado con éxito.' , 'success');
-        }elseif ($another == null) {
+        }elseif($user == $another2 && $another2 !== null){
+            $user->update([
+                'name' => $request->name, 
+                'surname' => $request->surname,
+                'email' => $request->email, 
+                'dni' => $request->dni,
+                'ciudad_id' => $request->ciudad_id,  
+                'role_id' => $request->role_id 
+            ]);
+            flash('Usuario editado con éxito.' , 'success');
+        }elseif(($user !== $another && $another == null) || ($user !== $another2 && $another2 == null) ){
+            $user->update([
+                'name' => $request->name, 
+                'surname' => $request->surname,
+                'email' => $request->email, 
+                'dni' => $request->dni,
+                'ciudad_id' => $request->ciudad_id,  
+                'role_id' => $request->role_id 
+            ]);
+            flash('Usuario editado con éxito.' , 'success');
+        }elseif($another == null && $another2 == null){
             $user->update([
                 'name' => $request->name, 
                 'surname' => $request->surname,
