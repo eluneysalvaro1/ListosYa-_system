@@ -9,12 +9,16 @@ class UserTable extends Component
 {
 
     public $busqueda;
-
+   
 
     public function render()
     {
-        $users = User::where('name', 'like' , '%' . $this->busqueda . '%')->orderBy('id','desc')->paginate(10);
-        $count = 0;
-        return view('livewire.user-table', compact('users', 'count'));
+        $users = User::where('name', 'like','%'.$this->busqueda.'%')->orderBy('id','desc')->paginate(10);
+        return view('livewire.user-table', compact('users'));
+    }
+
+    public function edit($id)
+    {
+        return view ('/users/edit', compact('id'));
     }
 }

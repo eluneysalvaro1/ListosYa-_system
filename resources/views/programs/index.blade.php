@@ -1,6 +1,6 @@
 <x-app-layout>
 
 
-@livewire('program-search')
+    @livewire('program-search')
 
 </x-app-layout>
