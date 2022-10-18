@@ -21,4 +21,16 @@ class UserTable extends Component
     {
         return view ('/users/edit', compact('id'));
     }
+
+    public function openmodal()
+    {
+        $this->dispatchBrowserEvent('openModal', ['newName' => "Jota"]);
+    }
+
+    public function deleteUser($id)
+    {
+        $this->openmodal();
+        $user=User::find($id);
+        $user->delete();
+    }
 }

@@ -90,10 +90,13 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program)
+
+    public function edit($id)
     {
-        //
+        $user= Program::find($id);
+        return view("programs.edit",compact("user"));
     }
+
 
     /**
      * Update the specified resource in storage.

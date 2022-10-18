@@ -106,7 +106,7 @@
             <div
                 class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Puntaje</h3>
+                    Puntaje Total</h3>
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->points }}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
@@ -119,7 +119,7 @@
             <div
                 class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Puntaje</h3>
+                    Ultimo Puntaje</h3>
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->points }}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
@@ -132,7 +132,7 @@
             <div
                 class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    Puntaje</h3>
+                    Programas</h3>
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->points }}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
