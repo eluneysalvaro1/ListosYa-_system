@@ -9,7 +9,7 @@ class UserTable extends Component
 {
 
     public $busqueda;
-   
+    public $confirmingUserDeletion = false;
 
     public function render()
     {
@@ -29,8 +29,16 @@ class UserTable extends Component
 
     public function deleteUser($id)
     {
-        $this->openmodal();
+        
         $user=User::find($id);
         $user->delete();
+        $this->confirmingUserDeletion = false;
+        
+    }
+
+    public function confirmUserDeletion($id)
+    {
+       
+        $this->confirmingUserDeletion = $id;
     }
 }

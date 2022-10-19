@@ -68,10 +68,15 @@
                                             class=" float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
                                             type="button"> <a href=" {{ route('users.edit', $user->id) }} ">Editar</a>
                                         </button>
-                                        <button class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                        {{-- <button class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
                                             type="button"  wire:click="$emit('deleteUser' , {{$user->id}})">Borrar</button>
                                         
-                                    </div>
+                                    </div> --}}
+                                    <x-jet-danger-button wire:click="confirmUserDeletion ({{$user->id}})" wire:loading.attr="disabled">
+                                        {{ __('Eliminar') }}
+                                    </x-jet-danger-button>
+                                    
+                                    
                                     
                                 </td>
                             </tr>
@@ -92,8 +97,26 @@
         </div>
     </div>
 </div>
-<script>
-    window.addEventListener('openmoda', event => {
-        alert('Name updated to: ' + event.detail.newName);
-    })
-    </script>
+
+ <!-- Delete User Confirmation Modal -->
+ <x-jet-dialog-modal wire:model="confirmingUserDeletion">
+    <x-slot name="title">
+        {{ __('Delete Account') }}
+    </x-slot>
+
+    <x-slot name="content">
+        {{ __('¿Está seguro de querer borrar el usario? Una vez eliminada la cuenta, no se podrán recuperar los datos almacenados. ') }}
+        {{ $confirmingUserDeletion}}
+     
+    </x-slot>
+    
+    <x-slot name="footer">
+        <x-jet-secondary-button wire:click="$toggle('confirmingUserDeletion', false)" wire:loading.attr="disabled">
+            {{ __('Cancelar') }}
+        </x-jet-secondary-button>
+
+        <x-jet-danger-button class="ml-3" wire:click="deleteUser ({{ $confirmingUserDeletion }})" wire:loading.attr="disabled">
+            {{ __('Delete Account') }} 
+        </x-jet-danger-button>
+    </x-slot>
+</x-jet-dialog-modal>
