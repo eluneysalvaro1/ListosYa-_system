@@ -63,6 +63,7 @@ Route::middleware([
     Route::get('/programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('/users/delete/{id}',[UserController::class , 'deleteUser'])->name('users.delete');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');

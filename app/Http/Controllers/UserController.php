@@ -200,4 +200,17 @@ class UserController extends Controller
         flash('Usuario eliminado con éxito', 'success');
         return redirect(route('users.index'));
     }
+
+
+    public function deleteUser($id){
+        $user = User::find($id);
+        $rta = false;
+        if ($user->delete()) {
+            $rta = true;            
+        }
+        flash('Usuario eliminado con éxito', 'success');
+        return $rta;
+    }
+
+
 }

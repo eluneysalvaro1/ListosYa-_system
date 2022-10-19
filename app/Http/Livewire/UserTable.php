@@ -10,6 +10,8 @@ class UserTable extends Component
 
     public $busqueda;
     public $confirmingUserDeletion = false;
+    public $confirmDeletion = false;
+
 
     public function render()
     {
@@ -35,6 +37,13 @@ class UserTable extends Component
         $this->confirmingUserDeletion = false;
         
     }
+
+    public function changeConfirmDeletion($bool, $id){
+        if ($bool) {
+            $this->deleteUser($id);
+        }
+    }
+
 
     public function confirmUserDeletion($id)
     {

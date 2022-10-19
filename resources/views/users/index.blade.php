@@ -3,7 +3,7 @@
   
 
     @livewire('user-table')
-
+    @include('users.delete')
 {{-- <div class="mx-5"style="margin-top: 3.5rem;">
     <div class="min-w-screen min-h-screen bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="lg:w-5/6">
