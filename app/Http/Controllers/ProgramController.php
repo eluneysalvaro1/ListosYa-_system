@@ -93,8 +93,8 @@ class ProgramController extends Controller
 
     public function edit($id)
     {
-        $user= Program::find($id);
-        return view("programs.edit",compact("user"));
+        $program= Program::find($id);
+        return view("programs.edit",compact("program"));
     }
 
 

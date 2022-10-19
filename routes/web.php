@@ -59,6 +59,7 @@ Route::middleware([
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
     Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
+    Route::get('/programs/edit/{id}', [ProgramController::class, 'edit'])->name('programs.edit');
     Route::post('/programs/create', [ProgramController::class, 'store'])->name('programs.store');
     Route::get('/programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
