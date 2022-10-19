@@ -164,21 +164,36 @@
                                         <option value="finish">Finalizado</option>
                                     </select>
                                 </div>
-                                <div class="mb-2 flex flex-col justify-end items-end" >
-                                    <label for="category_id"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Categoria</label>
-                                    <select name="category_id" id="">
-                                        @forelse ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @empty
-                                        @endforelse
-                                    </select>
-                                </div>
+                                @if (count($categories)> 0)
+                                    <div class="mb-2 flex flex-col justify-end items-end" >
+                                        <label for="category_id"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Categoria</label>
+                                        <select name="category_id" id="">
+                                            @forelse ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @empty
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                @else
+                                    <div class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                                        <span class="font-medium">Ups faltan categorias!</span> Cree categorias para asignar a sus programas.
+                                    </div>
+                                @endif    
+                                
+                                
                             </div>
                             <div class="flex flex-col justify-center items-center">
-                            <button type="submit"
-                                class=" float-right block focus:outlinhidden text-white  bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" id="button_submit">Crear</button>
-                        </div>
+                                @if (count($categories)> 0)
+                                <button type="submit"
+                                    class=" float-right block focus:outlinhidden text-white  bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" id="button_submit">Crear
+                                </button>
+                                @else
+                                <button type="" disabled
+                                    class=" float-right block focus:outlinhidden text-white  bg-green-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" id="button_submit">Crear
+                                </button>
+                                @endif
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -105,10 +105,7 @@
     function clickAcepts(ele){
         let buttonDelete = document.getElementById('deleteButton'),
             buttonAcept = document.getElementById('buttonAcept')
-        
-
         buttonDelete.click()
-        console.log(buttonAcept)
         buttonAcept.addEventListener('click' , e => {
 
             let data = fetch(`../users/delete/${ele}` , {
