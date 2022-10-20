@@ -4,7 +4,7 @@
         $count = 0;
     @endphp
 
-
+@include('categories.delete')
     <div class="mx-5">
         <div class="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div class="lg:w-5/6">
@@ -44,7 +44,10 @@
                                 <td class="py-3 flex px-6 text-left whitespace-nowrap justify-end">
                                     <button class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" type="button" data-modal-toggle="modal{{$category->id}}">Editar</button>
                                     
-                                    {{-- <button type="button" class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" data-modal-toggle="popup{{ $category->id }}">Borrar</button>  --}}
+                                    <button type="button"  
+                                    onclick="clickAcepts({{$category->id}})"  
+                                    class="block focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                                    Borrar</button> 
                                 </td>
 
                             </tr>
@@ -54,8 +57,65 @@
                         @endforelse
                     </table>
                 </div>
+                <button data-modal-toggle="popup"  class="hidden" id="deleteButton"></button>
             </div>
             
         </div>
         {{ $categories->links() }}
+
+
+        <script type="text/javascript">
+            window.CSRF_TOKEN = '{{ csrf_token() }}';
+        </script>
+
+        <script>
+           
+        
+            function clickAcepts(ele){
+                let buttonDelete = document.getElementById('deleteButton'),
+                    buttonAcept = document.getElementById('buttonAcept'),
+                    alert = document.getElementById('alert')
+
+                    buttonAcept.removeAttribute('disabled')    
+
+                    alert.textContent = '¿Está seguro de querer borrar la siguiente categoria?'
+                buttonDelete.click()
+
+
+                let data = fetch(`../categories/delete/${ele}` , {
+                                                                        method: 'POST',
+                                                                        cache: 'no-cache',
+                                                                        headers: {
+                                                                            "X-CSRF-TOKEN": window.CSRF_TOKEN,
+                                                                        }})
+                                .then((response) => response.json())
+                                .then((data) => {
+                                    
+                                        console.log(data)
+                                        if (data !== '0') {
+                                            alert.textContent = `Usted no puede borrar la siguiente categoria porque tiene un total de ${data} programas relacionados. Borrelos primero para poder borrar la categoria`
+                                            buttonAcept.setAttribute('disabled', '')                                            
+                                        }else{
+                                            buttonAcept.addEventListener('click' , e => {
+                                                let data = fetch(`../categories/destroy/${ele}` , {
+                                                                        method: 'POST',
+                                                                        cache: 'no-cache',
+                                                                        headers: {
+                                                                            "X-CSRF-TOKEN": window.CSRF_TOKEN,
+                                                                        }})
+                                                .then((response) => response.json())
+                                                .then((data) => {
+                                                    console.log(data)
+                                                    location.reload()
+                                                });
+                    
+                                            })
+                                        }
+                                    
+                                });
+
+                
+            }
+        </script>
+        
 </x-app-layout>

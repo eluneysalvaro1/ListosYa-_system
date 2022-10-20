@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Program;
+
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -98,4 +100,23 @@ class CategoryController extends Controller
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category has been deleted successfully');
     }
+
+
+    public function deleteCategory($id){
+        $programs = Program::where('category_id' , $id)->get();
+        $result = count($programs);
+        if ($result == 0) {
+            $result = '0';
+        }
+        return json_encode($result);
+    }
+
+
+    public function destroyCategory($id){
+        $category = Category::find($id);
+        $category->delete();
+        
+       return 1;
+    }
+
 }
