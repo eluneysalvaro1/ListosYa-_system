@@ -15,7 +15,10 @@ class UserTable extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like','%'.$this->busqueda.'%')->orderBy('id','desc')->paginate(10);
+        $users = User::where('name', 'like','%'.$this->busqueda.'%')
+        ->orwhere('dni','like','%'.$this->busqueda.'%')
+        ->orwhere('surname','like','%'.$this->busqueda.'%')
+        ->orderBy('id','desc')->paginate(10);
         return view('livewire.user-table', compact('users'));
     }
 
