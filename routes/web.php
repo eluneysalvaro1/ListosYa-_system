@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlackListController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProgramController;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,8 @@ Route::middleware([
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
     Route::post('/users/delete/{id}',[UserController::class , 'deleteUser'])->name('users.delete');
+    Route::post('/categories/delete/{id}' , [CategoryController::class , 'deleteCategory'])->name('categories.delete');
+    Route::post('/categories/destroy/{id}' , [CategoryController::class , 'destroyCategory'])->name('categories.destroy');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
