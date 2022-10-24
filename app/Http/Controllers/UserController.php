@@ -132,21 +132,19 @@ class UserController extends Controller
 
         $another = User::where('email' , $request->email)->first();
         $another2 = User::where('dni' , $request->dni)->first();
-        
-     
-        if ($user !== $another && $another !== null) {
-            dd($user == $another);
-            flash('No se ha podido editar el usuario 1' , 'error');
-        }elseif ($user !== $another2 && $another2 !== null) {
-            flash('No se ha podido editar el usuario 2' , 'error');
-        }
-        elseif ($user == $another && $another !== null) {
+       
+        if ($user->email !== $another->email && $another !== null) {
+           
+            flash('No se ha podido editar el usuario' , 'error');
+        }elseif ($user->dni !== $another2->dni && $another2 !== null) {
+            flash('No se ha podido editar el usuario' , 'error');
+        }elseif ($user == $another && $another !== null) {
             $user->update([
                 'name' => $request->name, 
                 'surname' => $request->surname,
                 'email' => $request->email, 
                 'dni' => $request->dni,
-                'ciudad_id' => $request->ciudad_id,  
+                'ciudad_id' => $request->selectedCiudad,  
                 'role_id' => $request->role_id 
             ]);
             flash('Usuario editado con éxito.' , 'success');
@@ -156,7 +154,7 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email, 
                 'dni' => $request->dni,
-                'ciudad_id' => $request->ciudad_id,  
+                'ciudad_id' => $request->selectedCiudad,  
                 'role_id' => $request->role_id 
             ]);
             flash('Usuario editado con éxito.' , 'success');
@@ -166,7 +164,7 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email, 
                 'dni' => $request->dni,
-                'ciudad_id' => $request->ciudad_id,  
+                'ciudad_id' => $request->selectedCiudad,  
                 'role_id' => $request->role_id 
             ]);
             flash('Usuario editado con éxito.' , 'success');
@@ -176,12 +174,12 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email, 
                 'dni' => $request->dni,
-                'ciudad_id' => $request->ciudad_id,  
+                'ciudad_id' => $request->selectedCiudad,  
                 'role_id' => $request->role_id 
             ]);
             flash('Usuario editado con éxito.' , 'success');
         }else{
-            flash('No se ha podido editar el usuario 3' , 'error');
+            flash('No se ha podido editar el usuario' , 'error');
         }
 
         return redirect(route('users.index'));
