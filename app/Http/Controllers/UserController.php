@@ -133,13 +133,11 @@ class UserController extends Controller
 
         $another = User::where('email', $request->email)->first();
         $another2 = User::where('dni', $request->dni)->first();
-        //dd($request, $request->ciudad_id , $request->selectedCiudad);
 
         if ($user->email !== $another->email && $another !== null) {
-            //dd($user == $another);
-            flash('No se ha podido editar el usuario 1', 'error');
+            flash('No se ha podido editar el usuario', 'error');
         } elseif ($user->dni !== $another2->dni && $another2 !== null) {
-            flash('No se ha podido editar el usuario 2', 'error');
+            flash('No se ha podido editar el usuario', 'error');
         } elseif ($user == $another && $another !== null) {
             $user->update([
                 'name' => $request->name,

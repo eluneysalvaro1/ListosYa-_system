@@ -1,5 +1,8 @@
 <div>
     <div id="muestra-ciudad">
+        @if ($ciudad !== null)
+            
+        
         <div >
             Ciudad:
             {{ $ciudad->nombre }}
@@ -8,7 +11,9 @@
             Provincia:
             {{ $ciudad->provincia }}
         </div>
+        @endif
     </div>
+    @if ($ciudad !== null)
     <div id="combo-provincia" class="hidden">
         @livewire('combo-provincia')
     </div>
@@ -18,6 +23,13 @@
             class="block focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900"
             type="button" id="mostrar-combo">Editar</button>
     </div>
+    @else
+    <div id="combo-provincia" >
+        @livewire('combo-provincia')
+    </div>
+
+    @endif
+   
     <script>
         let combo = document.getElementById('combo-provincia'),
             muestraCiudad = document.getElementById('muestra-ciudad'),
