@@ -63,7 +63,8 @@
                                     </select>
                                 </div>
                                 <div class="mb-2">
-                                    <livewire:combo-provincia />
+                                    @livewire('obtener-ciudad', ['idCiudad'=>$user->ciudad_id])
+                                    
                                 </div>
 
                                 <button type="submit"

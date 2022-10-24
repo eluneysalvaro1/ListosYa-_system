@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ class UserController extends Controller
     {
         $users = User::orderBy('id', 'desc')->paginate(15);
 
-        return view('users.index' , compact('users'));
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -41,15 +42,15 @@ class UserController extends Controller
     }
 
 
-      /**
+    /**
      *Guarda la informacion faltante de un usuario general
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function data(Request $request , $id)
+    public function data(Request $request, $id)
     {
-        
+
         $user = User::find($id);
 
         if ($user->surname == null && $request->surname !== null) {
@@ -57,13 +58,13 @@ class UserController extends Controller
                 "surname" => $request->surname
             ]);
         }
-        
+
         if ($user->birthday == null && $request->birthday !== null) {
             $user->update([
                 "birthday" => $request->birthday
             ]);
         }
-        
+
         if ($user->dni == null && $request->dni !== null) {
             $user->update([
                 "dni" => $request->dni
@@ -93,7 +94,7 @@ class UserController extends Controller
 
         return redirect(route('successful', compact('email')));
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -114,8 +115,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user= User::find($id);
-        return view("users.edit",compact("user"));
+        $user = User::find($id);
+        return view("users.edit", compact("user"));
     }
 
     /**
@@ -128,58 +129,59 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user = User::where('id' , $id)->first();
+        $user = User::where('id', $id)->first();
 
-        $another = User::where('email' , $request->email)->first();
-        $another2 = User::where('dni' , $request->dni)->first();
-       
+        $another = User::where('email', $request->email)->first();
+        $another2 = User::where('dni', $request->dni)->first();
+        //dd($request, $request->ciudad_id , $request->selectedCiudad);
+
         if ($user->email !== $another->email && $another !== null) {
-           
-            flash('No se ha podido editar el usuario' , 'error');
-        }elseif ($user->dni !== $another2->dni && $another2 !== null) {
-            flash('No se ha podido editar el usuario' , 'error');
-        }elseif ($user == $another && $another !== null) {
+            //dd($user == $another);
+            flash('No se ha podido editar el usuario 1', 'error');
+        } elseif ($user->dni !== $another2->dni && $another2 !== null) {
+            flash('No se ha podido editar el usuario 2', 'error');
+        } elseif ($user == $another && $another !== null) {
             $user->update([
-                'name' => $request->name, 
+                'name' => $request->name,
                 'surname' => $request->surname,
-                'email' => $request->email, 
+                'email' => $request->email,
                 'dni' => $request->dni,
-                'ciudad_id' => $request->selectedCiudad,  
-                'role_id' => $request->role_id 
+                'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
+                'role_id' => $request->role_id
             ]);
-            flash('Usuario editado con éxito.' , 'success');
-        }elseif($user == $another2 && $another2 !== null){
+            flash('Usuario editado con éxito.', 'success');
+        } elseif ($user == $another2 && $another2 !== null) {
             $user->update([
-                'name' => $request->name, 
+                'name' => $request->name,
                 'surname' => $request->surname,
-                'email' => $request->email, 
+                'email' => $request->email,
                 'dni' => $request->dni,
-                'ciudad_id' => $request->selectedCiudad,  
-                'role_id' => $request->role_id 
+                'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
+                'role_id' => $request->role_id
             ]);
-            flash('Usuario editado con éxito.' , 'success');
-        }elseif(($user !== $another && $another == null) || ($user !== $another2 && $another2 == null) ){
+            flash('Usuario editado con éxito.', 'success');
+        } elseif (($user !== $another && $another == null) || ($user !== $another2 && $another2 == null)) {
             $user->update([
-                'name' => $request->name, 
+                'name' => $request->name,
                 'surname' => $request->surname,
-                'email' => $request->email, 
+                'email' => $request->email,
                 'dni' => $request->dni,
-                'ciudad_id' => $request->selectedCiudad,  
-                'role_id' => $request->role_id 
+                'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
+                'role_id' => $request->role_id
             ]);
-            flash('Usuario editado con éxito.' , 'success');
-        }elseif($another == null && $another2 == null){
+            flash('Usuario editado con éxito.', 'success');
+        } elseif ($another == null && $another2 == null) {
             $user->update([
-                'name' => $request->name, 
+                'name' => $request->name,
                 'surname' => $request->surname,
-                'email' => $request->email, 
+                'email' => $request->email,
                 'dni' => $request->dni,
-                'ciudad_id' => $request->selectedCiudad,  
-                'role_id' => $request->role_id 
+                'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
+                'role_id' => $request->role_id
             ]);
-            flash('Usuario editado con éxito.' , 'success');
-        }else{
-            flash('No se ha podido editar el usuario' , 'error');
+            flash('Usuario editado con éxito.', 'success');
+        } else {
+            flash('No se ha podido editar el usuario 3', 'error');
         }
 
         return redirect(route('users.index'));
@@ -193,7 +195,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-       $user = User::find($id);
+        $user = User::find($id);
 
         $user->delete();
         flash('Usuario eliminado con éxito', 'success');
@@ -201,15 +203,14 @@ class UserController extends Controller
     }
 
 
-    public function deleteUser($id){
+    public function deleteUser($id)
+    {
         $user = User::find($id);
         $rta = false;
         if ($user->delete()) {
-            $rta = true;            
+            $rta = true;
         }
         flash('Usuario eliminado con éxito', 'success');
         return $rta;
     }
-
-
 }

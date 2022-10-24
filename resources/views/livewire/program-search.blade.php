@@ -1,14 +1,10 @@
 
-<div class="overflow-x-auto relative shadow-md sm:rounded-lg p-3">
-    <div class="flex justify-between items-center pb-4 mt-3">
-        <div>
-            <button
-            class=" float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
-            type="button"> <a href=" {{ route('programs.create') }} ">Crear Programa</a>
-        </button>
-        </div>
-        <div>
-            <select wire:model="categoryFilter" class="form-control">
+<div class="overflow-x-auto relative shadow-md sm:rounded-lg p-3 m-3">
+    
+    <div class="flex justify-center items-center">
+        
+        <div class="mx-1">
+            <select wire:model="categoryFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                 <option value="">Categoria</option>
                 @foreach ($categories as $category )
                 <option value="{{ $category->id }}">
@@ -18,10 +14,10 @@
                 @endforeach
 
             </select>
-            {{ $categoryFilter }}
+           
         </div>
-        <div>
-            <select wire:model="stateFilter" >
+        <div class="mx-1">
+            <select wire:model="stateFilter" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" >
                 <option value="">Estado</option>
                
                 <option value="open_to_postulated">
@@ -34,7 +30,7 @@
                     Finalizado
                 </option>
             </select>
-           {{ $stateFilter }}
+          
         </div>
       
         <label for="table-search" class="sr-only">Search</label>
@@ -44,12 +40,12 @@
             </div>
           
             <input type="text"
-                                class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                class="block p-2 pl-10 w-80 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="ingrese el nombre del programa" wire:model="busqueda" />
             
         </div>
     </div>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6">Imagen</th>
