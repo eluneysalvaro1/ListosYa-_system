@@ -30,7 +30,7 @@ class UserFactory extends Factory
             'dni' => $this->faker->numberBetween(1000000, 60000000),
             'email' => $this->faker->unique()->email(),
             'birthday' => $this->faker->date('Y-m-d'),
-            'role_id' => $this->faker->numberBetween(1, 4),
+            'role_id' => $this->faker->numberBetween(1, 3),
             'ciudad_id' => $this->faker->numberBetween(1, 1800),
             'telephone_number' => $this->faker->phoneNumber(),
             'points' => $this->faker->numberBetween(0, 2),

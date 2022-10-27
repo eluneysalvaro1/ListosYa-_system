@@ -19,9 +19,12 @@
                     <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('programs.index')">
                         Usuario
                     </x-nav-link>
+                    @can('edit programs')
+                        
                     <x-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
                         Editar Programas
                     </x-nav-link>
+                    @endcan
                     <x-nav-link href="{{ route('programs.create') }}" :active="request()->routeIs('programs.create')">
                         Crear Programa
                     </x-nav-link>
