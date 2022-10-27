@@ -13,6 +13,7 @@ class UserController extends Controller
     {
         $this->middleware('can:delete users')->only('destroy' , 'deleteUser');
         $this->middleware('can:edit users')->only('edit' , 'update');
+        $this->middleware('can:show users')->only('index');
     }
 
 

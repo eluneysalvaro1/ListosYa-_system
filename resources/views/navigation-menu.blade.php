@@ -16,21 +16,32 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('programs.index')">
-                        Usuario
-                    </x-nav-link>
+                    @can('show users')
+                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            Usuario
+                        </x-nav-link>
+                    @endcan
                     @can('edit programs')
+                        <x-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
+                            Editar programas
+                        </x-nav-link>
+                    @endcan
+                    @can('create programs')
                         
-                    <x-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
-                        Editar Programas
+                    <x-nav-link href="{{ route('programs.create') }}" :active="request()->routeIs('programs.create')">
+                        Crear programa
+                    </x-nav-link>
+                    @elsecan('all programs')
+                    <x-nav-link href="{{ route('programs.all') }}" :active="request()->routeIs('programs.all')">
+                        Ver programas
                     </x-nav-link>
                     @endcan
-                    <x-nav-link href="{{ route('programs.create') }}" :active="request()->routeIs('programs.create')">
-                        Crear Programa
-                    </x-nav-link>
-                    <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
-                        Categorias
-                    </x-nav-link>
+                   
+                    @can('create categories')    
+                        <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
+                            Categorias
+                        </x-nav-link>
+                    @endcan
                     <x-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                         Calendario de programas
                     </x-nav-link>
@@ -48,7 +59,7 @@
 
 
             </div>
-            
+           
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
 
@@ -131,18 +142,35 @@
             <x-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
+            @can('show users')
+                
             <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
                 Usuarios
             </x-responsive-nav-link>
+            @endcan
+            @can('edit programs')
+                
             <x-responsive-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
                 Editar Programa
             </x-responsive-nav-link>
+            @endcan
+            @can('create programs')
+                
             <x-responsive-nav-link href="{{ route('programs.create') }}" :active="request()->routeIs('programs.create')">
                 Crear Programa
             </x-responsive-nav-link>
+
+            @elsecan('all programs')
+            <x-responsive-nav-link href="{{ route('programs.all') }}" :active="request()->routeIs('programs.all')">
+                Ver programas
+            </x-responsive-nav-link>
+            @endcan
+            @can('create categories')
+                
             <x-responsive-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
                 Categorias
             </x-responsive-nav-link>
+            @endcan
             <x-responsive-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                 Calendario de programas
             </x-responsive-nav-link>

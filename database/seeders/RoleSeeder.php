@@ -25,6 +25,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'edit programs'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'create programs'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'delete programs'])->syncRoles([$admin]);
+        Permission::create(['name' => 'all programs'])->syncRoles([$admin,$staff,$general]);
+
 
         Permission::create(['name' => 'show categories'])->syncRoles([$admin]);
         Permission::create(['name' => 'edit categories'])->syncRoles([$admin]);
