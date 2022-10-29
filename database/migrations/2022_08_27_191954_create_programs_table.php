@@ -23,6 +23,8 @@ return new class extends Migration
             $table->integer('volunteer_limit')->nullable();
             $table->string('place_event');
             $table->string('program_image')->nullable();
+            $table->boolean('duo')->nullable();
+            $table->boolean('turn')->nullable();
             $table->integer('program_points');
             $table->enum('state', ['finish' , 'open_to_postulated' , 'close_to_postulated']);
             $table->foreignId('category_id')->constrained();
