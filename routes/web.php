@@ -58,11 +58,13 @@ Route::middleware([
         'blacklist' => BlackListController::class
     ]);
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
-    Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
-    Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
-    Route::get('/programs/edit/{id}', [ProgramController::class, 'edit'])->name('programs.edit');
-    Route::post('/programs/create', [ProgramController::class, 'store'])->name('programs.store');
-    Route::get('/programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
+    Route::get('/programs', [ProgramController::class, 'index'])->middleware('can:create programs')->name('programs.index');
+    Route::get('/programs/create', [ProgramController::class, 'create'])->middleware('can:create programs')->name('programs.create');
+    Route::get('/programs/show/{id}', [ProgramController::class, 'show'])->name('programs.show');
+    Route::get('/programs/edit/{id}', [ProgramController::class, 'edit'])->middleware('can:edit programs')->name('programs.edit');
+    Route::post('/programs/create', [ProgramController::class, 'store'])->middleware('can:create programs')->name('programs.store');
+    Route::get('/programs/update/{id}', [ProgramController::class, 'update'])->middleware('can:edit programs')->name('programs.update');
+    Route::get('/programs/all' , [ProgramController::class, 'showAllPrograms'])->middleware('can:all programs')->name('programs.all');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
     Route::post('/users/delete/{id}',[UserController::class , 'deleteUser'])->name('users.delete');
@@ -102,7 +104,7 @@ Route::get('/google-callback', function () {
             'profile_external_path' => $user->avatar,
             'external_id' => $user->id,
             'points' => 0,
-        ]);
+        ])->assignRole('general');
 
         $email = $user->email;
         Auth::login($newUser); 

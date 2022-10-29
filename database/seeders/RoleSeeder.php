@@ -20,18 +20,23 @@ class RoleSeeder extends Seeder
         $admin = Role::create(['name' => 'admin']);
         $staff = Role::create(['name' => 'staff']);
         $general = Role::create(['name' => 'general']);
-        $publico = Role::create(['name' => 'publico']);
 
-        Permission::create(['name' => 'show programs'])->syncRoles([$admin,$staff,$general,$publico]);
+        Permission::create(['name' => 'show programs'])->syncRoles([$admin,$staff,$general]);
         Permission::create(['name' => 'edit programs'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'create programs'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'delete programs'])->syncRoles([$admin]);
+        Permission::create(['name' => 'all programs'])->syncRoles([$admin,$staff,$general]);
 
+
+        Permission::create(['name' => 'show categories'])->syncRoles([$admin]);
+        Permission::create(['name' => 'edit categories'])->syncRoles([$admin]);
+        Permission::create(['name' => 'create categories'])->syncRoles([$admin]);
+        Permission::create(['name' => 'delete categories'])->syncRoles([$admin]);
 
         Permission::create(['name' => 'show users'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'edit users'])->syncRoles([$admin]);
-        Permission::create(['name' => 'create users'])->syncRoles([$admin,$general,$publico]);
-        Permission::create(['name' => 'delete users'])->syncRoles([$admin,$general]);
+        Permission::create(['name' => 'create users'])->syncRoles([$admin,$general]);
+        Permission::create(['name' => 'delete users'])->syncRoles([$admin]);
 
         Permission::create(['name' => 'show blacklist'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'edit blacklist'])->syncRoles([$admin]);

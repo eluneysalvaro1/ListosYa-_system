@@ -42,6 +42,6 @@ class CreateNewUser implements CreatesNewUsers
             'ciudad_id'=>$input['selectedCiudad'],
             'telephone_number'=>$input['telephone_number'],
             'password' => Hash::make($input['password']),
-        ]);
+        ])->assignRole('general');
     }
 }

@@ -33,6 +33,15 @@ class ProgramController extends Controller
         return view('programs.create',compact('categories'));
     }
 
+
+    public function showAllPrograms(){
+        $programs = Program::where('state' , 'open_to_postulated')->get();
+
+        return view('programs.all' , compact('programs'));
+
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -79,9 +88,12 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function show(Program $program)
+    public function show($id)
     {
-        return view('programs.show',compact('programs'));
+
+        $program = Program::find($id);
+
+        return json_encode($program);
     }
 
     /**
