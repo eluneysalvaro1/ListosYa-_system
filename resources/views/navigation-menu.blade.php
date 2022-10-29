@@ -16,18 +16,6 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    @can('show users')
-                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                            Usuario
-                        </x-nav-link>
-                    @endcan
-                    @can('edit programs')
-                        <x-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">
-                            Editar programas
-                        </x-nav-link>
-                    @endcan
-                    @can('create programs')
-                        
                     <x-nav-link href="{{ route('programs.create') }}" :active="request()->routeIs('programs.create')">
                         Crear programa
                     </x-nav-link>
