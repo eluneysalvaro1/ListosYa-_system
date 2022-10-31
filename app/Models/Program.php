@@ -24,6 +24,8 @@ class Program extends Model
         'program_image',
         'program_points',
         'state',
+        'duo',
+        'turn',
         'category_id'
     ];
    

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a6888fbd3c36167c8449e41f8c2a66b",
+    "content-hash": "8d6710ef5f436c4f88f891e44256de9a",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3855,6 +3855,59 @@
                 }
             ],
             "time": "2022-06-29T23:11:42+00:00"
+        },
+        {
+            "name": "spatie/period",
+            "version": "2.3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/period.git",
+                "reference": "83fca442d96bcf245109fd0e8fba0f1efeb380d4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/period/zipball/83fca442d96bcf245109fd0e8fba0f1efeb380d4",
+                "reference": "83fca442d96bcf245109fd0e8fba0f1efeb380d4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.1",
+                "nesbot/carbon": "^2.54",
+                "phpunit/phpunit": "^9.5",
+                "spatie/ray": "^1.31"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Period\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brent@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Complex period comparisons",
+            "homepage": "https://github.com/spatie/period",
+            "keywords": [
+                "period",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/period/issues",
+                "source": "https://github.com/spatie/period/tree/2.3.5"
+            },
+            "time": "2022-10-03T07:32:05+00:00"
         },
         {
             "name": "symfony/console",
@@ -9482,5 +9535,5 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.0.0"
 }
