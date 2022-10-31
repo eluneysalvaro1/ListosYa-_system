@@ -70,6 +70,7 @@ Route::middleware([
     Route::post('/users/delete/{id}',[UserController::class , 'deleteUser'])->name('users.delete');
     Route::post('/categories/delete/{id}' , [CategoryController::class , 'deleteCategory'])->name('categories.delete');
     Route::post('/categories/destroy/{id}' , [CategoryController::class , 'destroyCategory'])->name('categories.destroy');
+    Route::get('/programs/inscription/{id}' , [ProgramController::class , 'inscription'])->name('programs.inscribe');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');

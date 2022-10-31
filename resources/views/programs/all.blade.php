@@ -7,16 +7,16 @@
             @foreach ($programs as $program)
                 
 
-                    <a  href="#" class=" m-5 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                        <img  style="max-width: 150px;" class="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ asset($ruta . $program->program_image) }}" alt="">
-                        <div class="flex flex-col justify-between p-4 leading-normal">
+                    <div class=" m-5 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                        <img style="height: 100%" class="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="{{ asset($ruta . $program->program_image) }}" alt="">
+                        <div class=" w-full flex flex-col justify-between p-4 leading-normal">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$program->name}}</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lugar del Programa: {{$program->place_event}}</p>
-                            <button data-modal-toggle="defaultModal" id="{{$program->id}}" class="btnShow text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                            <a href="{{route('programs.inscribe', $program->id)}}" id="{{$program->id}}" class=" w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                                 Ver programa
-                            </button>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 
             @endforeach
 
@@ -24,9 +24,9 @@
            
         </div>
     </div>
-    @include('programs.showProgram')
+    {{-- @include('programs.showProgram') --}}
 
-    <script>
+    {{-- <script>
         let btnShow = document.querySelectorAll('.btnShow')
         let header = document.getElementById('modalHeader'),
         headerContent = document.getElementById('modalHeader'),
@@ -35,6 +35,8 @@
                 loader = document.getElementById('status'),
                 btnInscribe = document.getElementById('btnInscribe'),
                 btnDeclive = document.getElementById('btnDeclive')
+
+           
 
         document.addEventListener('click' , e => {
             
@@ -64,11 +66,14 @@
                                                 Hora de finalización:  ${data.finish_time} <br>
                                                 Límite de voluntarios:  ${data.volunteer_limit} <br>
                                                 Por participar en este programa podras ganar ${data.program_points} para canjearlos por premios. 
+                                                
+                                                   
                                                 </p> `
+                                                let id = data.id
                         btnInscribe.innerHTML =  `
                                                 
                 
-                                                    <a href="{{route('users.index')}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Inscribirme</a>
+                                                    <a href="{{}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Inscribirme</a>
                                                 
                                            
                                                 `
@@ -83,7 +88,7 @@
             });
         })
 
-    </script>
+    </script> --}}
 
 
 </x-app-layout>

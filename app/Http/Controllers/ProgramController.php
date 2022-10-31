@@ -6,6 +6,9 @@ use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Category;
+use Spatie\Period\Period;
+use Spatie\Period\PeriodCollection;
+use Spatie\Period\Precision;
 
 class ProgramController extends Controller
 {
@@ -59,8 +62,7 @@ class ProgramController extends Controller
         }else{
             $nombreimagen = "none.jpg";
         }
-        
-        
+      
         
         $program = Program::create([
             'name' => $request->name,
@@ -71,6 +73,8 @@ class ProgramController extends Controller
             'volunteer_limit' =>$request->volunteer_limit,
             'place_event' => $request->place_event,
             'program_points' => $request->program_points,
+            'duo' => $request->duo == 'on' ? true : false,
+            'turn' => $request->turn == 'on' ? true : false,
             'state' => $request->state,
             'program_image' => $nombreimagen,
             'category_id' => $request->category_id
@@ -110,6 +114,24 @@ class ProgramController extends Controller
     }
 
 
+
+
+    public function inscription($id){
+        $program = Program::find($id);
+
+        $start = $program->start_date . ' ' .$program->start_time;
+        $finish = $program->finish_date . ' ' .$program->finish_time;
+        
+        $available = new PeriodCollection();
+        $available = Period::make($start, $finish, Precision::HOUR());
+        
+    
+        return view('programs.info' , compact('program' , 'available'));
+    }
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -130,6 +152,8 @@ class ProgramController extends Controller
             'volunteer_limit' =>$request->volunteer_limit,
             'place_event' => $request->place_event,
             'program_points' => $request->program_points,
+            'duo' => $request->duo == 'on' ? true : false,
+            'turn' => $request->turn == 'on' ? true : false,
             'state' => $request->state,
         ]);
 

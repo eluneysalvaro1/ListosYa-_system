@@ -9,7 +9,7 @@
 
                     <div class="">
                         <div class="flex flex-col justify-center items-center pt-5">
-                            <h2>Crear categoria nueva</h2>
+                            <h2 class="ml-2 text-xl font-semibold text-gray-800 dark:text-gray-800">Crear categoria nueva</h2>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 margin-tb">
