@@ -17,7 +17,7 @@ class UserProgram extends Model
     protected $fillable = [
         'user_id',
         'program_id',
-        'duo',
+        'duo_id',
         'turn',
         'postulation_state',
         'asist',
