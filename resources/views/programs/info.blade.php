@@ -1,7 +1,7 @@
 <x-app-layout>
 
-{{$program}}
-<div style="margin: auto;width: 80%" >
+
+<div style="margin: 3rem auto;width: 80%" >
         @php
             $sms = false;
             if($program->start_date !== $program->finish_date) {
@@ -54,67 +54,106 @@
     Auth::user()->birthday !== null && Auth::user()->password !== null || Auth::user()->role_id == 1)
 
 
-    @if ($program->duo)
-        <form action="">
-            <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
-            <input type="number" class="hidden" name="program_id" value="{{$program->id}}">
-            <input type="number" class="" name="duo_id">
-            <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
-        </form>
-    @elseif($program->turn)
-
-    <form action="">
-
-                <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}" disabled>
-                <input type="number" class="hidden" name="program_id" value="{{$program->id}}" disabled>
+    @if ($program->turn == 1 && $program->duo == 1)
+    <form method="POST" action="{{route('programs.inscription')}}">
+        @csrf           
+                <input type="number" class="hidden"  name="user_id" value="{{Auth::user()->id}}" >
+                <input type="number" class="hidden" name="program_id" value="{{$program->id}}" >
                 <div class="my-3 w-full">
                     <div class="px-1">
                         <label for="duo_id"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Número de documento de su acompañante:</label>
                         <input type="number" name="duo_id" id="duo_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                            placeholder="44003322" required>
+                            placeholder="44003322" min="10000000" max="99999999" required>
                             <small class="text-sm text-gray-400">Si el usuario no se encuentra registrado en el sistema y con la información completa, no podrá ser su acompañante</small>
                     </div>
                 </div>
                 <div class="my-3 w-full">
-                    <div class="px-1">
-                        <label for="duo_id"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Turno:</label>
-                            <select name="" id="">
-                                
-                            
-                                
-                                
+                    <div class="px-1 ">
+                        <label for="turn"
+                            class="block   mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Turno:</label>
+                            <select class="w-full mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="turn" required>
+                                <option value="1">09:00 - 10:00</option>
+                                <option value="2">10:00 - 11:00</option>
+                                <option value="3">11:00 - 12:00</option>
+                                <option value="4">12:00 - 13:00</option>
+                                <option value="5">13:00 - 14:00</option>
                             </select>
-                            <small class="text-sm text-gray-400">El sistema comprobará que no existan cierta cantidad de participantes para el mismo horario. </small>
                         </div>
+                        <small class="text-sm text-gray-400">El sistema comprobará que no existan cierta cantidad de participantes para el mismo horario. </small>
                     </div>
-                    
+                    <div class="my-5 w-full">
+                        <button class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Enviar</button>
+                    </div>
+
 
             </form>
-            @forelse ($available as $it)
-            {{dd($it->date)}} 
-            {{-- <option value="">{{$it}}</option> --}}
-            @empty
-            
-            @endforelse
-    @elseif($program->turn && $program->duo)
+    @elseif($program->turn == 1)
 
-            <form action="">
-                <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
-                <input type="number" class="hidden" name="program_id" value="{{$program->id}}">
-                <input type="number" class="" name="duo_id">
-                <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
+    <form method="POST" action="{{route('programs.inscription')}}">
+        @csrf           
+                <input type="number" class="hidden"  name="user_id" value="{{Auth::user()->id}}" >
+                <input type="number" class="hidden" name="program_id" value="{{$program->id}}" >
+               
+                <div class="my-3 w-full">
+                    <div class="px-1 ">
+                        <label for="turn"
+                            class="block   mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Turno:</label>
+                            <select class="w-full mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" name="turn" required>
+                                <option value="1">09:00 - 10:00</option>
+                                <option value="2">10:00 - 11:00</option>
+                                <option value="3">11:00 - 12:00</option>
+                                <option value="4">12:00 - 13:00</option>
+                                <option value="5">13:00 - 14:00</option>
+                            </select>
+                        </div>
+                        <small class="text-sm text-gray-400">El sistema comprobará que no existan cierta cantidad de participantes para el mismo horario. </small>
+                    </div>
+                    <div class="my-5 w-full">
+                        <button class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Enviar</button>
+                    </div>
+
+
+            </form>
+          
+            
+            
+    @elseif($program->duo == 1)
+
+           
+    <form method="POST" action="{{route('programs.inscription')}}">
+        @csrf           
+                <input type="number" class="hidden"  name="user_id" value="{{Auth::user()->id}}" >
+                <input type="number" class="hidden" name="program_id" value="{{$program->id}}" >
+                <div class="my-3 w-full">
+                    <div class="px-1">
+                        <label for="duo_id"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Número de documento de su acompañante:</label>
+                        <input type="number" name="duo_id" id="duo_id"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                            placeholder="44003322" min="10000000" max="99999999" required>
+                            <small class="text-sm text-gray-400">Si el usuario no se encuentra registrado en el sistema y con la información completa, no podrá ser su acompañante</small>
+                    </div>
+                </div>
+                
+                    <div class="my-5 w-full">
+                        <button class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Enviar</button>
+                    </div>
+
+
             </form>
 
     @else
 
-            <form action="">
+            <form method="POST"  action="{{route('programs.inscription')}}">
+                @csrf    
                 <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <input type="number" class="hidden" name="program_id" value="{{$program->id}}">
-                <input type="number" class="" name="duo_id">
-                <input type="number" class="hidden" name="user_id" value="{{Auth::user()->id}}">
+                
+                <div class="my-5 w-full">
+                    <button class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" type="submit">Enviar</button>
+                </div>
             </form>
 
     @endif
@@ -134,10 +173,7 @@
     <span class="font-medium">Alerta!</span> Usted no se encuentra logueado o no cuenta con una cuenta en la aplicación. Para poder participar de cualquier programa debe tener una cuenta.
   </div>
 @endif
-    <form action="{{ route('programs.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-
-    </form>
+    
 
 </div>
 

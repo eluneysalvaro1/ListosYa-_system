@@ -29,7 +29,8 @@ class UserController extends Controller
     {
 
         $user = User::find($id);
-
+        $another = User::where('dni' , $request->dni)->first();
+        
         if ($user->surname == null && $request->surname !== null) {
             $user->update([
                 "surname" => $request->surname
@@ -42,10 +43,13 @@ class UserController extends Controller
             ]);
         }
 
-        if ($user->dni == null && $request->dni !== null) {
+        if ($user->dni == null && $another == null) {
             $user->update([
                 "dni" => $request->dni
             ]);
+        }else{
+            flash('Ese DNI ya se encuentra registrado' , 'error');
+            return redirect()->back();
         }
 
         if ($user->telephone_number == null && $request->telephone_number !== null) {
@@ -99,6 +103,7 @@ class UserController extends Controller
 
         $another = User::where('email', $request->email)->first();
         $another2 = User::where('dni', $request->dni)->first();
+
 
         if ($user->email !== $another->email && $another !== null) {
             flash('No se ha podido editar el usuario', 'error');

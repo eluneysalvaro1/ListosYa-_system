@@ -42,6 +42,12 @@
                         <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
                             Categorias
                         </x-nav-link>
+                    
+                    @endcan
+                    @can('management programs')
+                    <x-nav-link href="{{ route('programs.management') }}" :active="request()->routeIs('programs.management')">
+                        Gestionar programas
+                    </x-nav-link>
                     @endcan
                     <x-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
                         Calendario de programas
