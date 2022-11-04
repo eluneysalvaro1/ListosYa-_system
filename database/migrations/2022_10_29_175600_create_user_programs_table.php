@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('postulation_state', ['Espera' , 'Aceptada' , 'Rechazada']);
             $table->boolean('asistance')->nullable();
             $table->string('observation')->nullable();
+            $table->boolean('qualified')->nullable();
             $table->timestamps();
         });
     }

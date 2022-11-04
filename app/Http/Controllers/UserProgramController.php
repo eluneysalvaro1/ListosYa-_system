@@ -53,7 +53,7 @@ class UserProgramController extends Controller
         $response = false;
         $userProgram = UserProgram::where('program_id' , $programId)->where('turn' , $turnId)->get(); 
       
-        if (count($userProgram) * 2 >= $volunteerLimit) {
+        if (count($userProgram) >= $volunteerLimit) {
             $response = false; 
         }else{
             
@@ -71,7 +71,7 @@ class UserProgramController extends Controller
         $volunteerLimit = $program->volunteer_limit; 
         $userProgram = UserProgram::where('program_id' , $programId)->get(); 
       
-        if (count($userProgram) * 2 >= $volunteerLimit) {
+        if (count($userProgram) >= $volunteerLimit) {
             $response = false; 
         }else{
             $response = true;

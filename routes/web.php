@@ -16,7 +16,9 @@ use App\Http\Controllers\UserController;
 
 
 use App\Mail\AlertMailable;
+use App\Mail\InscriptionMailable;
 use App\Mail\SuccessfulMailable;
+use App\Models\UserProgram;
 use Illuminate\Support\Facades\Mail;
 
 /*
@@ -41,7 +43,14 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+
+        
+        $userProgram = UserProgram::where('user_id' , Auth::user()->id)
+                        ->get();
+
+        $count = count($userProgram);
+
+        return view('dashboard', compact('count'));
     })->name('dashboard');
 
     Route::get('profile' , function() {
@@ -76,6 +85,8 @@ Route::middleware([
     Route::get('/programs/inscription/{id}' , [ProgramController::class , 'inscription'])->name('programs.inscribe');
     Route::get('/staff/postulants/{id}', [StaffProgramsController::class , 'show'])->name('staff.postulant');
     Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->name('staff.asistance');
+    Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->name('staff.state');
+    Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->name('staff.asignate');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
@@ -141,4 +152,14 @@ Route::get('/successful/{email}', function($email){
     Mail::to($email)->send($correo);
     return redirect('/dashboard'); 
 })->name('successful');
+
+
+Route::get('/inscription/{email}' , function($email){
+
+    $correo = new InscriptionMailable;
+
+    Mail::to($email)->send($correo);
+
+    return redirect()->back(); 
+})->name('inscription');
 

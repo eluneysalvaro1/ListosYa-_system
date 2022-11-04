@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlackList;
+use App\Models\UserProgram;
 use Illuminate\Http\Request;
 
 class BlackListController extends Controller
@@ -35,7 +36,26 @@ class BlackListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blackList = BlackList::create([
+            'user_id' => $request->user_id,
+            'motive' => $request->motive,
+            'program_id' => $request->program_id,
+            'severity' => $request->severity,
+            'date' => date('Y-m-d H:i:s'),
+        ]);
+
+        $blackList->save();
+
+        $userProgram = UserProgram::where('user_id' ,$request->user_id)
+                        ->where('program_id' , $request->program_id)
+                        ->first();
+        
+        $userProgram->qualified = true;
+        $userProgram->save();
+
+        flash('Usuario enviado a la blacklist con éxito', 'success');
+        return redirect()->back();
+
     }
 
     /**

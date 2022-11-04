@@ -179,6 +179,13 @@ class ProgramController extends Controller
                             'turn' => $request->turn
                         ]);
                         $userProgram1->save();
+                        $userProgram2 = UserProgram::create([
+                            'user_id' => $duo->id,
+                            'program_id' => $request->program_id,
+                            'duo_id' => $request->user_id,
+                            'turn' => $request->turn
+                        ]);
+                        $userProgram2->save();
                         flash('Se ha registrado con éxito. Ahora deberá esperar a que acepten su postulación. Será informad@ via Email. Gracias.' , 'success');
                         return redirect()->back();
                     }else{
@@ -206,6 +213,7 @@ class ProgramController extends Controller
                         'turn' => $request->turn
                     ]);
                     $userProgram1->save();
+                    
                     flash('Se ha registrado con éxito. Ahora deberá esperar a que acepten su postulación. Será informad@ via Email. Gracias.' , 'success');
                     return redirect()->back();
                 }else{
@@ -226,12 +234,23 @@ class ProgramController extends Controller
 
                     $cant = UserProgramController::verifyCount($request->program_id);
                     if ($cant) {
+
+                      
+                        
                         $userProgram1 = UserProgram::create([
                             'user_id' => $request->user_id,
                             'program_id' => $request->program_id,
                             'duo_id' => $duo->id
                         ]);
                         $userProgram1->save();
+
+                        $userProgram2 = UserProgram::create([
+                            'user_id' => $duo->id,
+                            'program_id' => $request->program_id,
+                            'duo_id' =>  $request->user_id
+                        ]);
+                        $userProgram2->save();
+
                         flash('Se ha registrado con éxito. Ahora deberá esperar a que acepten su postulación. Será informad@ via Email. Gracias.' , 'success');
                         return redirect()->back();
                     }else{
