@@ -36,7 +36,8 @@ class ProgramController extends Controller
     public function create()
     {
         $categories=Category::all();
-        $staff = User::where('role_id' , 2)->get();
+        $staff = User::where('role_id' , 2)->orwhere('role_id',1)->get();
+     
         return view('programs.create',compact('categories' , 'staff'));
     }
 
