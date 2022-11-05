@@ -4,7 +4,7 @@
             @php
                 $ruta = '/images/programs/';
             @endphp
-            @foreach ($programs as $program)
+            @forelse ($programs as $program)
                 
 
                     <div class=" m-5 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -18,77 +18,16 @@
                         </div>
                     </div>
                 
-            @endforeach
-
-            
-           
-        </div>
+                    @empty
+                   
+                    @endforelse
+                </div>
+            </div>
+  
+    @if (count($programs) == 0)
+    <div style="width: 100%" class="p-4 text-sm m-7 text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+        <span class="font-medium">No hay programas!</span> propuestos por parte de la organización. Pronto habran!.
     </div>
-    {{-- @include('programs.showProgram') --}}
-
-    {{-- <script>
-        let btnShow = document.querySelectorAll('.btnShow')
-        let header = document.getElementById('modalHeader'),
-        headerContent = document.getElementById('modalHeader'),
-                body = document.getElementById('modalBody'),
-                footer = document.getElementById('modalFooter'),
-                loader = document.getElementById('status'),
-                btnInscribe = document.getElementById('btnInscribe'),
-                btnDeclive = document.getElementById('btnDeclive')
-
-           
-
-        document.addEventListener('click' , e => {
-            
-            btnShow.forEach(btn => {
-                if (e.target == btn) {
-                    fetch(`../programs/show/${btn.id}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        header.classList.remove('hidden')
-                        body.classList.remove('hidden')
-                        footer.classList.remove('hidden')
-                        loader.classList.add('hidden')
-
-                        let finish = ''
-
-                        if (data.start_date !== data.finish_date) {
-                            finish = `<br>Fecha de finalización: ${data.finish_date}`
-                        }
-                        
-
-                        headerContent.innerHTML = `<h3 class="text-xl font-semibold text-gray-900 dark:text-white">${data.name}</h3>`
-                        body.innerHTML = `<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                                                Lugar del evento: ${data.place_event} <br>
-                                                Fecha inicio: ${data.start_date} 
-                                                ${finish} <br>
-                                                Hora de inicio:  ${data.start_time} <br>
-                                                Hora de finalización:  ${data.finish_time} <br>
-                                                Límite de voluntarios:  ${data.volunteer_limit} <br>
-                                                Por participar en este programa podras ganar ${data.program_points} para canjearlos por premios. 
-                                                
-                                                   
-                                                </p> `
-                                                let id = data.id
-                        btnInscribe.innerHTML =  `
-                                                
-                
-                                                    <a href="{{}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Inscribirme</a>
-                                                
-                                           
-                                                `
-                    });
-
-                }else if(e.target == btnDeclive){
-                    header.classList.add('hidden')
-                        body.classList.add('hidden')
-                        footer.classList.add('hidden')
-                        loader.classList.remove('hidden')
-                }
-            });
-        })
-
-    </script> --}}
-
+    @endif
 
 </x-app-layout>

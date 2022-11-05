@@ -231,7 +231,61 @@
                                 @endif
 
 
+
+                                
+                                
                             </div>
+                            <div class="w-full p-2" >
+
+                                @if (count($staff) > 0)
+                                <div class="my-3 w-full flex-col justify-end items-end">
+                                    <label for="staff_id"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Usuario staff</label>
+                                    <select name="staff_id_1" id="" class=" p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                        @forelse ($staff as $it)
+                                        <option value="{{ $it->id }}">{{ $it->name }}</option>
+                                        @empty
+                                        @endforelse
+                                    </select>
+                                </div>
+                                <div id="staffUsers">
+
+                                </div>
+
+
+                                <button id="btnAddStaff" type="button" class="w-full focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                    Agregar otro usuario staff
+                                </button>
+                                
+                            </div>
+
+                            <script>
+                                let btnAddStaff = document.getElementById('btnAddStaff'),
+                                    divStaff = document.getElementById('staffUsers'),
+                                    count = 2
+
+                                    
+                                btnAddStaff.addEventListener('click' , e => {
+                                    let html = `<div class="my-3 w-full flex-col justify-end items-end">
+                                                <select name="staff_id_${count}" id="" class='p-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white'>
+                                                    @forelse ($staff as $it)
+                                                    <option value="{{ $it->id }}">{{ $it->name }}</option>
+                                                    @empty
+                                                    @endforelse
+                                                </select>
+                                            </div>`
+                                    console.log(count)
+                                    count++
+                                    divStaff.innerHTML += html
+                                })
+
+                            </script>
+
+
+
+                            @endif
+
+
                             <div class="flex flex-col justify-center items-center">
                                 @if (count($categories) > 0)
                                     <button type="submit"

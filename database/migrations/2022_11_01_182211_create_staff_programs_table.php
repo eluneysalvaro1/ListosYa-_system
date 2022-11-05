@@ -13,16 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_programs', function (Blueprint $table) {
+        Schema::create('staff_programs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('program_id')->constrained();
-            $table->foreignId('duo_id')->constrained('users')->nullable()->default(null);
-            $table->integer('turn')->nullable()->default(null);
-            $table->enum('postulation_state', ['Espera' , 'Aceptada' , 'Rechazada']);
-            $table->boolean('asistance')->nullable();
-            $table->string('observation')->nullable();
-            $table->boolean('qualified')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_programs');
+        Schema::dropIfExists('staff_programs');
     }
 };
