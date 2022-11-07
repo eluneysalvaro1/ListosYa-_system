@@ -18,6 +18,7 @@ use App\Http\Controllers\UserController;
 use App\Mail\AlertMailable;
 use App\Mail\InscriptionMailable;
 use App\Mail\SuccessfulMailable;
+use App\Models\BlackList;
 use App\Models\UserProgram;
 use Illuminate\Support\Facades\Mail;
 
@@ -67,6 +68,7 @@ Route::middleware([
         'users' => UserController::class,
         'blacklist' => BlackListController::class
     ]);
+    Route::post('/blacklist/change', [BlackListController::class, 'change'])->name('blacklist.change');
     Route::resource('categories', App\Http\Controllers\CategoryController::class);
     Route::get('/programs', [ProgramController::class, 'index'])->middleware('can:create programs')->name('programs.index');
     Route::get('/programs/create', [ProgramController::class, 'create'])->middleware('can:create programs')->name('programs.create');

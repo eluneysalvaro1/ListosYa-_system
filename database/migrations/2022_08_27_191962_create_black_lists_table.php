@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('motive');
-            $table->time('date');
+            $table->date('date');
             $table->foreignId('program_id')->constrained();
             $table->enum('severity' , ['Baja' , 'Intermedia' , 'Alta']);
             $table->timestamps();
