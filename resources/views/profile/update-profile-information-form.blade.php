@@ -6,8 +6,24 @@
     <x-slot name="description">
         {{ __('Actualiza información de tu perfil.') }}
     </x-slot>
-
+    @if (Auth::user()->surname == null or Auth::user()->telephone_number == null or Auth::user()->birthday == null or Auth::user()->dni == null
+    or Auth::user()->password == null or Auth::user()->ciudad_id == null )
+     <x-slot name="form">
+        <x-slot name="title">
+            {{ __('Falta completar datos') }}
+        </x-slot>
+        <div class="mt-3 max-w-xl text-sm text-gray-600">
+            <p>
+                {{ __('Faltan completar datos, revise mas abajo') }}
+            </p>
+        </div>
+    </x-slot>
+    @else
+   
     <x-slot name="form">
+
+       
+        
         <!-- Profile Photo -->
         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
             <div x-data="{photoName: null, photoPreview: null}" class="col-span-6 sm:col-span-4">
@@ -122,4 +138,5 @@
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>
+    @endif
 </x-jet-form-section>

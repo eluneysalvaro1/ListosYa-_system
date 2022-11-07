@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Program;
 use App\Models\Category;
+use Carbon\Carbon;
 
 class ProgramSearch extends Component
 {
@@ -61,6 +62,7 @@ class ProgramSearch extends Component
         }
 
         $categories = Category::all();
-        return view('livewire.program-search', compact('programs', 'categories'));
+        $now = Carbon::now()->formatLocalized('%A %d %B %Y');
+        return view('livewire.program-search', compact('programs', 'categories','now'));
     }
 }

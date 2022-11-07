@@ -533,29 +533,29 @@
             {{-- fin programas --}}
 
             {{-- landing descripcion de progamas --}}
-            <section class="bg-green-300 dark:bg-green-300">
+            <section class="bg-green-700 dark:bg-green-900">
                 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
                     <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
-                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Nuestros Programas</h2>
-                        <p class="font-light text-gray-500 lg:mb-16 sm:text-xl dark:text-gray-400">Trabajamos junto a nuestros voluntarios, empresas y ONG, en la construcción de una sociedad mas justa, cuidando y capacitando a las personas que donan su tiempo y espíritu solidario.</p>
+                        <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white dark:text-white">Nuestros Programas</h2>
+                        <p class="font-light text-white lg:mb-16 sm:text-xl dark:text-white">Trabajamos junto a nuestros voluntarios, empresas y ONG, en la construcción de una sociedad mas justa, cuidando y capacitando a las personas que donan su tiempo y espíritu solidario.</p>
                     </div> 
                     <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-2">
                         <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://listosya.org/framework/wp-content/uploads/2021/05/lydonantes-1024x1024.png" alt="Imagen formarte">
+                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ asset('/images/landing/formarte.png') }}" alt="Imagen formarte">
                             </a>
                             <div class="p-5">
                                 <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     <a href="#">Formarte</a>
                                 </h3>
                                 
-                                <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Programa del área de educación y cultura que cuyo fin es apadrinar escuelas en zonas de alta vulnerabilidad de Argentina, para la creación y dotación de un aula dedicada a las artes y la cultura. Contáctanos y se parte de la transformación..</p>
+                                <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Programa del área de educación y cultura que cuyo fin es apadrinar escuelas en zonas de alta vulnerabilidad de Argentina, para la creación y dotación de un aula dedicada a las artes y la cultura. </p>
                                 
                             </div>
                         </div> 
                         <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://listosya.org/images/2019/columnaradial.jpg" alt="Jese Avatar">
+                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ asset('/images/landing/radio.png') }}" alt="Jese Avatar">
                             </a>
                             <div class="p-5">
                                 <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -572,13 +572,13 @@
                                 <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                                     <a href="#">Te llevo en la sangre</a>
                                 </h3>
-                                <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Como parte de nuestro programa de salud, llevamos adelante la campaña de captación de Donantes Voluntarios de Sangre. Es necesario entender el cambio de Paradigma del Donante de Sangre por Reposición al Donante de Sangre Voluntario y Reiterativo, para lograr el cometido forjamos alianzas con clubes deportivos..</p>
+                                <p class="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">Como parte de nuestro programa de salud, llevamos adelante la campaña de captación de Donantes Voluntarios de Sangre. Es necesario entender el cambio de Paradigma del Donante de Sangre por Reposición al Donante de Sangre Voluntario y Reiterativo.</p>
                                 
                             </div>
                         </div> 
                         <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://listosya.org/framework/wp-content/uploads/2021/05/eventbike.png" alt="Bicicleteada solidariar">
+                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ asset('/images/landing/bicicleteada.png') }}" alt="Bicicleteada solidariar">
                             </a>
                             <div class="p-5">
                                 <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -591,7 +591,7 @@
                         </div> 
                         <div class="items-center bg-gray-50 rounded-lg shadow sm:flex dark:bg-gray-800 dark:border-gray-700">
                             <a href="#">
-                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="https://listosya.org/images/2020/listosya-msu.jpeg" alt="imagen capacitaciones">
+                                <img class="w-full rounded-lg sm:rounded-none sm:rounded-l-lg" src="{{ asset('/images/landing/capacitaciones.png') }}" alt="imagen capacitaciones">
                             </a>
                             <div class="p-5">
                                 <h3 class="text-xl font-bold tracking-tight text-gray-900 dark:text-white">

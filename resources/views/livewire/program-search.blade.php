@@ -48,6 +48,10 @@
                 placeholder="ingrese el nombre del programa" wire:model="busqueda" />
 
         </div>
+
+        <div class="mx-1 hidden md:block">
+                 Hoy es: {{ $now }}
+        </div>
     </div>
     <div class="bg-gray-100 w overflow-x-auto ">
         <div class=" relative shadow-md sm:rounded-lg p-3 m-3">
@@ -95,7 +99,11 @@
                             @endforeach
 
                         </td>
-                        <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $program->start_date }}
+                        <td class="py-3 px-6 text-left whitespace-nowrap text-center">
+                            @if ($program->start_date > $now)
+                              
+                            @endif
+                            {{ $program->start_date }}  
                         </td>
                         <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                             {{ $program->volunteer_limit }}</td>
