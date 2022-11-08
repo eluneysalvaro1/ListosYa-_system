@@ -167,12 +167,20 @@ class ProgramController extends Controller
 
     public function inscription($id){
         $program = Program::find($id);
+        
+        $userProgram = UserProgram::where('user_id' , Auth::user()->id)
+        ->where('program_id' , $id)
+        ->first();
+        
+        
+        
 
-        return view('programs.info' , compact('program' ));
+
+        return view('programs.info' , compact('program' , 'userProgram'));
     }
 
     public function inscribe(Request $request){
-
+        
         if($request->duo_id !== null && $request->turn !== null){
             $userProgramInscription = UserProgramController::userProgramInscription($request->user_id, $request->program_id);
             $userProgramInscription2 = UserProgramController::userProgramInscription( '', $request->program_id, $request->duo_id);
