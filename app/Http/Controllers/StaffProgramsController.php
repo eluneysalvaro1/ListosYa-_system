@@ -57,8 +57,6 @@ class StaffProgramsController extends Controller
         $userPro = UserProgram::where('program_id', $id)->first();
         $duo = false;
         
-
-       
         if($userPro == null){
             $userProgram = null;
         }else{
@@ -78,7 +76,6 @@ class StaffProgramsController extends Controller
             ->join('programs' , 'user_programs.program_id' , '=' , 'programs.id')
             ->join('users' , 'user_programs.user_id' , '=' , 'users.id')
             ->join('users as userDuo' , 'user_programs.duo_id' , '=' , 'userDuo.id')
-            
             ->get([
                 'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                 , 'userDuo.surname as duoSurname', 'user_programs.qualified as qualified' ,'userDuo.dni as duoDni'  ,'userDuo.name as duoName' , 'user_programs.turn as turn' , 'user_programs.postulation_state as postulation_state' , 
