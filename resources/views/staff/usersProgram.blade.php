@@ -4,9 +4,10 @@
 <div style="margin: 3rem;" class="overflow-x-auto relative shadow-md sm:rounded-lg">
     
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-40">
-        
-            
-                
+              
+        @if ($userProgram !== null )
+              
+         
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -14,10 +15,14 @@
                             @if ($duo)
                                 <th class="py-3 px-6 text-center">Datos duo</th>
                             @endif
-                            <th class="py-3 px-6 text-center">Turno</th>
+                            @if ($userProgram[0]->turn !== null)
+                                <th class="py-3 px-6 text-center">Turno</th>
+                            @endif
                             <th class="py-3 px-6 text-center">Estado de postulación</th>
                             <th class="py-3 px-6 text-center">Asistencia</th>
-                            <th class="py-3 px-6 text-right">Acciones</th>
+                            @if ($userProgram[0]->state !== 'finish')
+                                <th class="py-3 px-6 text-right">Acciones</th>
+                            @endif
                         </tr>
                     </thead>
                     @php
@@ -41,10 +46,8 @@
                             @if ($duo)
                                 <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{$user->duoName}} {{$user->duoSurname}} - {{$user->duoDni}}</td>   
                             @endif
+                            @if ($user->turn !== null)
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">
-                              @if ($user->turn !== null)
-                                  No hay turno seleccionado
-                              
                                 @if($user->turn == 1)
                                     09:00 - 10:00
                                 @elseif ($user->turn == 2)
@@ -56,10 +59,10 @@
                                 @elseif($user->turn == 5)
                                     13:00 - 14:00
                                 @endif
-                                   
-                              @endif
-                               
+                              
+                                
                             </td>
+                            @endif
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                 @if ($user->postulation_state == 'Espera')
                                 <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
@@ -91,7 +94,7 @@
         
                                 @endif
                             </td>
-                            
+                            @if ($userProgram[0]->state !== 'finish')
                             <td class="flex justify-end mt-2.5">
                                 <form method="post" action="{{route('staff.asistance', $user->user_id)}}">
                                     @csrf
@@ -142,6 +145,7 @@
                                 
                             </td>
                         </tr>
+                        @endif
                         </tbody>
                     @endif    
                     @empty
@@ -154,27 +158,54 @@
                     @endforelse
 
                 </table>
+                @include('blacklist.form')
+
+                <script>
+                    
+                    function blacklist(id , program){
+                        let input = document.getElementById('userIdBlacklist'),
+                            input2 = document.getElementById('programIdBlacklist')
             
+                        input.value = id
+                        input2.value = program
+                        
+                    }
+            
+            
+                </script>
+        @else
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th class="py-3 px-6 text-center">Datos participante</th>
+                   
+                        <th class="py-3 px-6 text-center">Datos duo</th>
+                    
+                   
+                        <th class="py-3 px-6 text-center">Turno</th>
+                   
+                    <th class="py-3 px-6 text-center">Estado de postulación</th>
+                    <th class="py-3 px-6 text-center">Asistencia</th>
+                   
+                        <th class="py-3 px-6 text-right">Acciones</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="py-3 px-6 text-left whitespace-nowrap text-center" colspan="7">No hay
+                        resultados disponibles</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        @endif
             
         </div>
        
     </div>
     
-    @include('blacklist.form')
-
-    <script>
-        
-        function blacklist(id , program){
-            let input = document.getElementById('userIdBlacklist'),
-                input2 = document.getElementById('programIdBlacklist')
-
-            input.value = id
-            input2.value = program
-            
-        }
-
-
-    </script>
+    
 
 
 

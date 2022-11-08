@@ -121,6 +121,16 @@ class ProgramController extends Controller
             }
         }
 
+        $usersAdmin = User::where('role_id' , 1)->get();
+
+        foreach ($usersAdmin as $el) {
+            $newStaffAdmin = StaffPrograms::create([
+                'user_id' => $el->id,
+                'program_id' => $program->id
+            ]);
+            $newStaffAdmin->save();
+        }
+
         flash('Programa creado con éxito' , 'success');
         return redirect()->route('programs.index');
     }
