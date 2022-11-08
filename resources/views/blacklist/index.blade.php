@@ -40,7 +40,16 @@
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $black->userName }} - {{ $black->userSurname }} - {{ $black->userDni }}</td>
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $black->motive }}</td>
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $black->programName }}</td>
-                            <td class="py-3 px-6 text-left whitespace-nowrap text-center"> {{$black->severity}} </td>
+                            <td class="py-3 px-6 text-left whitespace-nowrap text-center"> 
+                               @if ($black->severity == 'Baja')
+                               <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-900">{{$black->severity}}</span>
+                               @elseif($black->severity == 'Intermedia')
+                               <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">{{$black->severity}}</span>
+                               @else 
+                                <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{$black->severity}}</span>
+                               @endif
+                                 
+                            </td>
                             <td class="flex justify-items-end items-baseline py-3 px-6 whitespace-nowrap text-center">
                                 
                                     <button onclick="blacklist({{$black->userId}} , {{$black->programId}})" data-modal-toggle="authentication-modal" type="button" class="btnBlacklist text-xs  text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-2.5 py-2 text-center mb-2">
