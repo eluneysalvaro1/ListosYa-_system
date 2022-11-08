@@ -1,6 +1,10 @@
 <x-app-layout>
 
 
+@if ($userProgram == null)
+    
+
+
 <div style="margin: 3rem auto;width: 80%" >
         @php
             $sms = false;
@@ -174,8 +178,13 @@
   </div>
 @endif
     
-
 </div>
+@else
 
+<div class="m-5 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+    <span class="font-medium">Información!</span> Su postulación ha sido enviada. Será avisad@ via email en caso de ser aprobada su postulación. Muchas gracias!
+  </div>
+
+@endif
 
 </x-app-layout>
