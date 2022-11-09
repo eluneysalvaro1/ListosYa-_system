@@ -66,7 +66,8 @@
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                 @if ($user->postulation_state == 'Espera')
                                 <span class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
-                                    Espera</span>
+                                    Espera
+                                </span>
                                 @elseif($user->postulation_state == 'Aceptada')
                                 <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
                                     Aceptado</span>
@@ -96,6 +97,9 @@
                             </td>
                             @if ($userProgram[0]->state !== 'finish')
                             <td class="flex justify-end mt-2.5">
+                                
+                                @if ($user->postulation_state !== 'Espera' && $user->postulation_state !== 'Rechazada')
+                                    
                                 <form method="post" action="{{route('staff.asistance', $user->user_id)}}">
                                     @csrf
                                     @method('POST')
@@ -104,6 +108,7 @@
                                         Asis.
                                     </button>
                                 </form>
+                                @endif
                                 <form method="post" action="{{route('staff.state', $user->user_id)}}">
                                     @csrf
                                     @method('POST')
