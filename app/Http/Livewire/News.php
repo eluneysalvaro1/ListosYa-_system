@@ -13,7 +13,7 @@ class News extends Component
     {
         $news = HTTP::get('https://listosya.org/framework/wp-json/wp/v2/posts/');
         $news = $news->json();
-       
+      
         return view('livewire.news', compact('news'));
     }
 

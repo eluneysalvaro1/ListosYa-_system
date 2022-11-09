@@ -9,13 +9,11 @@
     @if (Auth::user()->surname == null or Auth::user()->telephone_number == null or Auth::user()->birthday == null or Auth::user()->dni == null
     or Auth::user()->password == null or Auth::user()->ciudad_id == null )
      <x-slot name="form">
-        <x-slot name="title">
-            {{ __('Falta completar datos') }}
-        </x-slot>
-        <div class="mt-3 max-w-xl text-sm text-gray-600">
-            <p>
-                {{ __('Faltan completar datos, revise mas abajo') }}
-            </p>
+       
+        <div class="mt-3 max-w-xl text-sm text-red-600">
+            <h3>
+                {{ __('Faltan completar datos personales') }}
+            </h3>
         </div>
     </x-slot>
     @else

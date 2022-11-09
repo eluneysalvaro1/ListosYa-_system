@@ -54,16 +54,14 @@
         </div>
         <ul class="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6 ">La fundacion</a>
+                <a href="http://listosya.org" class="mr-4 hover:underline md:mr-6 ">La fundacion</a>
             </li>
-            <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Programas</a>
-            </li>
+           
             <li>
                 <a href="#" class="mr-4 hover:underline md:mr-6 ">Contacto</a>
             </li>
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6">Registrarse</a>
+                <a href="{{ route('register') }}" class="mr-4 hover:underline md:mr-6">Registrarse</a>
             </li>
             <li>
                 <div class="cho-container">

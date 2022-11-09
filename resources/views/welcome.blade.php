@@ -416,7 +416,7 @@
         @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
-            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panels</a>
+            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel del Voluntario</a>
             @else
             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
     
@@ -500,8 +500,11 @@
          
             {{-- muestra programas --}}
             <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
-
+                <h3 class="text-xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                    Proximos Programas
+                </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2">
+                   
                     @php
                     $ruta = '/images/programs/';
                     $count=0;
@@ -617,10 +620,16 @@
                 </div>
               </section>
               {{-- SECCION DE NOTICIAS --}}
-            <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                <div class="text-center text-sm text-gray-500 sm:text-left">
-                    <div class="flex items-center">
-                        @livewire('news')
+              <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
+                <h3 class="text-xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                    Ultimas Noticias
+                </h3>
+                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
+                    
+                    <div class="text-center text-sm text-gray-500 sm:text-left">
+                        <div class="flex items-center ">
+                            @livewire('news')
+                        </div>
                     </div>
                 </div>
             </div>

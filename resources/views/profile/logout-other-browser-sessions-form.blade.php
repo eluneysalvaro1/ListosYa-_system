@@ -17,7 +17,7 @@
 
     
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600">
+        <div class="max-w-xl text-sm text-gray-600 ">
            <form action=" {{route('users.data' , Auth::user()->id)}} " method="POST">
             @csrf
             @if (Auth::user()->surname == null)  
