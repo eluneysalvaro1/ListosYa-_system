@@ -117,8 +117,6 @@ class StaffProgramsController extends Controller
                         ->where('program_id' , $request->program_id)                
                         ->first();
 
-                        
-   
         if ($userProgram->asistance == null) {
             $userProgram->asistance = true;
            
@@ -162,7 +160,7 @@ class StaffProgramsController extends Controller
                         ->first();
        
         $user = User::find($id);
-        // dd($request->action, $request, $userProgram );
+      
 
         if ($userProgram->duo_id !== null) {
             $another = User::find($userProgram->duo_id);

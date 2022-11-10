@@ -265,49 +265,4 @@
 
 
 
-
-<button type="button" id="btnSearch" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Enviar</button>
-
-
-
-@php
-
-    $url = "https://www.facebook.com/";
-
-
-    $apikey = "ab3a23801c8021ca6390d925740a937acd48491ccec4";
-    $width  = 640;
-    //--- Make the call -------------------//
-    $fetchUrl = "https://api.thumbnail.ws/api/".$apikey ."/thumbnail/get?url=".urlencode($url)."&width=".$width;
-    $jpeg = file_get_contents($fetchUrl);
-    //--- Do something with the image -----//
-    /* file_put_contents("screenshot.jpg", $jpeg); */
-    header("Content-type: image/jpeg");
-
-    $jpeg;
-@endphp
-
-    <img src="{{$fetchUrl}}" alt="">
-<script>
-    let btnSearch = document.getElementById('btnSearch'),
-        responseInsert = document.getElementById('response')
-
-    btnSearch.addEventListener('click' , e => {
-       let url = document.getElementById('url').value,
-            apiKey = 'ab3a23801c8021ca6390d925740a937acd48491ccec4'
-        console.log("https://api.thumbnail.ws/api/"+apiKey+"/thumbnail/get?url="+url+"&width=500")
-      let date = fetch("https://api.thumbnail.ws/api/"+apiKey+"/thumbnail/get?url="+url+"&width=500")
-            .then((response) => responseInsert.innerHTML = `<iframe src="${"https://api.thumbnail.ws/api/"+apiKey+"/thumbnail/get?url="+url+"&width=500"}" frameborder="0">
-        
-    </iframe>`)
-            
-
-
-    })
-
-
-
-</script>
-
-
 </x-app-layout>
