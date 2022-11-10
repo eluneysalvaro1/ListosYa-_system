@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BlackList;
+use App\Models\User;
 use App\Models\UserProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,6 +45,16 @@ class BlackListController extends Controller
         //
     }
 
+
+    public function severityHandler($userId , $severity){
+        $user = User::find($userId);
+        if ($severity == 'Alta') {
+            $user->points = 0;
+            $user->save();
+        }
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -72,6 +83,9 @@ class BlackListController extends Controller
 
             $blackList->save();
 
+            $this->severityHandler($request->user_id , $request->severity);
+
+
             $userProgram = UserProgram::where('user_id', $request->user_id)
                 ->where('program_id', $request->program_id)
                 ->first();
@@ -88,6 +102,9 @@ class BlackListController extends Controller
             ]);
 
             $blackList->save();
+
+            $this->severityHandler($request->user_id , $request->severity);
+
 
             $userProgram = UserProgram::where('user_id', $request->user_id)
                 ->where('program_id', $request->program_id)
