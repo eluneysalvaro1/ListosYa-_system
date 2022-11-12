@@ -161,12 +161,12 @@ Route::get('/successful/{email}', function($email){
 })->name('successful');
 
 
-Route::get('/inscription/{email}' , function($email){
+// Route::get('/inscription/{email}' , function($email){
 
-    $correo = new InscriptionMailable;
+//     $correo = new InscriptionMailable;
 
-    Mail::to($email)->send($correo);
+//     Mail::to($email)->send($correo);
 
-    return redirect()->back(); 
-})->name('inscription');
+//     return redirect()->back(); 
+// })->name('inscription');
 
