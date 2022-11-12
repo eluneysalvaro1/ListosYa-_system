@@ -20,6 +20,11 @@
     
 
     <div class="mx-auto max-w-screen-xl text-center">
+        <div class="text-center text-sm text-gray-500 sm:text-left">
+            <div class="flex items-center ">
+                @livewire('qr-generator')
+            </div>
+        </div>
         <a href="#" class="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
             <img src=" {{asset('../images/logolistosya.png')}} " alt="listosya" width="50">
             Fundacion Listos Ya
