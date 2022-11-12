@@ -173,7 +173,7 @@ class StaffProgramsController extends Controller
             $userProgram->save();
 
             
-            $correo = new InscriptionMailable;
+            $correo = new InscriptionMailable($id);
             
             $email = $user->email;
             

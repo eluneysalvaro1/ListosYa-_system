@@ -180,6 +180,30 @@ class ProgramController extends Controller
         return view('programs.info' , compact('program' , 'userProgram'));
     }
 
+
+
+    public function myInscriptions(){
+        $id = Auth::user()->id;
+        $programs = DB::table('user_programs')
+                    ->where('user_id' , $id)
+                    ->join('programs' , 'programs.id' , '=' , 'user_programs.program_id')
+                    ->get([
+                        'user_programs.user_id as user_id' , 'programs.id as program_id' , 'user_programs.program_id as pr', 
+                        'programs.name as program_name' , 'programs.place_event as program_place_event', 'programs.program_image as program_image',
+                        'user_programs.postulation_state as postulation_state'
+                    ]);
+        
+        // UserProgram::where('user_id' , $id)->get();
+        
+        // dd($programs);
+
+        return view('programs.myInscription' , compact('programs'));
+    }
+
+
+
+
+
     public function inscribe(Request $request){
         
         if($request->duo_id !== null && $request->turn !== null){

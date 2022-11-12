@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('password')->nullable();
             $table->foreignId('role_id')->constrained();
             $table->foreignIdFor(Ciudad::class)->nullable();
+            $table->string('direction')->nullable();
+            $table->string('instagram')->nullable();
             $table->integer('points'); 
             $table->string('telephone_number')->nullable();
             $table->rememberToken();

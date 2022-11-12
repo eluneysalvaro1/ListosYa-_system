@@ -2,10 +2,12 @@
 
 namespace App\Mail;
 
+use App\Models\UserProgram;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Auth;
 
 class InscriptionMailable extends Mailable
 {
@@ -18,9 +20,9 @@ class InscriptionMailable extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($id)
     {
-        //
+        $this->user_id = $id;
     }
 
     /**
@@ -30,7 +32,17 @@ class InscriptionMailable extends Mailable
      */
     public function build()
     {
+       
+     
 
-        return $this->view('mails.inscription');
+        $userId = $this->user_id;
+
+        $program = UserProgram::where('user_id' , $userId)
+                    ->where('postulation_state' , 'Aceptada')
+                    ->latest()->first();
+
+        $programId = $program->id;
+
+        return $this->view('mails.inscription' , compact('userId' , 'programId'));
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlackListController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserProgramController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StaffProgramsController;
 use Laravel\Socialite\Facades\Socialite;
@@ -79,16 +80,20 @@ Route::middleware([
     Route::get('/programs/all' , [ProgramController::class, 'showAllPrograms'])->middleware('can:all programs')->name('programs.all');
     Route::post('/programs/inscribe' , [ProgramController::class, 'inscribe'])->name('programs.inscription');
     Route::get('/programs/management' , [ProgramController::class, 'management'])->middleware('can:management programs')->name('programs.management');
+    Route::get('/programs/myInscriptions' , [ProgramController::class, 'myInscriptions'])->name('programs.myInscriptions');
     Route::patch('/users/update/{id}' , [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/destroy/{id}' , [UserController::class, 'destroy'])->name('users.destroy');
     Route::post('/users/delete/{id}',[UserController::class , 'deleteUser'])->name('users.delete');
     Route::post('/categories/delete/{id}' , [CategoryController::class , 'deleteCategory'])->name('categories.delete');
     Route::post('/categories/destroy/{id}' , [CategoryController::class , 'destroyCategory'])->name('categories.destroy');
     Route::get('/programs/inscription/{id}' , [ProgramController::class , 'inscription'])->name('programs.inscribe');
+    Route::post('/programs/down' , [UserProgramController::class , 'down'])->name('programs.down');
     Route::get('/staff/postulants/{id}', [StaffProgramsController::class , 'show'])->name('staff.postulant');
     Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->name('staff.asistance');
     Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->name('staff.state');
+
     Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->name('staff.asignate');
+    Route::get('/programs/download-contract/{user}' , [UserProgramController::class, 'downloadContract'])->name('programs.downloadContract');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
