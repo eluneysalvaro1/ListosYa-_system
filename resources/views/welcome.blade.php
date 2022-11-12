@@ -620,12 +620,9 @@
                 </div>
               </section>
               {{-- SECCION DE NOTICIAS --}}
+              
               <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
-                <div class="text-center text-sm text-gray-500 sm:text-left">
-                    <div class="flex items-center ">
-                        @livewire('qr-generator')
-                    </div>
-                </div>
+                
                 <h3 class="text-xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
                     Ultimas Noticias
                 </h3>
