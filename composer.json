@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.11",
@@ -14,7 +15,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.5",
         "mercadopago/dx-php": "^2.5",
-        "simplesoftwareio/simple-qrcode": "~2",
+        "simplesoftwareio/simple-qrcode": "~4",
         "socialiteproviders/facebook": "^4.1",
         "spatie/laravel-flash": "^1.9",
         "spatie/laravel-permission": "^5.5",

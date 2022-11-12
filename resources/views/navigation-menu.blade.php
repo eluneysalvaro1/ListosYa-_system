@@ -58,7 +58,13 @@
                                     Calendario
                                 </a>
                             </li>
-                            
+                            @if (Auth::user()->role_id == 3)
+                            <li>
+                                <a class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="{{ route('programs.myInscriptions') }}">
+                                    Mis inscripciones
+                                </a>
+                            </li>
+                            @endif
                         </ul>
                         
                     </div>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('program_id')->constrained();
             $table->foreignId('duo_id')->constrained('users')->nullable()->default(null);
             $table->integer('turn')->nullable()->default(null);
-            $table->enum('postulation_state', ['Espera' , 'Aceptada' , 'Rechazada']);
+            $table->enum('postulation_state', ['Espera' , 'Aceptada' , 'Rechazada', 'Baja']);
             $table->boolean('asistance')->nullable();
             $table->string('observation')->nullable();
             $table->boolean('qualified')->nullable();

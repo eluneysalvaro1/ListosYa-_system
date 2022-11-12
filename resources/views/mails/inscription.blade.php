@@ -53,6 +53,8 @@
         background: #12AA86;
         }
         
+
+     
 </style>
 
 
@@ -66,11 +68,16 @@
     <div class="content">
         <p>Ha sid@ seleccionad@ para participar del programa de Listos Ya! Esté atent@ a la información proporcionada por la organización. Puede ver en su perfil los programas en los que está activ@. Preparad@ Listos Ya!
         </p>
+   
+        <a href="{{route('programs.downloadContract' , $userId)}}" >Al dar click aquí acepta los Términos y Condiciones. Podrá descargar el contrato de voluntariado.</a>
+    
     </div>
     
+
+
     <div class="footer">
         <img src=" {{asset('../images/logolistosya.png')}} " alt="listosya">
-        <a href=" http://127.0.0.1:8000/">Volver</a>
+        <a href="http://127.0.0.1:8000/">Volver</a>
     </div>
 
 

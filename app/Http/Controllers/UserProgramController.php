@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlackList;
 use App\Models\Program;
 use App\Models\User;
 use App\Models\UserProgram;
@@ -80,6 +81,63 @@ class UserProgramController extends Controller
         return $response;
     }
     
+
+
+
+    public function downloadContract($id){
+        $user = User::find($id);
+
+        $userProgram = UserProgram::where('user_id' , $id)
+                    ->where('postulation_state' , 'Aceptada')
+                    ->latest()->first();
+
+        $program = Program::find($userProgram->program_id);
+        
+
+        
+
+    }
+
+
+
+
+
+    public function down(Request $request){
+        
+
+        if ($request->postulation_state == 'Espera') {
+            $userProgram = UserProgram::where('user_id' , $request->user_id)
+                           ->where('program_id' , $request->program_id)
+                            ->first();
+                            
+            $userProgram->postulation_state = 'Baja';
+            $userProgram->save();
+        }elseif ($request->postulation_state == 'Aceptada') {
+            
+            $userProgram = UserProgram::where('user_id' , $request->user_id)
+                           ->where('program_id' , $request->program_id)
+                            ->first();
+                            
+            $userProgram->postulation_state = 'Baja';
+            $userProgram->save();
+
+
+            $blackList = BlackList::create([
+                'user_id' => $request->user_id,
+                'motive' => 'Se dió de baja en un programa estando aceptad@.',
+                'program_id' => $request->program_id,
+                'severity' => 'Intermedia',
+                'date' => date('Y-m-d H:i:s'),
+            ]);
+
+            $blackList->save();
+
+        }
+
+        flash('Se ha dado de baja satistactoriamente', 'success');
+        return redirect()->back();
+
+    }
 
 
     public static function verifyCountWithoutTurn($programId){
