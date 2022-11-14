@@ -1,8 +1,6 @@
 <div>
     <div id="muestra-ciudad">
         @if ($ciudad !== null)
-            
-        
         <div >
             Ciudad:
             {{ $ciudad->nombre }}
@@ -24,21 +22,30 @@
             type="button" id="mostrar-combo">Editar</button>
     </div>
     @else
-    <div id="combo-provincia" >
-        @livewire('combo-provincia')
-    </div>
+        <div id="combo-provincia" >
+            @livewire('combo-provincia')
+        </div>
 
     @endif
    
     <script>
         let combo = document.getElementById('combo-provincia'),
             muestraCiudad = document.getElementById('muestra-ciudad'),
-            mostrarComboBtn = document.getElementById('mostrar-combo')
+            mostrarComboBtn = document.getElementById('mostrar-combo'),
+            ciudad = document.getElementById('ciudad'),
+            provincia = document.getElementById('provincia')
+
+            ciudad.removeAttribute('required' , 'false')
+            provincia.removeAttribute('required' , 'false')
+
+
 
         document.addEventListener('click', e => {
             if (e.target == mostrarComboBtn) {
                 muestraCiudad.classList.add('hidden')
                 combo.classList.remove('hidden')
+                ciudad.setAttribute('required' , '')
+            provincia.setAttribute('required' , '')
             }
         })
     </script>

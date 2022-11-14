@@ -55,6 +55,20 @@
                 </div>
             @endif
 
+            @if (Auth::user()->direction == null)
+            <div class="col-span-6 sm:col-span-4 mt-3">
+                <x-jet-label for="direction" value="Dirección domicilio" />
+                <x-input name="direction" class="mt-1 block w-full" type="text" required/>
+            </div>
+        @endif
+
+        @if (Auth::user()->instagram == null)
+        <div class="col-span-6 sm:col-span-4 mt-3">
+            <x-jet-label for="instagram" value="Instagram" />
+            <x-input name="instagram" class="mt-1 block w-full" type="text" required/>
+        </div>
+    @endif
+
             @if (Auth::user()->ciudad_id == null)
             <div class="mt-4">
                 <livewire:combo-provincia />

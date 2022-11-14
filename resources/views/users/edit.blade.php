@@ -46,6 +46,20 @@
                                             value="{{ $user->dni }}" required>
                                     </div>
                                     <div class="mb-2">
+                                        <label for="direction"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dirección</label>
+                                        <input type="text" name="direction" id="direction" 
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            value="{{ $user->direction }}" required>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="instagram"
+                                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Dni</label>
+                                        <input type="text" name="instagram" id="instagram" 
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                                            value="{{ $user->instagram }}" required>
+                                    </div>
+                                    <div class="mb-2">
                                         <label for="rol"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rol</label>
                                         <select name="role_id" id=""
@@ -65,8 +79,7 @@
                                             @endif
                                         </select>
                                     </div>
-                                    <div
-                                        class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                    <div class="mb-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
                                         @livewire('obtener-ciudad', ['idCiudad' => $user->ciudad_id])
 
                                     </div>

@@ -7,6 +7,7 @@ use App\Models\Program;
 use App\Models\User;
 use App\Models\UserProgram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserProgramController extends Controller
 {
@@ -93,7 +94,11 @@ class UserProgramController extends Controller
 
         $program = Program::find($userProgram->program_id);
         
-
+        $ciudad = DB::table('ciudads')
+                    ->join('users' , 'users.ciudad_id' , '=' , 'ciudads.id')
+                    ->get([
+                        'ciudads.name as ciudadName' , 'ciudads.provincia as provinciaName'
+                    ]);
         
 
     }
