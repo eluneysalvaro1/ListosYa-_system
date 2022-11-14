@@ -34,6 +34,8 @@ class User extends Authenticatable
         'telephone_number',
         'role_id',
         'dni',
+        'direction',
+        'instagram',
         'points',
         'external_id',
         'profile_photo_path',

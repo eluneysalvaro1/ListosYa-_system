@@ -70,6 +70,17 @@ class UserController extends Controller
             ]);
         }
 
+        if ($user->direction == null && $request->direction !== null) {
+            $user->update([
+                "direction" => $request->direction
+            ]);
+        }
+
+        if ($user->instagram == null && $request->instagram !== null) {
+            $user->update([
+                "instagram" => $request->instagram
+            ]);
+        }
 
         $email = $user->email;
 
@@ -115,6 +126,8 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email,
                 'dni' => $request->dni,
+                "direction" => $request->direction,
+                "instagram" => $request->instagram,
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
@@ -125,6 +138,8 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email,
                 'dni' => $request->dni,
+                "direction" => $request->direction,
+                "instagram" => $request->instagram,
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
@@ -135,6 +150,8 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email,
                 'dni' => $request->dni,
+                "direction" => $request->direction,
+                "instagram" => $request->instagram,
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
@@ -145,6 +162,8 @@ class UserController extends Controller
                 'surname' => $request->surname,
                 'email' => $request->email,
                 'dni' => $request->dni,
+                "direction" => $request->direction,
+                "instagram" => $request->instagram,
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
