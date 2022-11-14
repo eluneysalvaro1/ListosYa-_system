@@ -8105,7 +8105,11 @@
                     "type": "open_collective"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-11-11T16:20:40+00:00"
+=======
+            "time": "2022-11-11T08:25:41+00:00"
+>>>>>>> 1cea7f3dcc1d95cabdea41e442ad3cc55b17e3a0
         },
         {
             "name": "laravel-lang/publisher",
@@ -10409,5 +10413,13 @@
         "php": "^8.0.2"
     },
     "platform-dev": [],
+<<<<<<< HEAD
     "plugin-api-version": "2.3.0"
+=======
+<<<<<<< HEAD
+    "plugin-api-version": "2.3.0"
+=======
+    "plugin-api-version": "2.0.0"
+>>>>>>> 1ab3c9db4676271822ee34010cf298220eec5c9a
+>>>>>>> 1cea7f3dcc1d95cabdea41e442ad3cc55b17e3a0
 }
