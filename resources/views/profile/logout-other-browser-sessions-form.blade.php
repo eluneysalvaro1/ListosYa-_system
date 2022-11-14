@@ -9,8 +9,7 @@
 
     @if (Auth::user()->surname !== null && Auth::user()->dni !== null && 
          Auth::user()->telephone_number !== null && Auth::user()->birthday !== null && Auth::user()->ciudad_id !== null && Auth::user()->password !== null 
-         && Auth::user()->direction !== null && Auth::user()->instagram !== null
-         )
+         && Auth::user()->direction !== null && Auth::user()->instagram !== null)
      <x-slot name="content">
         Toda la informacion ha sido cargada con éxito. Ya puede inscribirse a los diferentes programas.
         </x-slot>
