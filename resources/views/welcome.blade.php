@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" type="image/png" href="{{ asset('/imgages/faviconly.ico') }}">
+    <link rel="shortcut icon" sizes="192x192" href="{{ asset('/imgages/faviconly.ico') }}">
     <title>Listos Ya</title>
 
     <!-- Fonts -->

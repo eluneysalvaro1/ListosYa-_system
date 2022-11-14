@@ -57,10 +57,11 @@ class ProgramController extends Controller
         $staffPrograms = DB::table('staff_programs')
                         ->join('programs' , 'staff_programs.program_id' , '=' , 'programs.id')
                         ->where('staff_programs.user_id' , $user)
+                        ->orderBy('state','desc')
                         ->get([
                             'programs.name as name' , 'programs.place_event as place_event' , 'programs.state as state',
                              'staff_programs.user_id as staffUserId' , 'programs.program_image as program_image' , 'programs.id as id'
-                        ])->groupBy('state');
+                        ]);
                         
         
 
