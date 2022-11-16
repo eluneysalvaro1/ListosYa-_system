@@ -28,7 +28,7 @@
                             <th class="py-3 px-6 text-center">Nombre</th>
                             <th class="py-3 px-6 text-center">Apellido</th>
                             <th class="py-3 px-6 text-center">Email</th>
-                            
+                            <th class="py-3 px-6 text-center">Instagram</th>
                             <th class="py-3 px-6 text-center">Número de teléfono</th>
                             <th class="py-3 px-6 text-center">Rol</th>
                             <th class="py-3 px-6 text-right">Acciones</th>
@@ -51,9 +51,20 @@
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $user->name }}</td>
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $user->surname }}</td>
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">{{ $user->email }}</td>
+                            <td class="py-3 px-6 text-left whitespace-nowrap text-center">
+                                @php
+                                    $vinculoInstagram = "https://www.instagram.com/".$user->instagram;
+                                    
+                                @endphp
+                                <a href="{{ $vinculoInstagram }}" target="_blank">{{ $user->instagram }}</a>
+                                </td>
                             
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">
-                                {{ $user->telephone_number }}</td>
+                                @php
+                                    $vinculoWapp = "https://wa.me/549".$user->telephone_number;  
+                                @endphp
+                                <a href="{{ $vinculoWapp }}" target="_blank">
+                                {{ $user->telephone_number }}</a></td>
                             <td class="py-3 px-6 text-left whitespace-nowrap text-center">
                                 @if ($user->role_id == 1)
                                     {{ 'Admin' }}

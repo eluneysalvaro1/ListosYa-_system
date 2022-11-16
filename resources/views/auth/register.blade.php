@@ -43,7 +43,13 @@
                 <x-jet-label for="birthday" value="{{ __('Fecha de nacimiento') }}" />
                 <x-input id="birthday" class="block mt-1 w-full" type="date" name="birthday" :value="old('birthday')" required />
             </div>
-            
+            <div class="mt-4">
+                <x-jet-label for="instagra," value="{{ __('Instagram') }}" />
+                <x-input id="instagram" class="block mt-1 w-full" type="text" name="instagram" :value="old('instagram')" required />
+            </div><div class="mt-4">
+                <x-jet-label for="direction" value="{{ __('Direccion') }}" />
+                <x-input id="direction" class="block mt-1 w-full" type="text" name="direction" :value="old('direction')" required />
+            </div>
             <div class="mt-4">
                 <livewire:combo-provincia />
              </div>
