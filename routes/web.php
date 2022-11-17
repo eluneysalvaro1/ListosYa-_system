@@ -52,7 +52,14 @@ Route::middleware([
 
         $count = count($userProgram);
 
-        return view('dashboard', compact('count'));
+
+        $usersWithPoints = User::orderBy('points' , 'desc')
+                            ->take(10)
+                            ->get();
+
+        
+
+        return view('dashboard', compact('count' , 'usersWithPoints'));
     })->name('dashboard');
 
     Route::get('profile' , function() {
