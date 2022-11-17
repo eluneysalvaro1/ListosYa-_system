@@ -6,6 +6,7 @@ use App\Models\BlackList;
 use App\Models\Program;
 use App\Models\User;
 use App\Models\UserProgram;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -96,10 +97,12 @@ class UserProgramController extends Controller
         
         $ciudad = DB::table('ciudads')
                     ->join('users' , 'users.ciudad_id' , '=' , 'ciudads.id')
+                    ->where('ciudads.id' , '=' , $user->ciudad_id)
                     ->get([
-                        'ciudads.name as ciudadName' , 'ciudads.provincia as provinciaName'
+                        'ciudads.nombre as ciudadName' , 'ciudads.provincia as provinciaName'
                     ]);
-        
+        $pdf = Pdf::loadView('programs.volunteerContract' ,compact('user' , 'userProgram' , 'program' , 'ciudad'));
+        return $pdf->download('contrato_voluntariado.pdf');
 
     }
 
