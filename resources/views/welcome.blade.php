@@ -428,11 +428,30 @@
             @endauth
         </div>
         @endif
+        @if (Route::has('login'))
+        <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth
+            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel del Voluntario</a>
+            @else
+            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
+    
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
+            @endif
+            @endauth
+        </div>
+        @endif
        
         
 
+<<<<<<< HEAD
+        <div class="max-w-6xl mx-auto p-4 sm:px-6 lg:px-8">
+            <ul class="grid gap-6 w-full md:grid-cols-2">
+=======
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <ul style="margin-top: 4rem" class="grid gap-6 w-full md:grid-cols-2">
+>>>>>>> 33d0aeaccc5482b2acc18403eef78b783a5b8716
                 <li>
                     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                         <img src="{{ asset('/images/billetera_vertical.png') }}" alt="" style="width:128px;">
