@@ -48,9 +48,30 @@
                 align-items: center;
                 height: 100%;
             }
+
+            @media (max-width: 1000px) {
+                #container {
+                    display: flex;
+                    margin: auto;
+                    align-items: center;
+                    justify-content: space-evenly;
+                    flex-direction: column;
+                }
+                #card {
+                margin-top: 3rem;
+                width: 65%;
+                max-width: 400px;
+                border-radius: 10px;
+                box-shadow: -1px 0px 12px -3px rgba(0, 0, 0, 0.75);
+                -webkit-box-shadow: -1px 0px 12px -3px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: -1px 0px 12px -3px rgba(0, 0, 0, 0.75);
+            }
+            }
+
+
         </style>
 
-        <div id="container" class="flex">
+        <div id="container" class="flex justify-center">
 
             <div id="card">
                 <div class="contenedor">
@@ -124,7 +145,7 @@
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->points }}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
-                        <a href="{{ route('programs.index') }}"
+                        <a href="{{ route('programs.all') }}"
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar
                             mas puntos</a>
                     </div>
@@ -137,7 +158,7 @@
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{ Auth::user()->points }}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
-                        <a href="{{ route('programs.index') }}"
+                        <a href="{{ route('programs.all') }}"
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar
                             mas puntos</a>
                     </div>
@@ -150,12 +171,44 @@
                 <div class="flex flex-col items-center pb-10">
                     <h1 class="mb-2 text-9xl font-bold text-gray-900 dark:text-white">{{$count}}</h1>
                     <div class="flex mt-4 space-x-3 md:mt-6">
-                        <a href="{{ route('programs.index') }}"
+                        <a href="{{ route('programs.all') }}"
                             class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Sumar
                             mas puntos</a>
                     </div>
                 </div>
             </div>
+        </div>
+        @php
+            $count = 0;
+        @endphp
+        <div style="" class="overflow-x-auto relative w-1/2 mx-auto">
+            <h2 class="mb-3 text-center text-3xl font-bold tracking-tight p-2.5 text-gray-900 dark:text-white">Participantes con mas puntos</h2>
+            <table class="w-full text-sm text-left mx-28 mt-2.5 text-gray-500 dark:text-gray-400">
+                <thead style="background: #2B2B2B;" class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                  <tr >
+                    <th style="font-size: 16px;" class="py-3 px-6 text-light">Nombre y apellido</th>
+                    <th style="font-size: 16px;" class="py-3 px-6 text-light">Puntos</th>
+                  </tr>
+                </thead>
+                @foreach ($usersWithPoints as $user)
+                @if ($count % 2 == 0)
+                <tbody style="background:#C6C6C6;" class="text-gray-800 text-sm font-light bg-white">
+                @else
+                <tbody style="background:#C6C6C690;"  class="text-gray-800 text-sm font-light bg-gray-100">
+                @endif
+                @php
+                    $count++;
+                @endphp
+               
+                        <tr>
+                            <td style="font-weight: 700" class="py-3 px-6">{{$user->name}} {{$user->surname}}</td>    
+                            <td style="font-weight: 700" class="py-3 px-6">{{$user->points}}</td>    
+                        </tr>
+                        
+                        
+                    </tbody>
+                    @endforeach
+              </table>
         </div>
 
     @else
