@@ -53,7 +53,14 @@ Route::middleware([
 
         $count = count($userProgram);
 
-        return view('dashboard', compact('count'));
+
+        $usersWithPoints = User::orderBy('points' , 'desc')
+                            ->take(10)
+                            ->get();
+
+        
+
+        return view('dashboard', compact('count' , 'usersWithPoints'));
     })->name('dashboard');
 
     Route::get('profile' , function() {
@@ -89,12 +96,13 @@ Route::middleware([
     Route::post('/categories/destroy/{id}' , [CategoryController::class , 'destroyCategory'])->name('categories.destroy');
     Route::get('/programs/inscription/{id}' , [ProgramController::class , 'inscription'])->name('programs.inscribe');
     Route::post('/programs/down' , [UserProgramController::class , 'down'])->name('programs.down');
-    Route::get('/staff/postulants/{id}', [StaffProgramsController::class , 'show'])->name('staff.postulant');
-    Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->name('staff.asistance');
-    Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->name('staff.state');
-
-    Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->name('staff.asignate');
+    Route::get('/staff/postulants/{id}', [StaffProgramsController::class , 'show'])->middleware('can:show postulants')->name('staff.postulant');
+    Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->middleware('can:asist postulants')->name('staff.asistance');
+    Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->middleware('can:state postulants')->name('staff.state');
+    Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->middleware('can:asignate postulants')->name('staff.asignate');
     Route::get('/programs/download-contract/{user}' , [UserProgramController::class, 'downloadContract'])->name('programs.downloadContract');
+
+    Route::get('/staff/deleteUserStaff' , [StaffProgramsController::class , 'staffUserDelete'])->name('staff.userDelete');
 
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');

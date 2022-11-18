@@ -415,7 +415,21 @@
 
    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
-        <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth
+            <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel del Voluntario</a>
+            @else
+            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Ingresar</a>
+    
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}"
+                class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Registrarse</a>
+            @endif
+            @endauth
+        </div>
+        @endif
+        @if (Route::has('login'))
+        <div class="fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
             <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Panel del Voluntario</a>
             @else
@@ -432,21 +446,18 @@
         
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <ul class="grid gap-6 w-full md:grid-cols-2">
-                <li>
+            <ul style="margin-top: 4rem" class="grid gap-6 w-full md:grid-cols-2">
+                    <li>
                     <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                         <img src="{{ asset('/images/billetera_vertical.png') }}" alt="" style="width:128px;">
                     </div>
                 </li>
                 <li>
-                    <div class="max-w-lg text-3xl font-semibold leading-relaxed text-gray-900 dark:text-white">
-                        <h1>
-                            La Billetera del Voluntariado
-                        </h1>
-                        <p> Sistema de Gestion de Voluntarios de la Fundacion Listos Ya!</p>
+                    <div class="max-w-lg text-3xl  font-semibold leading-relaxed text-gray-900 dark:text-white">
+                        <p class="text-center p-2.5">La Billetera del Voluntariado - Sistema de Gestion de Voluntarios de la Fundacion Listos Ya!</p>
                         </div>
                     <div class="item-center">
-                        <div class="flex mt-10">
+                        <div style="display: flex; justify-content: center;" class="flex mt-10">
                             <a href="https://www.facebook.com/listosya.org"
                                 class="text-green-500 hover:text-green-900 dark:hover:text-white">
                                 <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -501,7 +512,7 @@
          
             {{-- muestra programas --}}
             <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
-                <h3 class="text-xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                <h3 class="text-2xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
                     Proximos Programas
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2">
@@ -624,7 +635,7 @@
               
               <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
                 
-                <h3 class="text-xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
+                <h3 class="text-3xl  m-5 text-center font-bold tracking-tight text-gray-900 dark:text-white">
                     Ultimas Noticias
                 </h3>
                

@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="mx-5 w-full">
         <div class="p-10  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-            <div class="w-1/2 p-10">
+            <div style="width: 80%" class=" p-10">
                 <div class="bg-white shadow-md rounded my-6 p-5">
                     <div class="flex flex-col justify-center items-center pt-5">
                         <h2 class="ml-2 text-xl font-semibold text-gray-800 dark:text-gray-800">Crear programa</h2>
