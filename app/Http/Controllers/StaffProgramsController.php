@@ -11,6 +11,7 @@ use App\Models\UserProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Spatie\Flash\Flash;
 
 class StaffProgramsController extends Controller
 {
@@ -111,6 +112,22 @@ class StaffProgramsController extends Controller
 
         return view('staff.usersProgram', compact('userProgram', 'duo'));
     }
+
+
+
+public function staffUserDelete(Request $request){
+    $user = StaffPrograms::where('user_id' , $request->user_id)
+                    ->where('program_id' , $request->program_id)
+                    ->get();
+
+    $user[0]->delete();
+
+
+    flash('Usuario staff borrado con éxito', 'success');
+    return back()->withInput();
+}
+
+
 
     public function asistance(Request $request ,$id ){
         $userProgram = UserProgram::where('user_id' , $id)
