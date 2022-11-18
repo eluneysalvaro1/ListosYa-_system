@@ -44,6 +44,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+    Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
     Route::get('/dashboard', function () {
 
         
@@ -100,7 +101,9 @@ Route::middleware([
     Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->middleware('can:state postulants')->name('staff.state');
     Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->middleware('can:asignate postulants')->name('staff.asignate');
     Route::get('/programs/download-contract/{user}' , [UserProgramController::class, 'downloadContract'])->name('programs.downloadContract');
+
     Route::get('/staff/deleteUserStaff' , [StaffProgramsController::class , 'staffUserDelete'])->name('staff.userDelete');
+
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
