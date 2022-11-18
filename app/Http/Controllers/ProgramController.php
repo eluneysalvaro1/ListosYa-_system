@@ -161,7 +161,23 @@ class ProgramController extends Controller
     public function edit($id)
     {
         $program= Program::find($id);
-        return view("programs.edit",compact("program"));
+        $categories = Category::all();
+
+
+        $staffUsers = DB::table('staff_programs')
+                      ->where('program_id' , $id)
+                      ->join('users' , 'users.id' , '=' , 'staff_programs.user_id')
+                      ->get([
+                        'users.name as userName' , 'users.surname as userSurname' , 'users.id as userId', 
+                        'staff_programs.program_id as program_id'
+                      ]);
+
+
+        // $staffUsers = StaffPrograms::where('program_id' , $id)
+        //                 ->get();
+
+
+        return view("programs.edit",compact("program" , 'categories' , 'staffUsers'));
     }
 
 
@@ -358,6 +374,8 @@ class ProgramController extends Controller
     {
        $program = Program::find($id);
 
+   
+
         $program->update([
             'name' => $request->name,
             'start_date' => $request->start_date,
@@ -367,6 +385,7 @@ class ProgramController extends Controller
             'volunteer_limit' =>$request->volunteer_limit,
             'place_event' => $request->place_event,
             'program_points' => $request->program_points,
+            'category_id' => $request->category_id, 
             'duo' => $request->duo == 'on' ? true : false,
             'turn' => $request->turn == 'on' ? true : false,
             'state' => $request->state,
