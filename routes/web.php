@@ -39,7 +39,7 @@ Route::get('/', function () {
     return view('welcome',compact('programs'));
 });
 Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
-Route::get('/check/asistance/{id}', [App\Http\Controllers\CheckController::class , 'asistance'])->name('check.asistance');
+Route::post('/check/asistance/{id}', [App\Http\Controllers\CheckController::class , 'asistance'])->name('check.asistance');
 
 Route::middleware([
     'auth:sanctum',
