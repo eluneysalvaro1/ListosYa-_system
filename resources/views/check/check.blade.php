@@ -37,7 +37,7 @@
                                 </h3>
                                 @elseif($userProgram->asistance == 1)
                                 <span
-                                    class="bg-green-100 font-normal text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
+                                    class="bg-green-100 font-normal text-green-800  font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
                                     Ya marcaste tu Asistencia
 
                                 </span>
