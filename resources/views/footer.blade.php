@@ -59,7 +59,7 @@
             </li>
            
             <li>
-                <a href="#" class="mr-4 hover:underline md:mr-6 ">Contacto</a>
+                <a href="https://listosya.org/institucional/contactanos/contacto" class="mr-4 hover:underline md:mr-6 ">Contacto</a>
             </li>
             <li>
                 <a href="{{ route('register') }}" class="mr-4 hover:underline md:mr-6">Registrarse</a>
@@ -75,7 +75,9 @@
 
         </ul>
         <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="#"
-                class="hover:underline">Listos Ya</a>. Derechos Reservados. Programacion Grupo Witrun</span>
+                class="hover:underline">Listos Ya</a>. Derechos Reservados. 
+                <a href="https://jotaweb.com.ar/grupo-witrun/"
+                class="hover:underline">Programacion Grupo Witrun</a></span>
     </div>
    
     {{-- // SDK MercadoPago.js V2 --}}
