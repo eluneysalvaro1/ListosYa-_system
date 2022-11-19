@@ -42,7 +42,7 @@
                 </td>
                 </br>
                 @if ($userProgram->asistance !== 1)
-                <form method="post" action="{{route('staff.asistance', $userProgram->user_id)}}">
+                <form method="post" action="{{route('check.asistance', $userProgram->user_id)}}">
                     @csrf
                     @method('POST')
                     <input type="text" class="hidden" name="program_id" value="{{$userProgram->program_id}}">

@@ -38,13 +38,15 @@ Route::get('/', function () {
     $programs = Program::all();
     return view('welcome',compact('programs'));
 });
+Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
+Route::get('/check/asistance/{id}', [App\Http\Controllers\CheckController::class , 'asistance'])->name('check.asistance');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
+   
     Route::get('/dashboard', function () {
 
         

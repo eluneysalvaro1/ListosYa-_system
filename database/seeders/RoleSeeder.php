@@ -48,5 +48,8 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'create blacklist'])->syncRoles([$admin,$staff]);
         Permission::create(['name' => 'delete blacklist'])->syncRoles([$admin,$staff]);
 
+        Permission::create(['name' => 'show check'])->syncRoles([$admin,$staff,$general]);
+        Permission::create(['name' => 'asist check'])->syncRoles([$admin,$staff,$general]);
+
     }
 }
