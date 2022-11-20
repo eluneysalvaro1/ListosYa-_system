@@ -47,19 +47,19 @@
 
         <div class="flex flex-col items-center justify-center">
 
-            <x-jet-button class="mt-6 mx-auto">
+            <x-button class="mt-6 mx-auto">
                 <a class="flex items-center justify-center" href="/login-google">
                     <h6 class="pr-4 font-semibold " >Iniciar sesión con Google</h6>
                     <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">
                 </a>
-            </x-jet-button>
+            </x-button>
     
-            <x-jet-button class="mt-6 mx-auto">
+            <x-button class="mt-6 mx-auto">
                 <a class="flex items-center justify-center"  href="">
                     <h6 class="pr-4 font-semibold">Iniciar sesión con Facebook</h6>
                     <img width="25px" src=" {{asset("../images/facebook-icon.svg")}} " alt="iniciar sesion con facebook">
                 </a>
-            </x-jet-button>
+            </x-button>
         </div>
         
     
