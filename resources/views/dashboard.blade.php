@@ -134,10 +134,21 @@
 
 
         </style>
+         <div id="container" class="mx-4 my-4 flex justify-center p-5 m-5">
+            <div
+                class="w-full max-w-6xl bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white p-5 m-5">
+                    Sistema de Puntos: El sistema de puntos esta relacionado, con el programa, la cantidad horas de
+                    volluntariado
+                    y el nivel de responsabilidad llevado en el mismo</h3>
+                <h5 class="mt-2 mb-2 text-center text-lg font-bold tracking-tight text-gray-900 dark:text-white p-5 m-5">
+                Se tendran en cuenta, asistencia, baja en tiempo y forma, horario de ingreso pactado, si la tarea asignada fue cumplida, etc.</h5>
+    
 
-
-
+            </div>
+        </div>
         <div id="container" class="mx-4 my-4 flex justify-center">
+           
             <div
                 class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <h3 class="mt-2 mb-2 text-center text-2xl font-bold tracking-tight text-gray-900 dark:text-white">

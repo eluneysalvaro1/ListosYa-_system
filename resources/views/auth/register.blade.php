@@ -7,7 +7,22 @@
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
+        <div class="flex flex-col items-center justify-center">
 
+            <x-jet-button class="mt-6 mx-auto">
+                <a class="flex items-center justify-center bg-green-600" href="/login-google">
+                    <h6 class="pr-4 font-semibold " >Iniciar sesión con Google</h6>
+                    <img src=" {{asset("../images/google-icon.svg")}} " alt="iniciar sesion con google">
+                </a>
+            </x-jet-button>
+    
+            <x-jet-button class="mt-6 mx-auto">
+                <a class="flex items-center justify-center"  href="">
+                    <h6 class="pr-4 font-semibold">Iniciar sesión con Facebook</h6>
+                    <img width="25px" src=" {{asset("../images/facebook-icon.svg")}} " alt="iniciar sesion con facebook">
+                </a>
+            </x-jet-button>
+        </div>
         
 
         <form method="POST" action="{{ route('register') }}">

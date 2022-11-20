@@ -12,9 +12,16 @@
                         <div class=" w-full flex flex-col justify-between p-4 leading-normal">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$program->name}}</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lugar del Programa: {{$program->place_event}}</p>
+                            @if ($program->duo == True)
+                                <h3 class="bg-yellow-100 font-normal text-yellow-800   mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">
+                                    Este programa es con Dupla, se realiza junto a otro voluntario, que tambien debe estar registrado. Para poder inscribirte vas a necesitar cargar el DNI de tu dupla.
+                                </h3>
+                            @endif
+                            
                             <a href="{{route('programs.inscribe', $program->id)}}" id="{{$program->id}}" class=" w-full text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
                                 Ver programa
                             </a>
+
                         </div>
                     </div>
                 

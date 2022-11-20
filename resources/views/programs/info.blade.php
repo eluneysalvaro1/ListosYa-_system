@@ -36,7 +36,7 @@
             @endif
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">En <strong>{{$program->place_event}}</strong> desde <strong>{{$program->start_time}}</strong> hasta <strong>{{$program->finish_time}}</strong> </p>
         @if ($program->duo)
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa lo debe desarrollar en <strong>DUO</strong> .</p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa lo debe desarrollar en <strong>DUO / DUPLA </strong> Para la inscripcion vas a necesitar el DNI de tu dupla .</p>
         @else
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa lo puede desarrollador <strong>SOLO</strong> </p>
         @endif

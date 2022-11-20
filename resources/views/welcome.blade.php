@@ -552,14 +552,19 @@
                             @if ($program->state!=="finish")
                                 
                              
-                            <a href="#"
-                            class=" m-5 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <a href="{{ asset("programs/inscription/". $program->id) }}"
+                            class=" m-5 flex flex-col items-center bg-white rounded-lg  shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                                src="{{ asset($ruta . $program->program_image) }}" alt="">
+                                src="{{ asset($ruta . $program->program_image) }}" alt=" {{ $program->name }}">
                             <div class="flex flex-col justify-between p-4 leading-normal">
                                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$program->name}}</h5>
                                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Lugar del Programa: {{$program->place_event}}
                                 </p>
+                                @if ( $program->duo == True)
+                                    <h3 class="bg-yellow-100 font-normal text-yellow-800   mr-2 px-2.5 py-0.5 rounded dark:bg-yellow-200 dark:text-yellow-900">
+                                        Este programa es con Dupla, se realiza junto a otro voluntario, que tambien debe estar registrado. Para poder inscribirte vas a necesitar cargar el DNI de tu dupla.
+                                    </h3>
+                                @endif
                             </div>
                             </a>
                             @endif
