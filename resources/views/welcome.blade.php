@@ -508,7 +508,31 @@
                 </li>
           
             </ul>
-           
+            {{-- Introduccion --}}
+            <div class="mt-8 bg-white bg-green-500 overflow-hidden shadow sm:rounded-lg">
+                <h3 class="text-2xl  m-5 text-center font-bold tracking-tight text-white">
+                   El desarrollo
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2">
+ 
+                            <a href="#"
+                            class=" m-5 flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            <img class="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                                src="{{ asset("images/logolistosya.png") }}" alt="Logo Listos Ya">
+                            <div class="flex flex-col justify-between p-4 leading-normal">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Estamos en etapa de testeo</h5>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Nos encontramos en plena etapa de testeo y final de desarrollo, para esto te pedimos tu colaboracion. La idea es que pruebes inscribirte en los programas y verificar que te lleguen los mails. Para realizar esto tenes que ingresar o registrarte. Saludos y muchas gracias
+                                </p>
+                            </div>
+                            </a>
+                            <div class=" m-5 p-5 items-center bg-white rounded-lg border shadow-md  md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+                                <p>Poder colaborar con nuestros programas conviertiendo en donante mensual</p>
+                            <a mp-mode="dftl" href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084845a41c001845c88fc2c0157" name="MP-payButton" class='blue-ar-l-rn-none'>Convertirme en Donente Agua</a><script type="text/javascript">   (function() {      function $MPC_load() {         window.$MPC_loaded !== true && (function() {         var s = document.createElement("script");         s.type = "text/javascript";         s.async = true;         s.src = document.location.protocol + "//secure.mlstatic.com/mptools/render.js";         var x = document.getElementsByTagName('script')[0];         x.parentNode.insertBefore(s, x);         window.$MPC_loaded = true;      })();   }   window.$MPC_loaded !== true ? (window.attachEvent ? window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;   })();  /*        // to receive event with message when closing modal from congrants back to site        function $MPC_message(event) {          // onclose modal ->CALLBACK FUNCTION         // !!!!!!!!FUNCTION_CALLBACK HERE Received message: {event.data} preapproval_id !!!!!!!!        }        window.$MPC_loaded !== true ? (window.addEventListener("message", $MPC_message)) : null;         */</script>
+                            <a mp-mode="dftl" href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=2c938084847520b2018495443c1415d0" name="MP-payButton" class='blue-ar-l-rn-none'>Convertirme en Donente Tierra</a><script type="text/javascript">   (function() {      function $MPC_load() {         window.$MPC_loaded !== true && (function() {         var s = document.createElement("script");         s.type = "text/javascript";         s.async = true;         s.src = document.location.protocol + "//secure.mlstatic.com/mptools/render.js";         var x = document.getElementsByTagName('script')[0];         x.parentNode.insertBefore(s, x);         window.$MPC_loaded = true;      })();   }   window.$MPC_loaded !== true ? (window.attachEvent ? window.attachEvent('onload', $MPC_load) : window.addEventListener('load', $MPC_load, false)) : null;   })();  /*        // to receive event with message when closing modal from congrants back to site        function $MPC_message(event) {          // onclose modal ->CALLBACK FUNCTION         // !!!!!!!!FUNCTION_CALLBACK HERE Received message: {event.data} preapproval_id !!!!!!!!        }        window.$MPC_loaded !== true ? (window.addEventListener("message", $MPC_message)) : null;         */</script>
+                            </div>
+                    </div>
+              
+            </div>
          
             {{-- muestra programas --}}
             <div class="mt-8 bg-white dark:bg-green-800 overflow-hidden shadow sm:rounded-lg">
