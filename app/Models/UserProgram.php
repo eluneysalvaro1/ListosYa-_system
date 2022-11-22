@@ -20,9 +20,13 @@ class UserProgram extends Model
         'duo_id',
         'turn',
         'postulation_state',
-        'asist',
+        'asistance',
         'observation'
     ];
 
+
+    public function user(){
+        return $this->belongsTo(User::class)->withDefault();
+    }
 
 }

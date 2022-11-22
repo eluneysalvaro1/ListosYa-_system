@@ -73,7 +73,7 @@
         @stack('modals')
         @include('footer')
         @livewireScripts
-      
+        @yield('scripts')
 
     </body>
 </html>
