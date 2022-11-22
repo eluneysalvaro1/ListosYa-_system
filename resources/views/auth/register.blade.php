@@ -8,6 +8,9 @@
 
         <x-jet-validation-errors class="mb-4" />
         <div class="flex flex-col items-center justify-center">
+            <div class="mt-4">
+                <x-jet-label for="clarification" value="{{ __('Registro con Gmail o Facebook') }}" />
+            </div>
 
             <x-button class="mt-6 mx-auto ">
                 <a class="flex items-center justify-center " href="/login-google">
@@ -23,7 +26,10 @@
                 </a>
             </x-button>
         </div>
-        
+        <div class="mt-4">
+            <hr/>
+            <x-jet-label for="email-register" value="{{ __('Registro completo con mail') }}" />
+        </div>
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
