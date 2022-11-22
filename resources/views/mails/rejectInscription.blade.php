@@ -70,7 +70,7 @@
     
     <div class="footer">
         <img src=" {{asset('../images/logolistosya.png')}} " alt="listosya">
-        <a href=" http://127.0.0.1:8000/">Volver</a>
+        <a href=" http://billetera.listosya.org/">Volver</a>
     </div>
 
 
