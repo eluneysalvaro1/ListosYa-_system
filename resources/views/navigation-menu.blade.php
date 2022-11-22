@@ -182,6 +182,11 @@
                 Usuarios
             </x-responsive-nav-link>
             @endcan
+            @can('management programs')
+            <x-responsive-nav-link class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" href="{{ route('programs.management') }}" :active="request()->routeIs('programs.management')">
+                    Gestionar
+            </x-responsive-nav-link>
+            @endcan
             @can('edit programs')
                 
             <x-responsive-nav-link href="{{ route('programs.index') }}" :active="request()->routeIs('programs.index')">

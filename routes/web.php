@@ -14,7 +14,7 @@ use App\Models\Program;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
-
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 use App\Mail\AlertMailable;
 use App\Mail\InscriptionMailable;
@@ -52,17 +52,37 @@ Route::middleware([
         
         $userProgram = UserProgram::where('user_id' , Auth::user()->id)
                         ->get();
-
+        $usersWithPoints = User::orderBy('points' , 'desc')
+                        ->take(10)
+                        ->get();
         $count = count($userProgram);
 
 
-        $usersWithPoints = User::orderBy('points' , 'desc')
-                            ->take(10)
-                            ->get();
-
+        $chart_options = [
+            'chart_title' => 'Asistencias sobre inasistencias (0 Inasistencia - 1 Asistencia)',
+            'chart_type' => 'pie',
+            'report_type' => 'group_by_string',
+            'model' => 'App\Models\UserProgram',
+            'relationship_name' => 'user', // represents function user() on Transaction model
+            'group_by_field' => 'asistance', // users.name
+            'filter_field' => 'name', // show only transactions for this week
+        ];
+        $chart = new LaravelChart($chart_options);
+                            
+        $chart_options2 = [
+            'chart_title' => 'Programas creados por mes',
+            'chart_type' => 'bar',
+            'report_type' => 'group_by_date',
+            'group_by_period' => 'month',
+            'model' => 'App\Models\Program',
+            //'relationship_name' => 'user', // represents function user() on Transaction model
+            'group_by_field' => 'created_at', // users.name
+            'filter_field' => 'name', // show only transactions for this week
+        ];
+        $chart2 = new LaravelChart($chart_options2);
         
 
-        return view('dashboard', compact('count' , 'usersWithPoints'));
+        return view('dashboard', compact('count' , 'usersWithPoints'  , 'chart' , 'chart2'));
     })->name('dashboard');
 
     Route::get('profile' , function() {

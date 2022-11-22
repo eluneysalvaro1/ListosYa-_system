@@ -122,6 +122,29 @@
                 </div>
             </div>
         </div>
+
+
+        <div style="margin-top: 7rem; margin-bottom: 3.5rem; " class="w-1/2 p-2.5 mx-auto flex">
+            <div class="w-1/2 mx-auto">
+                <h1 class="text-center"><strong>{{ $chart->options['chart_title'] }}</strong></h1>
+                {!! $chart->renderHtml() !!}
+            </div>
+            <div class="w-1/2 mx-auto">
+                <h1 class="text-center"><strong>{{ $chart2->options['chart_title'] }}</strong></h1>
+                {!! $chart2->renderHtml() !!}
+            </div>
+        </div>
+    
+        
+    
+        @section('scripts')
+        {!! $chart->renderChartJsLibrary() !!}
+        {!! $chart->renderJs() !!}
+        {!! $chart2->renderJs() !!}
+        @endsection
+
+
+
     @elseif(Auth::user()->role_id == 3)
         <style>
 
@@ -324,6 +347,8 @@
         </div>
     </div>
 
+
+    
 
     @endif
 
