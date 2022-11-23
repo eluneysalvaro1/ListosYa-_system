@@ -66,7 +66,16 @@
                 -webkit-box-shadow: -1px 0px 12px -3px rgba(0, 0, 0, 0.75);
                 -moz-box-shadow: -1px 0px 12px -3px rgba(0, 0, 0, 0.75);
             }
+            #grafics{
+                    display: flex; 
+                    flex-direction: column;
+                    justify-content: space-around;
+                    width: 90%;
+                    height: 750px;
+                }
             }
+
+          
 
 
         </style>
@@ -124,7 +133,7 @@
         </div>
 
 
-        <div style="margin-top: 7rem; margin-bottom: 3.5rem; " class="w-1/2 p-2.5 mx-auto flex">
+        <div id="grafics" style="margin-top: 7rem; margin-bottom: 3.5rem; " class="w-1/2 p-2.5 mx-auto flex">
             <div class="w-1/2 mx-auto">
                 <h1 class="text-center"><strong>{{ $chart->options['chart_title'] }}</strong></h1>
                 {!! $chart->renderHtml() !!}

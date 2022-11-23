@@ -7,15 +7,15 @@
 @include('categories.delete')
     <div class="mx-5">
         <div class="min-w-screen  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-            <div class="lg:w-5/6">
+            <div style="overflow-x: scroll; margin: 3rem" class="lg:w-5/6">
                 <div class="flow-root mt-5">
                     <button
                         class="float-right block focus:outline-none text-white  bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-2 py-1 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-green-900 "
                         type="button"> <a href=" {{ route('categories.create') }} ">Crear categoria</a></button>
                 </div>
-                <div class="bg-white shadow-md rounded my-6">
+                <div  class="bg-white shadow-md rounded my-6">
                     
-                    <table class="min-w-max w-full table-auto">
+                    <table  class="min-w-max w-full table-auto">
                         <thead>
                             <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                                 <th class="py-3 px-6 text-center">Id</th>

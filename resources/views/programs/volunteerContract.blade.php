@@ -1,4 +1,4 @@
-<div style="margin: 30px 8rem">
+<div style="margin: 30px 4rem">
     <h3 style="text-align: center;">ADHESIÓN AL PROGRAMA DE VOLUNTARIADO LISTOS YA - DF ENTERTAINMENT S.A</h3>
     <p style="text-align: justify;">La fundación LISTOS YA! resentando en este evento por .................................. en su caracter de representante legal de la empresa, <br>
         por su parte, y Sr/Sra <strong>{{$user->name}} {{$user->surname}}</strong> , domiciliado/a en <strong>{{$user->direction}}</strong> , en la localidad de <strong>{{$ciudad[0]->ciudadName}}</strong> <br>
@@ -26,18 +26,12 @@
         7. Ofrecer al voluntario la información, formación, apoyo y en su caso los medios materiales necesarios para el ejercicio de las funciones que se le asignen.
         8 Favorecer la participación del voluntario en la organización, diseño, evaluación y programación de las actividades que realiza 
         9, Asegurar al voluntario contra los riesgos . accidente y responsabilidad civil derivados del ejercicio de la actividad </p>
-        <div style="display: flex; justify-content: space-evenly; margin-top: 75px;">
-            <p>
-                <strong>
-                    FIRMA ENCARGADOS 
-
-                </strong>
-            </p>
-            <p>
-                <strong>
-
-                    FIRMA VOLUNTARIO
-                </strong>
-            </p>
+        <div style="display: flex; justify-content: space-between; align-text:centrer; aling-items:center; margin-top: 75px;">
+                    <strong style="margin-right: 100px;">
+                        FIRMA ENCARGADOS                                 
+                    </strong>
+                    <strong style="margin-left: 100px;">
+                        FIRMA VOLUNTARIO
+                    </strong>
         </div>
     </div>
