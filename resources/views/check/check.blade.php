@@ -8,7 +8,9 @@
         @if ($user->role_id!==3)
             
             <div class="text-center text-sm text-gray-500 sm:text-left">
+                QR Asitencia Programa {{ $program->name}} 
                 <div class="flex items-center ">
+                   
                     @livewire('qr-generator')
                 </div>
             </div>

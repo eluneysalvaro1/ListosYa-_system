@@ -21,7 +21,7 @@ class CheckController extends Controller
       
         $userProgram = null;
         $idUsuarioLogueado = auth()->id();
-        $program = null;
+        $program = Program::find($id);
         if ($idUsuarioLogueado!==null){
             $userProgram = DB::table('user_programs')
             ->where('program_id',$id)

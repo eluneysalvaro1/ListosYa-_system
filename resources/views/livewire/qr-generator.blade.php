@@ -4,8 +4,8 @@
         $ruta = url()->current();
         $rutaplana = $this->limpiar($ruta);
         $qr2 = "/qrcodes/".$rutaplana.".svg";
-        echo $qr2;
+        //echo $qr2;
     @endphp
-    <img src= "{{ $qr2 }}" alt="">  
+    <img src= "{{ $qr2 }}" alt="qr" height=100vh>  
    
 </div>
