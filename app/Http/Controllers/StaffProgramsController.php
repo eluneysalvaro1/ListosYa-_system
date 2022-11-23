@@ -57,10 +57,12 @@ class StaffProgramsController extends Controller
 
         $userPro = UserProgram::where('program_id', $id)->first();
         $duo = false;
+        $program = '';
         
         if($userPro == null){
             $userProgram = null;
         }else{
+            $program = Program::where('id' , $userPro->program_id)->first();
         if ($userPro->duo_id == null && $userPro->turn == null) {
             $userProgram = DB::table('user_programs')
                 ->where('user_programs.program_id' , $id)
@@ -80,7 +82,7 @@ class StaffProgramsController extends Controller
             ->get([
                 'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                 , 'userDuo.surname as duoSurname', 'user_programs.qualified as qualified' ,'userDuo.dni as duoDni'  ,'userDuo.name as duoName' , 'user_programs.turn as turn' , 'user_programs.postulation_state as postulation_state' , 
-                'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 
+                'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName' ,
             ]);
 
             $duo = true;
@@ -92,25 +94,26 @@ class StaffProgramsController extends Controller
                 ->get([
                     'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                     ,  'user_programs.turn as turn' , 'user_programs.qualified as qualified' ,'user_programs.postulation_state as postulation_state' , 
-                    'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 
+                    'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName' ,
                 ]);
         }else{
                 $userProgram = DB::table('user_programs')
                 ->where('user_programs.program_id' , $id)
                 ->join('users' , 'user_programs.user_id' , '=' , 'users.id')
+                ->join('programs' , 'user_programs.program_id' , '=' , 'programs.id')
                 ->join('users as userDuo' , 'user_programs.duo_id' , '=' , 'userDuo.id')
                 ->get([
                     'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                     , 'userDuo.surname as duoSurname', 'user_programs.qualified as qualified' ,'userDuo.dni as duoDni'  ,'userDuo.name as duoName' , 'user_programs.turn as turn' , 'user_programs.postulation_state as postulation_state' , 
-                    'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 
+                    'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName'
                 ]);
                 $duo = true;
             }
         }
 
-    
+       
 
-        return view('staff.usersProgram', compact('userProgram', 'duo'));
+        return view('staff.usersProgram', compact('userProgram', 'duo' , 'program'));
     }
 
 

@@ -7,6 +7,7 @@
               
         @if ($userProgram !== null )
               
+        <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Programa: {{$program->name}}</h1>
          
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -179,6 +180,7 @@
             
                 </script>
         @else
+        
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -207,11 +209,5 @@
         @endif
             
         </div>
-       
     </div>
-    
-    
-
-
-
 </x-app-layout>

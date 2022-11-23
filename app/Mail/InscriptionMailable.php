@@ -37,12 +37,8 @@ class InscriptionMailable extends Mailable
 
         $userId = $this->user_id;
 
-        $program = UserProgram::where('user_id' , $userId)
-                    ->where('postulation_state' , 'Aceptada')
-                    ->latest()->first();
+       
 
-        $programId = $program->id;
-
-        return $this->view('mails.inscription' , compact('userId' , 'programId'));
+        return $this->view('mails.inscription' , compact('userId'));
     }
 }

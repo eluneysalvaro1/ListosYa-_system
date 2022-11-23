@@ -184,6 +184,50 @@
 <div class="m-5 p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
     <span class="font-medium">Información!</span> Su postulación ha sido enviada. Será avisad@ via email en caso de ser aprobada su postulación. Muchas gracias!
   </div>
+  @php
+  $sms = false;
+  if($program->start_date !== $program->finish_date) {
+      $sms = true;
+  }
+
+@endphp
+
+<div  class="w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+<a href="#">
+<img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+</a>
+<div class="p-5">
+<a href="#">
+  <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$program->name}}</h5>
+</a>
+@if ($sms)
+          <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              El programa se realizará entre los dias {{$program->start_date}} y el {{$program->finish_date}}
+          </p>
+@else
+          <p
+          class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          El programa se realizará el dia <strong>{{$program->start_date}}</strong>  y terminara el mismo dia.
+      </p>
+
+  @endif
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">En <strong>{{$program->place_event}}</strong> desde <strong>{{$program->start_time}}</strong> hasta <strong>{{$program->finish_time}}</strong> </p>
+@if ($program->duo)
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa lo debe desarrollar en <strong>DUO / DUPLA </strong> Para la inscripcion vas a necesitar el DNI de tu dupla .</p>
+@else
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa lo puede desarrollador <strong>SOLO</strong> </p>
+@endif
+
+@if ($program->turn)
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa <strong>CUENTA</strong>  con turnos, por lo que deberá elegir correctamente</p>
+@else
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa <strong>NO CUENTA</strong>  con turnos. </p>
+@endif
+
+<p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Este programa le otorgará una cantidad de <strong>{{$program->program_points}}</strong> que podrá canjear por futuros premios. Complete el formulario de abajo para inscribirse y preparese... <strong style="color: #21CB80;">Listo YA!</strong> </p>
+</div>
+</div>
 
 @endif
 
