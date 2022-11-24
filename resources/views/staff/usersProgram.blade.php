@@ -4,10 +4,21 @@
 <div style="margin: 3rem;" class="overflow-x-auto relative shadow-md sm:rounded-lg">
     
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-40">
-              
-        @if ($userProgram !== null )
-              
-        <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Programa: {{$program->name}}</h1>
+        <div class="flex justify-center text-center">
+            
+            <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Programa: {{$program->name}}</h1>
+            <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Estado: 
+                @if ($program->state == 'finish')
+                    <strong style="color:red;">FINALIZADO</strong>
+                @elseif($program->state == 'open_to_postulated')
+                    <strong style="color:green;">ABIERTO</strong>
+                @else
+                    <strong style="color:blue;">CERRADO</strong>
+                @endif
+                
+            </h1>
+        </div>
+            @if ($userProgram !== null )
          
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -30,7 +41,7 @@
                         $count = 0;
                     @endphp
                     @forelse ($userProgram as $user)
-                    @if (!$user->qualified)
+                    @if (!$user->qualified || ($userProgram[0]->state == 'finish' && $user->qualified ))
                         
                     
                         @if ($count % 2 == 0)

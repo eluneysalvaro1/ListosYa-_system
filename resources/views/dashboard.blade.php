@@ -74,8 +74,11 @@
                     height: 750px;
                 }
             }
-
-          
+            @media (max-width: 600px) {
+                #chart2{
+                    display: none;
+                }
+            }
 
 
         </style>
@@ -138,9 +141,12 @@
                 <h1 class="text-center"><strong>{{ $chart->options['chart_title'] }}</strong></h1>
                 {!! $chart->renderHtml() !!}
             </div>
-            <div class="w-1/2 mx-auto">
+            <div id="chart2" class="w-1/2 mx-auto" >
                 <h1 class="text-center"><strong>{{ $chart2->options['chart_title'] }}</strong></h1>
-                {!! $chart2->renderHtml() !!}
+                
+                <div style="height: 400px;">
+                    {!! $chart2->renderHtml() !!}
+                </div>
             </div>
         </div>
     
