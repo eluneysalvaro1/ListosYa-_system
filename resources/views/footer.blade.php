@@ -1,5 +1,5 @@
 <footer class="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
-
+    {{ url()->current()}}
     @php
     // SDK de Mercado Pago
     require base_path('vendor/autoload.php');
