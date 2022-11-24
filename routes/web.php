@@ -172,7 +172,7 @@ Route::get('/google-callback', function () {
     if((session()->get('urlPedido'))== null){
         return redirect('/dashboard'); ;
     }else{
-            return redirect(RouteServiceProvider::session()->get('urlPedido'));
+            return redirect(session()->get('urlPedido'));
     }
 
 });

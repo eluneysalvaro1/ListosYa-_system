@@ -16,7 +16,7 @@ class Authenticate extends Middleware
     {
         
         if (! $request->expectsJson()) {
-            session(['urlPedido' => $request->path()]);
+            session(['urlPedido' => $request->url()]);
             return route('login');
         }
     }
