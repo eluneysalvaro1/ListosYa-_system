@@ -168,19 +168,12 @@ Route::get('/google-callback', function () {
         return redirect('/alert/'.$email); 
     }
 
-<<<<<<< HEAD
-=======
     
->>>>>>> 3436d788ba978a8af43b46ce121a609f5b0e8cb1
     if((session()->get('urlPedido'))== null){
         return redirect('/dashboard'); ;
     }else{
             return redirect(RouteServiceProvider::session()->get('urlPedido'));
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> 3436d788ba978a8af43b46ce121a609f5b0e8cb1
 
 });
 
