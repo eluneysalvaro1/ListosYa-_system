@@ -1,7 +1,5 @@
 <x-app-layout>
-
-    
-
+ 
     
     <div style="margin: 3rem;" class="overflow-x-auto relative shadow-md sm:rounded-lg">
        
