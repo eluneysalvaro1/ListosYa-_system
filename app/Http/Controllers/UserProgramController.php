@@ -34,7 +34,6 @@ class UserProgramController extends Controller
         }else{
             $user = User::where('dni' , $dni)->first();
             if ($user == null) {
-               
                 return $response = true;
             }
             $response = UserProgram::where('user_id' , $user->id)->where('program_id' , $programId)->first();

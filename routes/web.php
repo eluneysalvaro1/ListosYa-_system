@@ -75,7 +75,6 @@ Route::middleware([
             'report_type' => 'group_by_date',
             'group_by_period' => 'month',
             'model' => 'App\Models\Program',
-            //'relationship_name' => 'user', // represents function user() on Transaction model
             'group_by_field' => 'created_at', // users.name
             'filter_field' => 'name', // show only transactions for this week
         ];

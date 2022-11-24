@@ -27,7 +27,7 @@
         </a>
    
         <p class=" text-gray-500 dark:text-gray-400">Gestion de Voluntarios</p>
-        <div class="mx-auto max-w-screen-xl text-center">
+        <div style="display: flex; justify-content:center; margin:10px;" class="mx-auto max-w-screen-xl text-center">
           
             <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
                 <a href="https://www.facebook.com/listosya.org" class="text-green-500 hover:text-green-900 dark:hover:text-white">
