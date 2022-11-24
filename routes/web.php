@@ -166,8 +166,11 @@ Route::get('/google-callback', function () {
         return redirect('/alert/'.$email); 
     }
 
-
-    return redirect('/dashboard'); 
+    if((session()->get('urlPedido'))== null){
+        return redirect('/dashboard'); ;
+    }else{
+            return redirect(RouteServiceProvider::session()->get('urlPedido'));
+    }
 
 });
 
