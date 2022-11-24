@@ -28,7 +28,12 @@ class AuthenticationTest extends TestCase
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+            if((session()->get('urlPedido'))== null){
+            $retorno=RouteServiceProvider::HOME;
+            }else{
+                $retorno =RouteServiceProvider::session()->get('urlPedido');
+            }
+        $response->assertRedirect($retorno);
     }
 
     public function test_users_can_not_authenticate_with_invalid_password()

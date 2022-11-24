@@ -22,6 +22,7 @@ use App\Mail\SuccessfulMailable;
 use App\Models\BlackList;
 use App\Models\UserProgram;
 use Illuminate\Support\Facades\Mail;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,19 +35,19 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
+
 Route::get('/', function () {
     $programs = Program::all();
     return view('welcome',compact('programs'));
 });
-Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
-Route::post('/check/asistance/{id}', [App\Http\Controllers\CheckController::class , 'asistance'])->name('check.asistance');
+
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-   
+    
     Route::get('/dashboard', function () {
 
         
@@ -124,7 +125,8 @@ Route::middleware([
     Route::get('/programs/download-contract/{user}' , [UserProgramController::class, 'downloadContract'])->name('programs.downloadContract');
 
     Route::get('/staff/deleteUserStaff' , [StaffProgramsController::class , 'staffUserDelete'])->name('staff.userDelete');
-
+    Route::get('/check/postulants/{id}', [App\Http\Controllers\CheckController::class , 'show'])->name('check.postulant');
+Route::post('/check/asistance/{id}', [App\Http\Controllers\CheckController::class , 'asistance'])->name('check.asistance');
 });
 Route::get('/programs/calendar', [ProgramController::class, 'calendar'])->name('calendar_programs');
 Route::get('/programs/data', [ProgramController::class, 'calendarData'])->name('calendar_data');
@@ -166,8 +168,13 @@ Route::get('/google-callback', function () {
         return redirect('/alert/'.$email); 
     }
 
-
-    return redirect('/dashboard'); 
+    
+    if((session()->get('urlPedido'))== null){
+        return redirect('/dashboard'); ;
+    }else{
+            return redirect(RouteServiceProvider::session()->get('urlPedido'));
+    }
+    
 
 });
 
