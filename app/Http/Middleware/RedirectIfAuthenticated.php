@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
                 if((session()->get('urlPedido'))== null){
                 return redirect(RouteServiceProvider::HOME);
                 }else{
-                    return redirct(RouteServiceProvider::session()->get('urlPedido'));
+                    return redirect(RouteServiceProvider::session()->get('urlPedido'));
                 }
             }
         }
