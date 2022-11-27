@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\InscriptionMailable;
 use App\Mail\RejectInscriptionMailable;
+use App\Models\BlackList;
 use App\Models\Program;
 use App\Models\StaffPrograms;
 use App\Models\User;
@@ -60,7 +61,8 @@ class StaffProgramsController extends Controller
         $program = Program::where('id' , $id)->first();
         
         if($userPro == null){
-            $userProgram = null;
+            
+            $return = null;
         }else{
             
             if ($userPro->duo_id == null && $userPro->turn == null) {
@@ -72,7 +74,11 @@ class StaffProgramsController extends Controller
                         'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                         ,  'user_programs.turn as turn' , 'user_programs.qualified as qualified' ,'user_programs.postulation_state as postulation_state' , 
                         'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 
+                        
                     ]);
+
+                    $return = $this->userBlacklist($userProgram);
+
             }elseif ($userPro->duo_id !== null) {
                 $userProgram = DB::table('user_programs')
                 ->where('user_programs.program_id' , $id)
@@ -83,9 +89,11 @@ class StaffProgramsController extends Controller
                     'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                     , 'userDuo.surname as duoSurname', 'user_programs.qualified as qualified' ,'userDuo.dni as duoDni'  ,'userDuo.name as duoName' , 'user_programs.turn as turn' , 'user_programs.postulation_state as postulation_state' , 
                     'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName' ,
+                    
                 ]);
 
                 $duo = true;
+                $return = $this->userBlacklist($userProgram);
             }elseif($userPro->turn !== null){
                     $userProgram = DB::table('user_programs')
                     ->where('user_programs.program_id' , $id)
@@ -95,7 +103,9 @@ class StaffProgramsController extends Controller
                         'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                         ,  'user_programs.turn as turn' , 'user_programs.qualified as qualified' ,'user_programs.postulation_state as postulation_state' , 
                         'programs.state as state'  ,'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName' ,
+                        
                     ]);
+                    $return = $this->userBlacklist($userProgram);
             }else{
                     $userProgram = DB::table('user_programs')
                     ->where('user_programs.program_id' , $id)
@@ -105,17 +115,35 @@ class StaffProgramsController extends Controller
                     ->get([
                         'users.name as userName' , 'users.surname as userSurname', 'users.dni as userDni'
                         , 'userDuo.surname as duoSurname', 'user_programs.qualified as qualified' ,'userDuo.dni as duoDni'  ,'userDuo.name as duoName' , 'user_programs.turn as turn' , 'user_programs.postulation_state as postulation_state' , 
-                        'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName'
+                        'user_programs.asistance as asistance' , 'user_programs.observation as observation' , 'user_programs.user_id as user_id' , 'user_programs.program_id as program_id', 'programs.name as programName' 
                     ]);
                     $duo = true;
+                    $return = $this->userBlacklist($userProgram);
                 }
         }
 
       
 
-        return view('staff.usersProgram', compact('userProgram', 'duo' , 'program'));
+        return view('staff.usersProgram', compact('return', 'duo' , 'program'));
     }
 
+
+    public function userBlacklist($userProgram){
+        $blacklist = BlackList::all();
+
+        for ($i=0; $i < count($userProgram); $i++) { 
+            $userProgram[$i]->blacklist = 0;
+            $userProgram[$i]->severity = 0;
+            for ($j=0; $j < count($blacklist); $j++) { 
+                if ($userProgram[$i]->user_id == $blacklist[$j]->user_id ) {
+                    $userProgram[$i]->blacklist = 1;
+                    $userProgram[$i]->severity = $blacklist[$j]->severity;
+                }
+                
+            }
+        }
+        return $userProgram;
+    }
 
 
 public function staffUserDelete(Request $request){
