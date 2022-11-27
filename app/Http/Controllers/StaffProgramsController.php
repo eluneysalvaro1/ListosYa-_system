@@ -61,7 +61,8 @@ class StaffProgramsController extends Controller
         $program = Program::where('id' , $id)->first();
         
         if($userPro == null){
-            $userProgram = null;
+            
+            $return = null;
         }else{
             
             if ($userPro->duo_id == null && $userPro->turn == null) {
