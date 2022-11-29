@@ -69,7 +69,7 @@
         <p>Ha sid@ seleccionad@ para participar del programa de Listos Ya! Esté atent@ a la información proporcionada por la organización. Puede ver en su perfil los programas en los que está activ@. Preparad@ Listos Ya!
         </p>
    
-        <a href="{{route('programs.downloadContract' , $userId)}}" target="_blank" >Al dar click aquí acepta los Términos y Condiciones. Podrá descargar el contrato de voluntariado.</a>
+        <a href="http://billetera.listosya.org/programs/myInscriptions" target="_blank" >Al dar click aquí acepta los Términos y Condiciones. Podrá descargar el contrato de voluntariado.</a>
     
     </div>
     
