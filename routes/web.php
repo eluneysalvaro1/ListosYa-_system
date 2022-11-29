@@ -119,7 +119,7 @@ Route::middleware([
     Route::get('/programs/inscription/{id}' , [ProgramController::class , 'inscription'])->name('programs.inscribe');
     Route::post('/programs/down' , [UserProgramController::class , 'down'])->name('programs.down');
     Route::get('/staff/postulants/{id}', [StaffProgramsController::class , 'show'])->middleware('can:show postulants')->name('staff.postulant');
-    Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->middleware('can:asist postulants')->name('staff.asistance');
+    Route::post('/staff/asistance/{id}', [StaffProgramsController::class, 'asistance'])->middleware('can:asists postulants')->name('staff.asistance');
     Route::post('/staff/state/{id}', [StaffProgramsController::class, 'state'])->middleware('can:state postulants')->name('staff.state');
     Route::post('/staff/asignate/{id}', [StaffProgramsController::class, 'asignate'])->middleware('can:asignate postulants')->name('staff.asignate');
     Route::get('/programs/download-contract/{user}' , [UserProgramController::class, 'downloadContract'])->name('programs.downloadContract');
