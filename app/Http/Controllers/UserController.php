@@ -6,7 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\LaravelCharts;
-
+use Illuminate\Support\Facades\DB;
+use App\Http\Middleware\PermissionMiddleware;
+use Spatie\Permission\Contracts\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -90,6 +93,17 @@ class UserController extends Controller
     }
 
 
+    public function editRole($role, $userId){
+
+        $roleName = DB::table('roles')
+                    ->where('id' , $role)
+                    ->first();
+        $user = User::find($userId);
+        $user->assignRole($roleName->name);
+    
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -133,6 +147,7 @@ class UserController extends Controller
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
+            $this->editRole($request->role_id , $user->id);
             flash('Usuario editado con éxito.', 'success');
         } elseif ($user == $another2 && $another2 !== null) {
             $user->update([
@@ -145,6 +160,8 @@ class UserController extends Controller
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
+            $this->editRole($request->role_id , $user->id);
+
             flash('Usuario editado con éxito.', 'success');
         } elseif (($user !== $another && $another == null) || ($user !== $another2 && $another2 == null)) {
             $user->update([
@@ -157,6 +174,8 @@ class UserController extends Controller
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
+            $this->editRole($request->role_id , $user->id);
+
             flash('Usuario editado con éxito.', 'success');
         } elseif ($another == null && $another2 == null) {
             $user->update([
@@ -169,6 +188,8 @@ class UserController extends Controller
                 'ciudad_id' => $request->selectedCiudad ? $request->selectedCiudad : $request->ciudad_id,
                 'role_id' => $request->role_id
             ]);
+            $this->editRole($request->role_id , $user->id);
+
             flash('Usuario editado con éxito.', 'success');
         } else {
             flash('No se ha podido editar el usuario 3', 'error');
