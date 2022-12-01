@@ -204,20 +204,34 @@
                 Ver programas
             </x-responsive-nav-link>
             @endcan
+            @if (Auth::user()->role_id == 3)
+            <x-responsive-nav-link href="{{ route('programs.myInscriptions') }}" :active="request()->routeIs('programs.myInscriptions')">
+                Mis inscripciones
+            </x-responsive-nav-link>
+
+            @endif
             @can('create categories')
                 
             <x-responsive-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
                 Categorias
             </x-responsive-nav-link>
             @endcan
-            <x-responsive-nav-link href="{{ route('calendar_programs') }}" :active="request()->routeIs('calendar_programs')">
-                Calendario de programas
+            @can('show blacklist')
+
+            <x-responsive-nav-link href="{{ route('blacklist.index') }}" :active="request()->routeIs('blacklist.index')">
+                Blacklist
             </x-responsive-nav-link>
+
+            @endcan
+
+            @if (Auth::user()->telephone_number !== null && Auth::user()->dni !== null && Auth::user()->ciudad_id !== null &&
+                        Auth::user()->birthday !== null && Auth::user()->password !== null || Auth::user()->role_id == 1)
+            @else
             <x-responsive-nav-link>
                
-                    <a style="margin-left:15px;" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg px-5 py-1.5 text-center my-3 " href="{{ route('profile.show') }}" >Complete su registro</a>
-               
+                    <a style="margin-left:15px;" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg px-5 py-1.5 text-center my-3 " href="{{ route('profile.show') }}" >Complete su registro</a>   
             </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
