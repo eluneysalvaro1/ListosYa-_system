@@ -1,13 +1,13 @@
 <x-app-layout>
-    
+
 
 <div style="margin: 3rem;" class="overflow-x-auto relative shadow-md sm:rounded-lg">
     
     <div class="w-full text-sm text-left text-gray-500 dark:text-gray-40">
         <div class="flex justify-center text-center">
             
-            <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Programa: {{$program->name}}</h1>
-            <h1 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Estado: 
+            <h3 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Programa: {{$program->name}}</h3>
+            <h3 style="font-size: 40px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Estado: 
                 @if ($program->state == 'finish')
                     <strong style="color:red;">FINALIZADO</strong>
                 @elseif($program->state == 'open_to_postulated')
@@ -16,7 +16,9 @@
                     <strong style="color:blue;">CERRADO</strong>
                 @endif
                 
-            </h1>
+            </h3>
+            
+          
         </div>
             @if ($return !== null )
          
@@ -39,6 +41,7 @@
                     </thead>
                     @php
                         $count = 0;
+                        $postAceptada = 0;
                     @endphp
                     @forelse ($return as $user)
                     @if (!$user->qualified || ($return[0]->state == 'finish' && $user->qualified ))
@@ -90,6 +93,9 @@
                                     Espera
                                 </span>
                                 @elseif($user->postulation_state == 'Aceptada')
+                                @php
+                                    $postAceptada++;
+                                @endphp
                                 <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">
                                     Aceptado</span>
                                 @else
@@ -187,6 +193,7 @@
                     @endforelse
 
                 </table>
+                <h3 style="font-size: 20px; font-weight: 700;padding: 25px;margin-bottom:15px;" class="text-center">Limite de Voluntarios: {{ ($program->volunteer_limit) }} || Postulaciones Aceptadas {{ $postAceptada }}</h3>
                 @include('blacklist.form')
 
                 <script>
@@ -228,6 +235,7 @@
                 </tr>
             </tbody>
         </table>
+        
         
         @endif
             

@@ -3,13 +3,19 @@
         <div style="overflow-x: scroll;" class="p-10  bg-gray-100 flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
             <div style="width: 80%" class="p-10">
                 <div class="bg-white shadow-md rounded my-6 p-5">
-                    <div class="flex flex-col justify-center items-center pt-5">
-                        <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Actualizar datos de
-                        {{ $program->name }}</h3>
+                    <div>
+                        <div class="flex flex-col justify-center items-center pt-5">
+                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Actualizar datos de
+                            {{ $program->name }}</h3>
+                        </div>
+                        <td class="py-3 px-6 text-left whitespace-nowrap text-center"><img
+                            src="/images/programs/{{ $program->program_image }}" width="100" height="100"> </td>
                     </div>
     <form id="mainForm" class="space-y-6" method="get" action="{{ route('programs.update', $program->id) }}">
         @method('GET')
         @csrf
+       
+
         <div class="mb-2 ">
             <div class="px-1">
                 <label for="name"
@@ -160,7 +166,7 @@
                     
                 @endforelse
         </div>
-
+               
         
                     <button type="submit" onclick="submitMainForm('mainForm')" class="w-full text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">ActualizarPrograma</button>
                 </form>
